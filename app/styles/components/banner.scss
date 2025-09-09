@@ -1,0 +1,196 @@
+.banner-section{
+    padding: 60px 0;
+    position: relative;
+    height: calc( 750px * ( 1440/1920 ) );
+    box-sizing: border-box;
+
+    @include breakpoint('large'){
+        height: 750px;
+    }
+
+    @include breakpoint('sm'){
+        height: 500px;
+    }
+
+    &::after{
+        content: '';
+        background: radial-gradient(50% 200% at 50% 50%, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 60%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+
+        @include breakpoint('mlg'){
+            background: rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    h1{
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        z-index: 91;
+        text-align: center;
+        padding: 0 20px;
+        width: 100%;
+    }
+
+    img{
+        width: 100% !important;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    &.get-in-touch{
+        height: 516px;
+
+        @include breakpoint('sm'){
+            height: 409px;
+        }
+
+        &::after{
+            background: rgba( $primary_color,.5 );
+        }
+
+        .get-in-touch-content {
+            position: absolute;
+            z-index: 99;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: 870px;
+            top: 50%;
+            box-sizing: border-box;
+            padding: 0 20px;
+
+            @include breakpoint('mlg'){
+                width: 100%;
+            }
+
+            .btn-primary{
+                display: inline-block;
+                width: 169px;
+                margin: auto;
+                background: #E6AF2E;
+                color: #1F5126;
+                box-sizing: border-box;
+
+                @include breakpoint('sm'){
+                    width: 320px;
+                }
+            }
+        }
+    }
+
+}
+
+
+
+.banner-bottom-section{
+    height: 380px;
+    position: relative;
+
+    @include breakpoint('mlg'){
+        height: 770px;
+    }
+
+    .banner-bottom-section-wrapper {
+        position: absolute;
+        bottom: 0;
+        z-index: 99;
+        width: 100%;
+    }
+
+    &.career-banner-bottom-section{
+
+        @include breakpoint('mlg'){
+            height: 380px;
+        }
+
+        @include breakpoint('tablet'){
+            height: 880px;
+        }
+
+        @include breakpoint('tablet'){
+            height: 740px;
+        }
+
+        .talk-section-wrapper{
+            .talk-section-left{
+                padding: 0;
+                width: 46.7%;
+
+                @include breakpoint('tablet'){
+                    width: 100%;
+                }
+
+                img{
+                    height: 100%;
+                    object-fit: cover;
+
+                    @include breakpoint('sm'){
+                        height: auto;
+                    }
+                }
+            }
+            .talk-section-right {
+                padding: 60px 0px 60px 60px;
+                display: flex;
+                align-items: center;
+
+                 @include breakpoint('tablet'){
+                    padding: 30px 20px;
+                 }
+
+                h3{
+                    margin-bottom: 20px;
+                }
+
+                .short-description{
+                    margin-bottom: 40px;
+
+                    @include breakpoint('sm'){
+                        margin-bottom: 20px;
+                    }
+                }
+
+                ul{
+                    list-style: none;
+
+                    li{
+                        margin-bottom: 20px;
+                        display: flex;
+                        gap: 24px;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.page-id-294{
+    .banner-section{
+        h1 {
+            @include breakpoint('tablet'){
+                top: 30%;
+            }
+
+            @include breakpoint('sm'){
+                top: 50%;
+            }
+        }
+    }
+}

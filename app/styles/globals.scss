@@ -1,0 +1,101 @@
+* {
+   margin: 0;
+   padding: 0;
+}
+
+// color
+$primary_color: #1f5126;
+$text_color: #1f5126;
+$text_gray: #4d4d60;
+$bg_light: #f6f9fb;
+
+.color-primary {
+   color: $primary_color;
+}
+
+$goldman: 'Goldman', sans-serif;
+
+.font-regular {
+   font-weight: 400;
+}
+
+html {
+   scroll-behavior: smooth;
+   overflow-x: hidden;
+   transition: all 0.3s ease-in;
+
+   &.overflow-hidden {
+      overflow: hidden;
+   }
+
+   &.showing-search-item {
+      overflow: hidden;
+
+      .footer-search-option {
+         opacity: 1;
+         pointer-events: all;
+         transform: translateY(0px);
+      }
+   }
+}
+
+body {
+   font-family: 'Inter', sans-serif;
+   font-optical-sizing: auto;
+   font-weight: normal;
+   overflow-x: hidden;
+   font-size: 16px;
+   line-height: 24px;
+   color: $text_color;
+   background: #fffaef;
+}
+
+textarea {
+   font-family: 'Inter', sans-serif;
+}
+
+div#wpadminbar {
+   top: inherit;
+   bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-family: 'Goldman', sans-serif;
+}
+
+button {
+   font-family: 'Goldman', sans-serif;
+}
+
+a {
+   text-decoration: none;
+   color: $primary_color;
+}
+
+// Components
+@import './components/responsive';
+@import './components/mixins';
+@import './components/global';
+@import './components/typhography';
+@import './components/header';
+@import './components//footer';
+@import './components/banner';
+@import './components/container';
+@import './components/home/hero';
+@import './components/home/about';
+@import './components/home/project';
+@import './components/home/promo';
+@import './components/home/touch';
+@import './components/home/blog';
+@import './components/career/career-all.scss';
+@import './components/home/testimonial';
+@import './components/about/approach';
+@import './components/contact/contact';
+@import './components/insight';
+@import './components/search';
+@import './components/apply-now';

@@ -1,0 +1,64 @@
+.why-work-section {
+    position: relative;
+    bottom: 359px;
+    z-index: 99;
+
+    .career-container {
+        display: flex;
+        background-color: rgba(255, 250, 239, 1);
+        padding: 10px;
+        gap: 60px;
+        justify-content: space-between;
+
+        img {
+            width: calc(50% - 30px);
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .career-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: calc(50% - 30px);
+            padding: 137px 0;
+
+            @media (max-width: 1400px) {
+                padding: 80px 0;
+
+            }
+
+            .left-heading {}
+
+            .left-description {
+                letter-spacing: 0;
+            }
+
+            .career-features {
+                margin-top: 20px;
+
+                .career-feature {
+                    display: flex;
+                    align-items: center;
+                    gap: 24px;
+
+                    .lead-text-one {}
+                }
+            }
+        }
+    }
+
+    // Responsive styles
+    @media (max-width: 800px) {
+        .career-container {
+            flex-direction: column;
+
+            img,
+            .career-content {
+                width: 100%;
+                padding: 0;
+            }
+        }
+    }
+}

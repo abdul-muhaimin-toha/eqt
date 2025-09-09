@@ -1,0 +1,74 @@
+@mixin breakpoint($point) {
+    @if $point == sm-s {
+      @media (max-width: 370px) {
+        @content;
+      }
+    }
+    @if $point == sm {
+      @media (max-width: 600px) {
+        @content;
+      }
+    } @else if $point == mlg {
+      @media (max-width: 1200px) {
+        @content;
+      }
+    }
+    @else if $point == tablet {
+        @media (max-width: 834px) {
+          @content;
+        }
+      }
+    @else if $point == xl {
+      @media (min-width: 1200px) {
+        @content;
+      }
+    }
+    @else if $point == large {
+      @media (min-width: 1850px) {
+        @content;
+      }
+    }
+  }
+  
+
+// for custom breakpoint
+@mixin device($breakpoint) {
+    @media (max-width: #{$breakpoint}) {
+      @content;
+    }
+}
+
+@mixin min-device($breakpoint) {
+  @media (min-width: #{$breakpoint}) {
+    @content;
+  }
+}
+
+
+// Define your breakpoints in a map
+$breakpoint_responsive: (
+  sm-s: 370px,
+  sm: 600px,
+  tablet: 834px,
+  mlg: 1200px,
+  xl: 1200px,
+  large: 1850px
+);
+
+@mixin nh-design($breakpoint_property, $properties) {
+  $target-width: map-get($breakpoint_responsive, $breakpoint_property);
+
+  @if $target-width {
+    @media (max-width: $target-width) {
+      @each $property, $value in $properties {
+        #{$property}: calc(#{$value} * (#{$target-width} / 1920px));
+      }
+    }
+  }
+}
+
+@mixin nh-scale($properties) {
+  @each $property, $value in $properties {
+    #{$property}: $value * (1440 / 1920);
+  }
+}

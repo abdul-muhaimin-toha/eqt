@@ -1,0 +1,152 @@
+ .apply-now-section {
+     align-items: center;
+     background: #fff;
+     padding-top: calc( 270px * ( 1440/1920 ) );
+
+     @include breakpoint('large'){
+        padding-top: 270px;
+     }
+
+     .apply-now-header{
+        margin-bottom: calc( 70px * ( 1440/1920 )  );
+
+        @include breakpoint('large'){
+            margin-bottom: 70px;
+        }
+
+        h2{
+            margin-bottom: 20px;
+        }
+     }
+
+     .apply-now-container {
+         padding-bottom: 80px;
+
+         .contact-form {
+             max-width: 1130px;
+             width: 100%;
+             margin: 0 auto;
+             background: #FBFBFB;
+             padding: 60px;
+             box-sizing: border-box;
+
+             @include breakpoint(mlg) {
+                 width: 100%;
+             }
+
+             @include breakpoint(sm) {
+                 padding: 20px;
+             }
+
+             .job-position {
+                border-bottom: 1px solid #1F51261A;
+                padding: 12px 0;
+                margin-bottom: 50px;
+                border-top: 1px solid #1F51261A;
+                display: flex;
+                gap: 10px;
+
+                @include breakpoint('sm'){
+                    flex-direction: column;
+                }
+
+                .job-title-name {
+                    border: none;
+                    padding: 0;
+                    outline: 0;
+                    font-size: 18px;
+                    line-height: 18px;
+                    color: #1F5126;
+                    background: transparent;
+                }
+            }
+
+         }
+
+         .submit-btn{
+            cursor: pointer;
+         }
+
+         .form-group{
+            margin-bottom: calc( 50px * ( 1440/1920 ) );
+
+            @include breakpoint('large'){
+                margin-bottom: 50px;
+            }
+
+            label{
+                display: block;
+                margin-bottom: calc( 22px * ( 1440/1920 ) );
+                line-height: 26px;
+
+                @include breakpoint('large'){
+                    margin-bottom: 22px;
+                }
+            }
+
+            .textarea-label{
+                margin-bottom: calc( 70px * ( 1440/1920 ) );
+
+                @include breakpoint('large'){
+                    margin-bottom: 70px;
+                }
+            }
+
+            .form-control input ,.form-control textarea{
+                border: none;
+                background: transparent;
+                width: 100%;
+                padding-bottom: 16px;
+                font-size: 22px;
+                line-height: 28px;
+                font-weight: 400;
+                color: #1F5126;
+                outline: 0;
+                border-bottom: 1px solid #1F51261A;
+                box-sizing: border-box;
+
+                &::placeholder,&::-moz-placeholder{
+                    color: rgba( #1F5126,.4 );
+                }
+            }
+
+            textarea{
+                vertical-align: bottom;
+                height: 44px;
+            }
+
+            &.resume-field{
+                p{
+                    margin-bottom: 16px;
+                }
+                .form-control input{
+                    border: none;
+                }
+                .form-group-control-svg {
+                    align-items: center;
+                    cursor: pointer;
+                    display: inline-flex;
+                    gap: 10px;
+                    margin-bottom: 5px;
+                    font-size: 22px;
+                    line-height: 28px;
+                }
+                .help-text {
+                    line-height: 26px;
+                }
+                .form-control{
+                    input{
+                        position: absolute;
+                        margin-top: -34px;
+                        width: 181px;
+                        visibility: hidden;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+         }
+
+     }
+
+ }
