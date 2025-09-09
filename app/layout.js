@@ -16,7 +16,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-   title: 'EQT Real State',
+   title: 'EQT Real Estate',
    description: 'Discover Your Dream Home with EQT',
 };
 
