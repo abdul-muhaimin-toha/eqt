@@ -1,4 +1,4 @@
-import About from '@/components/home-page/about';
+import About from '@/components/home-page/about-us/about';
 import GetInTouch from '@/components/home-page/get-in-touch';
 import Hero from '@/components/home-page/hero';
 import PopularDeals from '@/components/home-page/popular-deals';

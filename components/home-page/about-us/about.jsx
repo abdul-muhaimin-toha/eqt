@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Counters from './counters';
 
 function About() {
    return (
@@ -64,60 +65,7 @@ function About() {
                   />
                </div>
             </div>
-            <div id="counter-section" className="counter-block">
-               <div className="counter-item">
-                  <div className="counter-number">
-                     <span className="counter-value heading-h2 text-white font-primary">
-                        950
-                     </span>
-                     <span className="suffix text-white heading-h2 font-primary">
-                        +
-                     </span>
-                  </div>
-                  <div className="counter-title body-two font-weight-500 text-white text-uppercase">
-                     Happy Clients
-                  </div>
-               </div>
-               <div className="counter-item">
-                  <div className="counter-number">
-                     <span className="counter-value heading-h2 text-white font-primary">
-                        1100
-                     </span>
-                     <span className="suffix text-white heading-h2 font-primary">
-                        +
-                     </span>
-                  </div>
-                  <div className="counter-title body-two font-weight-500 text-white text-uppercase">
-                     Projects Delivered
-                  </div>
-               </div>
-               <div className="counter-item">
-                  <div className="counter-number">
-                     <span className="counter-value heading-h2 text-white font-primary">
-                        20
-                     </span>
-                     <span className="suffix text-white heading-h2 font-primary">
-                        +
-                     </span>
-                  </div>
-                  <div className="counter-title body-two font-weight-500 text-white text-uppercase">
-                     Cities Served
-                  </div>
-               </div>
-               <div className="counter-item">
-                  <div className="counter-number">
-                     <span className="counter-value heading-h2 text-white font-primary">
-                        10
-                     </span>
-                     <span className="suffix text-white heading-h2 font-primary">
-                        +
-                     </span>
-                  </div>
-                  <div className="counter-title body-two font-weight-500 text-white text-uppercase">
-                     Years of Experience
-                  </div>
-               </div>
-            </div>
+            <Counters />
          </div>
       </section>
    );
