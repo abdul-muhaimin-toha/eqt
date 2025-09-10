@@ -158,7 +158,8 @@ form.search-heading {
    }
 
    input#search-input {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Montserrat', sans-serif;
+
       width: 100%;
       height: 100%;
       border: none;
@@ -350,6 +351,7 @@ form.search-heading {
          @include breakpoint('tablet') {
             font-size: 20px;
          }
+
          @include breakpoint('sm') {
             font-size: 24px;
             line-height: 35px;
@@ -448,6 +450,7 @@ form.search-heading {
             color: #173a1ccc;
             opacity: 0.8;
          }
+
          .site-by {
             color: #173a1ccc;
             opacity: 0.8;
@@ -478,6 +481,7 @@ a.scroll-to-top {
       width: 56px;
       height: 56px;
    }
+
    @include breakpoint('sm') {
       width: 40px;
       height: 40px;

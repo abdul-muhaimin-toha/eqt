@@ -190,9 +190,9 @@
 }
 
 .blog-mobile{
-    display: none;
+    display: none !important;
 
     @include breakpoint('mlg') {
-        display: block;
+        display: block !important;
     }
 }

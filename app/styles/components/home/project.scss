@@ -82,9 +82,6 @@
    }
 
    .nh-project-tab-content {
-      display: block;
-      opacity: 1;
-
       .project-card {
          margin-bottom: calc(100px * (1440 / 1920));
 
@@ -109,7 +106,11 @@
          }
       }
    }
+
    .nh-project-tab-content {
+   }
+
+   .nh-project-tab-content.active {
       display: block;
       opacity: 1;
    }
@@ -146,6 +147,7 @@
          object-fit: cover;
       }
    }
+
    .project-content {
       width: 38%;
       padding: 30px 60px 30px;
@@ -187,6 +189,7 @@
             line-height: 36px;
          }
       }
+
       .project-description {
          margin-bottom: 32px;
 
@@ -206,6 +209,7 @@
             gap: 8px;
          }
       }
+
       .project-feature {
          display: flex;
          align-items: center;
@@ -347,6 +351,7 @@
 
       #testimonial-slider-bottom {
          padding-top: calc(60px * (1440 / 1920));
+
          @include breakpoint('large') {
             padding-top: 60px;
          }
@@ -369,7 +374,7 @@
          }
 
          .quote {
-            max-width: 700px;
+            max-width: 730px;
             margin-bottom: calc(60px * (1440 / 1920));
 
             @include breakpoint('large') {
@@ -392,6 +397,7 @@
                   line-height: 30px;
                }
             }
+
             .designation {
                line-height: 26px;
             }
@@ -430,6 +436,12 @@
          }
       }
    }
+}
+
+.testimonial-tab-content,
+.nh-project-tab-content {
+   will-change: transform, opacity;
+   transform: translateZ(0);
 }
 
 .nh-project-top {
@@ -523,6 +535,7 @@
             margin-bottom: 8px;
          }
       }
+
       .project-location {
          display: flex;
          align-items: center;
@@ -639,6 +652,7 @@
          @include breakpoint('large') {
             height: 880px;
          }
+
          img {
             height: 100%;
             width: 100%;
@@ -1201,7 +1215,7 @@
          color: #6b6c75;
          box-sizing: border-box;
          outline: 0;
-         font-family: 'Inter', sans-serif;
+         font-family: 'Montserrat', sans-serif;
 
          &::placeholder,
          &:-moz-placeholder {
@@ -1289,6 +1303,7 @@
                @include breakpoint('sm') {
                   padding-right: 0;
                }
+
                .heading-h4 {
                   @include breakpoint('sm') {
                      font-size: 18px;
@@ -1296,6 +1311,7 @@
                      margin-bottom: 8px;
                   }
                }
+
                .project-location {
                   @include breakpoint('sm') {
                      align-items: flex-start;
@@ -1436,16 +1452,19 @@
             padding: 11px 48px 11px 16px;
             margin-bottom: 0;
             color: #173a1ccc;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+
             font-size: 16px;
             outline: 0;
             line-height: 26px;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            background-image: none; /* Remove default arrow */
+            background-image: none;
+            /* Remove default arrow */
             cursor: pointer;
          }
+
          .custom-select-arrow {
             position: absolute;
             right: 24px;
