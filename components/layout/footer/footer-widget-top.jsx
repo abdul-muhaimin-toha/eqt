@@ -18,7 +18,7 @@ const FOOTER_MENUS = [
       key: 'quick-links',
       title: 'Quick Links',
       links: [
-         { label: 'Career', href: '/' },
+         { label: 'Career', href: '/career' },
          { label: 'Contact Us', href: '/' },
       ],
    },

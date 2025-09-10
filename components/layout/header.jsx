@@ -121,7 +121,7 @@ function HeaderLarge({ setSearchOpen, setMobileOpen }) {
                            <Link href="/">Hospital Projects</Link>
                         </li>
                         <li className="menu-item">
-                           <Link href="/">Career</Link>
+                           <Link href="/career">Career</Link>
                         </li>
                         <li className="menu-item">
                            <Link href="/">Insight</Link>
@@ -294,7 +294,9 @@ function MobileMenu({
                      <Link href="/">Hospital Projects</Link>
                   </li>
                   <li className="menu-item eqt-menu__item menu-item-329">
-                     <Link href="/">Career</Link>
+                     <Link href="/career" onClick={() => setMobileOpen(false)}>
+                        Career
+                     </Link>
                   </li>
                   <li className="menu-item eqt-menu__item menu-item-292">
                      <Link href="/">Insight</Link>
