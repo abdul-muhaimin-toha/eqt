@@ -3,7 +3,13 @@
 import { useEffect, useRef, useState } from 'react';
 import CountUp from 'react-countup';
 
-const CounterItem = ({ end, title, suffix = '', duration = 2.5 }) => {
+const CounterItem = ({
+   end,
+   title,
+   suffix = '',
+   duration = 4,
+   varient = 'light',
+}) => {
    const [isInView, setIsInView] = useState(false);
    const countUpRef = useRef(null);
 
@@ -32,7 +38,9 @@ const CounterItem = ({ end, title, suffix = '', duration = 2.5 }) => {
          <div className="counter-number">
             <span
                ref={countUpRef}
-               className="counter-value heading-h2 text-white font-primary"
+               className={`counter-value heading-h2  font-primary ${
+                  varient === 'light' ? 'text-white' : ''
+               }`}
             >
                {isInView ? (
                   <CountUp
@@ -46,19 +54,27 @@ const CounterItem = ({ end, title, suffix = '', duration = 2.5 }) => {
                )}
             </span>
             {suffix && (
-               <span className="suffix text-white heading-h2 font-primary">
+               <span
+                  className={`suffix  heading-h2 font-primary ${
+                     varient === 'light' ? 'text-white' : ''
+                  }`}
+               >
                   {suffix}
                </span>
             )}
          </div>
-         <div className="counter-title body-two font-weight-500 text-white text-uppercase">
+         <div
+            className={`counter-title body-two font-weight-500  text-uppercase ${
+               varient === 'light' ? 'text-white' : ''
+            }`}
+         >
             {title}
          </div>
       </div>
    );
 };
 
-const Counters = () => {
+const Counters = ({ varient = 'light' }) => {
    const counterData = [
       { end: 250, title: 'Happy Clients', suffix: '+' },
       { end: 1100, title: 'Projects Delivered', suffix: '+' },
@@ -70,6 +86,7 @@ const Counters = () => {
       <div id="counter-section" className="counter-block flex flex-wrap gap-6">
          {counterData.map((counter, index) => (
             <CounterItem
+               varient={varient}
                key={index}
                end={counter.end}
                title={counter.title}

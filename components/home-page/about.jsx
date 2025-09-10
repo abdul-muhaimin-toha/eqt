@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Counters from './counters';
+import Counters from '../commons/counters';
 
 function About() {
    return (

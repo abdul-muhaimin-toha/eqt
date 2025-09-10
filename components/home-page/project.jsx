@@ -137,6 +137,7 @@ function Project() {
 export default Project;
 
 function ProjectCard({ project }) {
+   console.log(project);
    return (
       <div className="project-card">
          <div className="project-thumbnail">

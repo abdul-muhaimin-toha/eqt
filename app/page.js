@@ -1,11 +1,11 @@
-import About from '@/components/home-page/about-us/about';
+import About from '@/components/home-page/about';
 import GetInTouch from '@/components/home-page/get-in-touch';
 import Hero from '@/components/home-page/hero';
 import PopularDeals from '@/components/home-page/popular-deals';
 import Project from '@/components/home-page/project';
-import Promo from '@/components/home-page/promo';
+import Promo from '@/components/commons/promo';
 import Testimonial from '@/components/home-page/testimonial';
-import Video from '@/components/home-page/video';
+import Video from '@/components/commons/video';
 
 export default function HomePage() {
    return (

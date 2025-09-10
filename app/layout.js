@@ -1,6 +1,6 @@
 import { Goldman, Montserrat } from 'next/font/google';
 import './global.css';
-import './styles/globals.scss';
+import './styles/style.scss';
 import Footer from '@/components/layout/footer/footer';
 import Header from '@/components/layout/header';
 
