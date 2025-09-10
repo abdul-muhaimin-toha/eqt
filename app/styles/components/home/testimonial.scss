@@ -1,417 +1,400 @@
-.testimonial-container{
-    .testimonial-tab-content{
-        display: none;
-    }
-}
+.testimonial-section {
+   background: $primary_color;
+   padding: calc(140px * (1440 / 1920)) 0 calc(122px * (1440 / 1920)) 0;
 
-.testimonial-section{
-    background: $primary_color;
-    padding: calc( 140px * ( 1440/1920 ) ) 0 calc( 122px * ( 1440/1920 ) ) 0;
+   @include breakpoint('large') {
+      padding: 140px 0 122px 0;
+   }
 
-    @include breakpoint('large'){
-        padding: 140px 0 122px 0;
-    }
+   @include breakpoint('sm') {
+      padding: 60px 0;
+   }
 
-    @include breakpoint('sm'){
-        padding: 60px 0;
-    }
+   .slider-bottom-area-testimonial {
+      margin-top: 60px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
 
-    .slider-bottom-area-testimonial {
-        margin-top: 60px;
-        border-top: 1px solid rgba(255, 255, 255, .1);
+      @include breakpoint('sm') {
+         margin-top: 40px;
+      }
+   }
 
-        @include breakpoint('sm'){
-            margin-top: 40px;
-        }
-    }
+   h2 {
+      margin-bottom: 20px;
+   }
 
-    h2{
-        margin-bottom: 20px;
-    }
+   .container {
+      overflow: hidden;
+   }
 
-    .container{
-        overflow: hidden;
-    }
+   .testimonial-card {
+      background: #fff;
+      box-sizing: border-box;
+      padding: 20px 20px 20px 40px;
+      display: flex;
+      gap: calc(60px * (1440 / 1920));
+      align-items: center;
 
-    .testimonial-card{
-        background: #fff;
-        box-sizing: border-box;
-        padding: 20px 20px 20px 40px;
-        display: flex;
-        gap: calc( 60px * ( 1440/1920 ) );
-        align-items: center;
+      @include breakpoint('large') {
+         gap: 60px;
+      }
 
-        @include breakpoint('large'){
-            gap: 60px;
-        }
+      @include breakpoint('tablet') {
+         flex-direction: column-reverse;
+      }
 
-        @include breakpoint('tablet'){
-            flex-direction: column-reverse;
-        }
+      @include breakpoint('sm') {
+         padding: 20px;
+         gap: 20px;
+      }
 
-        @include breakpoint('sm'){
-            padding: 20px;
-            gap: 20px;
-        }
+      .testimonial-content {
+         width: calc(100% - calc(440px * (1440 / 1920)) - 60px * (1440 / 1920));
 
-        .testimonial-content {
-            width: calc( 100% - calc( 440px * ( 1440/1920 ) ) - 60px * ( 1440/1920 ) );
+         @include breakpoint('tablet') {
+            width: 100%;
+         }
 
-            @include breakpoint('tablet'){
-                width: 100%;
+         .testimonial-text {
+            font-size: calc(32px * (1440 / 1920));
+            line-height: calc(48px * (1440 / 1920));
+            font-style: italic;
+            margin-bottom: calc(60px * (1440 / 1920));
+            max-width: 700px;
+
+            @include breakpoint('large') {
+               font-size: 32px;
+               line-height: 48px;
+               margin-bottom: 60px;
             }
 
-            .testimonial-text {
-                font-size: calc( 32px * ( 1440/1920 ) );
-                line-height: calc( 48px * ( 1440/1920 ) );
-                font-style: italic;
-                margin-bottom: calc( 60px * ( 1440/1920 ) );
-                max-width: 700px;
-
-                @include breakpoint('large'){
-                    font-size: 32px;
-                    line-height: 48px;
-                    margin-bottom: 60px;
-                }
-
-                @include breakpoint('sm'){
-                    font-size: 16px;
-                    line-height: 24px;
-                    margin-bottom: 20px;
-                    font-weight: 300;
-                }
-
+            @include breakpoint('sm') {
+               font-size: 16px;
+               line-height: 24px;
+               margin-bottom: 20px;
+               font-weight: 300;
             }
+         }
 
-            .testimonial-author{
-                h4{
-                    font-size: calc( 24px * ( 1440/1920 ) );
-                    line-height: calc( 32px * ( 1440/1920 ) );
-                    letter-spacing: -0.5px;
-                    color: $primary_color;
-                    font-weight: 400;
-                    font-family: Montserrat, sans-serif;
+         .testimonial-author {
+            h4 {
+               font-size: calc(24px * (1440 / 1920));
+               line-height: calc(32px * (1440 / 1920));
+               letter-spacing: -0.5px;
+               color: $primary_color;
+               font-weight: 400;
+               font-family: Montserrat, sans-serif;
 
-                    @include breakpoint('large'){
-                        font-size: 24px;
-                        line-height: 32px;
-                    }
+               @include breakpoint('large') {
+                  font-size: 24px;
+                  line-height: 32px;
+               }
 
-                    @include breakpoint('sm'){
-                        font-size: 24px;
-                        line-height: 32px;
-                    }
-                }
-                p{
-                    font-size: 14px;
-                    line-height: 22px;
-                    color: #173A1CCC;
-                }
+               @include breakpoint('sm') {
+                  font-size: 24px;
+                  line-height: 32px;
+               }
             }
-        }
-
-        .testimonial-image {
-            width: calc( 440px * ( 1440/1920 ) );
-            height: calc( 440px * ( 1440/1920 ) );
-            position: relative;
-
-            @include breakpoint('tablet'){
-                width: 100%;
+            p {
+               font-size: 14px;
+               line-height: 22px;
+               color: #173a1ccc;
             }
+         }
+      }
 
-            @include breakpoint('large'){
-                width: 440px;
-                height: 440px;
-            }
+      .testimonial-image {
+         width: calc(440px * (1440 / 1920));
+         height: calc(440px * (1440 / 1920));
+         position: relative;
 
-            @include breakpoint('sm'){
-                height: 240px;
-            }
+         @include breakpoint('tablet') {
+            width: 100%;
+         }
 
-            a.play-button.popup-youtube {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                cursor: pointer;
-                width: calc( 97px * ( 1440/1920 ) );
-                height: calc( 97px * ( 1440/1920 ) );
-                border-radius: 50%;
+         @include breakpoint('large') {
+            width: 440px;
+            height: 440px;
+         }
 
-                @include breakpoint('large'){
-                    width: 97px;
-                    height: 97px;
-                }
+         @include breakpoint('sm') {
+            height: 240px;
+         }
 
-                svg{
-                    width: 100%;
-                    height: 100%;
-                    fill: #fff;
-                    transition: all .2s ease-in;
-
-                    &:hover{
-                        fill: $primary_color;
-                    }
-                }
-            }
-
-            img{
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-            }
-        }
-
-
-    }
-
-    .testimonial-tab-header {
-        background: #fff;
-        border-radius: 100px;
-        cursor: pointer;
-        display: table;
-        margin: auto auto 60px;
-        padding: 4px;
-
-        @include breakpoint('sm'){
-            padding: 2px;
-            margin-bottom: 40px;
-            width: 321px;
-        }
-
-        button{
-            background: transparent;
-            border: none;
-            padding: 10px 24px;
+         a.play-button.popup-youtube {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             cursor: pointer;
-            transition: all .2s ease-in;
-            
-            &:nth-child(1){
-                border-radius: 100px 0 0 100px;
+            width: calc(97px * (1440 / 1920));
+            height: calc(97px * (1440 / 1920));
+            border-radius: 50%;
+
+            @include breakpoint('large') {
+               width: 97px;
+               height: 97px;
             }
 
-            &:nth-child(2){
-                border-radius: 0px 100px 100px 0px;
+            svg {
+               width: 100%;
+               height: 100%;
+               fill: #fff;
+               transition: all 0.2s ease-in;
+
+               &:hover {
+                  fill: $primary_color;
+               }
             }
+         }
 
-            &.active{
-                background: #E6AF2E;
-            }
-        }
-    }
+         img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+         }
+      }
+   }
 
-    &.portfolios{
-        background: transparent;
-        border-top: 1px solid #1F51261A;
-        padding: calc( 120px * ( 1440/1920 ) ) 0;
+   .testimonial-tab-header {
+      background: #fff;
+      border-radius: 100px;
+      cursor: pointer;
+      display: table;
+      margin: auto auto 60px;
+      padding: 4px;
 
-        @include breakpoint('large'){
-            padding: 120px 0;
-        }
+      @include breakpoint('sm') {
+         padding: 2px;
+         margin-bottom: 40px;
+         width: 321px;
+      }
 
-        @include breakpoint('sm'){
-            padding: 60px 0;
-        }
+      button {
+         background: transparent;
+         border: none;
+         padding: 10px 24px;
+         cursor: pointer;
+         transition: all 0.2s ease-in;
 
-        h2{
-            margin-bottom: 40px;
+         &:nth-child(1) {
+            border-radius: 100px 0 0 100px;
+         }
 
-            @include breakpoint('sm'){
-                margin-bottom: 20px;
-            }
-        }
+         &:nth-child(2) {
+            border-radius: 0px 100px 100px 0px;
+         }
 
-        .slider-bottom-area-testimonial{
-            border-top: 1px solid #1F51261A;
-        }
+         &.active {
+            background: #e6af2e;
+         }
+      }
+   }
 
+   &.portfolios {
+      background: transparent;
+      border-top: 1px solid #1f51261a;
+      padding: calc(120px * (1440 / 1920)) 0;
 
-        .testimonial-tab-header::-webkit-scrollbar {
-            height: 0px;
-        }
+      @include breakpoint('large') {
+         padding: 120px 0;
+      }
 
-        .testimonial-tab-header::-webkit-scrollbar-thumb {
-            background-color: #fff;
-            border-radius: 4px;
-        }
+      @include breakpoint('sm') {
+         padding: 60px 0;
+      }
 
-        .testimonial-tab-header{
-            border: 1px solid #1F51261A;
-            box-sizing: border-box;
-            padding: 4px;
-            background: #FFFAEF;
+      h2 {
+         margin-bottom: 40px;
 
-            @include breakpoint('mlg'){
-                display: flex;
-                overflow-x: auto;
-                white-space: nowrap;
-                  -ms-overflow-style: none;
-                scrollbar-width: none;        
-            }
-
-            @include breakpoint('sm'){
-                width: 100%;
-            }
-
-            button{
-                padding: 10px calc( 24px * ( 1440/1920 ) );
-                font-size: 16px;
-                line-height: 24px;
-                border-left: 1px solid #0000001A;
-
-                @include breakpoint('large'){
-                    padding: 10px 24px;
-                    font-size: 18px;
-                    line-height: 26px;
-                }
-
-                @include breakpoint('mlg'){
-                    flex-shrink: 0;
-                    white-space: nowrap;
-                    cursor: pointer;
-                }
-
-                @include breakpoint('sm'){
-                    font-size: 14px;
-                    line-height: 22px;
-                    padding: 11px 24px;
-                }
-
-                &:nth-child( 2 ){
-                    border-radius: 0 !important;
-                }
-
-                &:last-child{
-                    border-radius: 0 100px 100px 0;
-                }
-
-                &:first-child{
-                    border-color: transparent;
-                }
-
-            }
-        }
-
-    }
-
-    &.approachs{
-        h2{
+         @include breakpoint('sm') {
             margin-bottom: 20px;
-        }
-        .short-description {
-            max-width: 942px;
-            margin: 0 auto;
-            margin-bottom: 40px;
-        }
+         }
+      }
 
-        .testimonial-tab-header{
-            @include breakpoint('mlg'){
-                width: 454px;
+      .slider-bottom-area-testimonial {
+         border-top: 1px solid #1f51261a;
+      }
+
+      .testimonial-tab-header::-webkit-scrollbar {
+         height: 0px;
+      }
+
+      .testimonial-tab-header::-webkit-scrollbar-thumb {
+         background-color: #fff;
+         border-radius: 4px;
+      }
+
+      .testimonial-tab-header {
+         border: 1px solid #1f51261a;
+         box-sizing: border-box;
+         padding: 4px;
+         background: #fffaef;
+
+         @include breakpoint('mlg') {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+         }
+
+         @include breakpoint('sm') {
+            width: 100%;
+         }
+
+         button {
+            padding: 10px calc(24px * (1440 / 1920));
+            font-size: 16px;
+            line-height: 24px;
+            border-left: 1px solid #0000001a;
+
+            @include breakpoint('large') {
+               padding: 10px 24px;
+               font-size: 18px;
+               line-height: 26px;
             }
 
-            @include breakpoint('sm'){
-                width: 321px;
+            @include breakpoint('mlg') {
+               flex-shrink: 0;
+               white-space: nowrap;
+               cursor: pointer;
             }
-        }
 
-    }
+            @include breakpoint('sm') {
+               font-size: 14px;
+               line-height: 22px;
+               padding: 11px 24px;
+            }
 
+            &:nth-child(2) {
+               border-radius: 0 !important;
+            }
 
+            &:last-child {
+               border-radius: 0 100px 100px 0;
+            }
+
+            &:first-child {
+               border-color: transparent;
+            }
+         }
+      }
+   }
+
+   &.approachs {
+      h2 {
+         margin-bottom: 20px;
+      }
+      .short-description {
+         max-width: 942px;
+         margin: 0 auto;
+         margin-bottom: 40px;
+      }
+
+      .testimonial-tab-header {
+         @include breakpoint('mlg') {
+            width: 454px;
+         }
+
+         @include breakpoint('sm') {
+            width: 321px;
+         }
+      }
+   }
 }
-
 
 .protfolios-card {
-    display: flex;
-    gap: 60px;
-    flex-wrap: wrap;
+   display: flex;
+   gap: 60px;
+   flex-wrap: wrap;
 
-    @include breakpoint('tablet'){
-        flex-direction: column;
-    }
+   @include breakpoint('tablet') {
+      flex-direction: column;
+   }
 
-    @include breakpoint('sm'){
-        gap: 20px;
-    }
+   @include breakpoint('sm') {
+      gap: 20px;
+   }
 
-    .feature-image {
-        width: 49.5%;
-        height: calc( 640px * ( 1440/1920 ) );
+   .feature-image {
+      width: 49.5%;
+      height: calc(640px * (1440 / 1920));
 
-        @include breakpoint('tablet'){
-            width: 100%;
-        }
+      @include breakpoint('tablet') {
+         width: 100%;
+      }
 
-        @include breakpoint('large'){
-            height: 640px;
-        }
+      @include breakpoint('large') {
+         height: 640px;
+      }
 
-        @include breakpoint('sm'){
-            height: 216px;
-        }
+      @include breakpoint('sm') {
+         height: 216px;
+      }
 
-        img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+   }
 
-    .portfolio-card-content{
-        width: calc( 50% - 60px );
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 60px;
+   .portfolio-card-content {
+      width: calc(50% - 60px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 60px;
 
-        @include breakpoint('tablet'){
-            width: 100%;
-            gap: 30px;
-            padding-right: 30px;
-        }
+      @include breakpoint('tablet') {
+         width: 100%;
+         gap: 30px;
+         padding-right: 30px;
+      }
 
-        @include breakpoint('sm'){
-            gap: 20px;
-        }
+      @include breakpoint('sm') {
+         gap: 20px;
+      }
 
-        .portfolio-card-content-top{
-            max-width: 490px;
+      .portfolio-card-content-top {
+         max-width: 490px;
 
-            @include breakpoint('tablet'){
-                max-width: 100%;
+         @include breakpoint('tablet') {
+            max-width: 100%;
+         }
+
+         h3 {
+            margin-bottom: 8px;
+         }
+         .location {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            span {
+               font-size: 18px;
+               line-height: 28px;
+               font-weight: 500;
+
+               @include breakpoint('sm') {
+                  font-weight: 400;
+                  font-size: 14px;
+                  line-height: 22px;
+               }
             }
+         }
+      }
 
-            h3{
-                margin-bottom: 8px;
+      .portfolio-card-content-bottom {
+         p {
+            margin-bottom: 40px;
+            max-width: 539px;
+
+            @include breakpoint('tablet') {
+               max-width: 100%;
             }
-            .location {
-                display: flex;
-                align-items: center;
-                gap: 4px;
-
-                span{
-                    font-size: 18px;
-                    line-height: 28px;
-                    font-weight: 500;
-
-                    @include breakpoint('sm'){
-                        font-weight: 400;
-                        font-size: 14px;
-                        line-height: 22px;
-                    }
-                }
-            }
-        }
-
-        .portfolio-card-content-bottom{
-            p{
-                margin-bottom: 40px;
-                max-width: 539px;
-
-                @include breakpoint('tablet'){
-                    max-width: 100%;
-                }
-            }
-        }
-
-    }
+         }
+      }
+   }
 }

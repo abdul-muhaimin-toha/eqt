@@ -174,7 +174,7 @@ function Testimonial() {
                <Swiper
                   modules={[Navigation, Pagination]}
                   spaceBetween={30}
-                  slidesPerView={1.3}
+                  slidesPerView={1}
                   loop
                   pagination={{ el: paginationRef.current, clickable: true }}
                   breakpoints={{

@@ -1,10 +1,10 @@
 import Image from 'next/image';
 
-function Hero() {
+function Hero({ title, bgImage }) {
    return (
       <section className="banner-section relative w-full h-[60vh] flex items-center justify-center">
          <Image
-            src="https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-8-scaled.webp"
+            src={bgImage}
             alt="Who We Are Banner"
             fill
             priority
@@ -15,7 +15,7 @@ function Hero() {
          <div className="absolute inset-0 bg-black/40"></div>
 
          {/* Content */}
-         <h1 className="relative z-10 large-h1 text-white">Who We Are</h1>
+         <h1 className="relative z-10 large-h1 text-white">{title}</h1>
       </section>
    );
 }

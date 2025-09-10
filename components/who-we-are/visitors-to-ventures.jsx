@@ -88,7 +88,7 @@ function VisitorsToVentures() {
                <Swiper
                   modules={[Navigation, Pagination]}
                   spaceBetween={20}
-                  slidesPerView={4}
+                  slidesPerView={1}
                   loop
                   pagination={{ el: paginationRef.current, clickable: true }}
                   breakpoints={{

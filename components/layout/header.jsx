@@ -82,10 +82,10 @@ function HeaderLarge({ setSearchOpen, setMobileOpen }) {
                            </span>
                            <ul className="sub-menu">
                               <li className="menu-item">
-                                 <Link href="/">Who We Are</Link>
+                                 <Link href="/who-we-are">Who We Are</Link>
                               </li>
                               <li className="menu-item">
-                                 <Link href="/">Our Approach</Link>
+                                 <Link href="/our-approach">Our Approach</Link>
                               </li>
                            </ul>
                         </li>
@@ -215,10 +215,20 @@ function MobileMenu({
                         activeMenu === 'about',
                         <>
                            <li className="menu-item eqt-menu__item menu-item-192">
-                              <Link href="/">Who We Are</Link>
+                              <Link
+                                 href="/who-we-are"
+                                 onClick={() => setMobileOpen(false)}
+                              >
+                                 Who We Are
+                              </Link>
                            </li>
                            <li className="menu-item eqt-menu__item menu-item-234">
-                              <Link href="/">Our Approach</Link>
+                              <Link
+                                 href="/our-approach"
+                                 onClick={() => setMobileOpen(false)}
+                              >
+                                 Our Approach
+                              </Link>
                            </li>
                         </>
                      )}

@@ -10,8 +10,8 @@ const FOOTER_MENUS = [
       key: 'about-us',
       title: 'About Us',
       links: [
-         { label: 'Who We Are', href: '/' },
-         { label: 'Our Approach', href: '/' },
+         { label: 'Who We Are', href: '/who-we-are' },
+         { label: 'Our Approach', href: '/our-approach' },
       ],
    },
    {
