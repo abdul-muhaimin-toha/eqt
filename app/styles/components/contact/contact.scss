@@ -1,336 +1,336 @@
-.talk-section-wrapper{
-    background: #fffaef;
-    box-sizing: border-box;
-    padding: 10px;
-    display: flex;
+.talk-section-wrapper {
+   background: #fffaef;
+   box-sizing: border-box;
+   padding: 10px;
+   display: flex;
 
-    @include breakpoint('tablet'){
-        flex-direction: column;
-    }
+   @include breakpoint('tablet') {
+      flex-direction: column;
+   }
 
-    .talk-section-left,.talk-section-right{
-        width: 50%;
-        box-sizing: border-box;
+   .talk-section-left,
+   .talk-section-right {
+      width: 50%;
+      box-sizing: border-box;
 
-        @include breakpoint('tablet'){
+      @include breakpoint('tablet') {
+         width: 100%;
+      }
+   }
+
+   .talk-section-right {
+      padding: 53px 20px 53px 80px;
+
+      @include breakpoint('mlg') {
+         padding: 25px;
+      }
+
+      @include breakpoint('sm') {
+         padding: 25px 0;
+      }
+
+      .btn-transparent {
+         @include breakpoint('sm') {
+            font-size: 14px;
+            padding: 12px 20px 10px;
             width: 100%;
-        }
-    }
-
-    .talk-section-right{
-        padding: 53px 20px 53px 80px;
-
-        @include breakpoint('mlg'){
-            padding: 25px;
-        }
-
-        @include breakpoint('sm'){
-            padding: 25px 0;
-        }
-
-        .btn-transparent{
-            @include breakpoint('sm'){
-                font-size: 14px;
-                padding: 12px 20px 10px;
-                width: 100%;
-                box-sizing: border-box;
-                text-align: center;
-            }
-        }
-
-        h2{
-            margin-bottom: 20px;
-        }
-
-        .short-description{
-            margin-bottom: calc( 60px * ( 1440/1920 ) );
-            color:#173A1CCC;
-
-            @include breakpoint('large'){
-                margin-bottom: 60px;
-            }
-
-            @include breakpoint('sm'){
-                margin-bottom: 20px;
-            }
-        }
-
-        .address {
-            max-width: 443px;
-            margin-bottom: 30px;
-        }
-
-        .contact-phone{
-            span {
-                font-size: 14px;
-                line-height: 22px;
-                margin-bottom: 16px;
-                display: block;
-            }
-            h3{
-                margin-bottom: 16px;
-            }
-        }
-
-        a.email {
-            display: block;
-            margin-bottom: 53px;
-
-            @include breakpoint('sm'){
-                margin-bottom: 25px;
-            }
-        }
-    }
-
-    .talk-section-left{
-        box-sizing: border-box;
-        padding: calc( 60px * ( 1440/1920 ) ) calc( 60px * ( 1440/1920 ) ) calc( 120px * ( 1440/1920 ) ) calc( 60px * ( 1440/1920 ) );
-        background: #fff;
-
-        @include breakpoint('mlg'){
-            padding: 25px;
-        }
-
-        @include breakpoint('sm'){
-            padding: 15px;
-        }
-
-        @include breakpoint('large'){
-            padding: 60px 60px 120px 60px;
-        }
-    }
-
-
-     .form-group {
-        width: 100%;
-        margin-bottom: 24px;
-
-        .wpcf7-form-control-wrap{
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .wpcf7-form-control {
-            padding: 15px 24px;
-            border: none;
-            border-radius: 40px;
-            outline: 0;
-            width: 100%;
-            color: #0A142F99;
-            outline: 0;
             box-sizing: border-box;
-            font-size: 16px;
+            text-align: center;
+         }
+      }
+
+      h2 {
+         margin-bottom: 20px;
+      }
+
+      .short-description {
+         margin-bottom: calc(60px * (1440 / 1920));
+         color: #173a1ccc;
+
+         @include breakpoint('large') {
+            margin-bottom: 60px;
+         }
+
+         @include breakpoint('sm') {
+            margin-bottom: 20px;
+         }
+      }
+
+      .address {
+         max-width: 443px;
+         margin-bottom: 30px;
+      }
+
+      .contact-phone {
+         span {
+            font-size: 14px;
+            line-height: 22px;
+            margin-bottom: 16px;
+            display: block;
+         }
+         h3 {
+            margin-bottom: 16px;
+         }
+      }
+
+      a.email {
+         display: block;
+         margin-bottom: 53px;
+
+         @include breakpoint('sm') {
+            margin-bottom: 25px;
+         }
+      }
+   }
+
+   .talk-section-left {
+      box-sizing: border-box;
+      padding: calc(60px * (1440 / 1920)) calc(60px * (1440 / 1920))
+         calc(120px * (1440 / 1920)) calc(60px * (1440 / 1920));
+      background: #fff;
+
+      @include breakpoint('mlg') {
+         padding: 25px;
+      }
+
+      @include breakpoint('sm') {
+         padding: 15px;
+      }
+
+      @include breakpoint('large') {
+         padding: 60px 60px 120px 60px;
+      }
+   }
+
+   .form-group {
+      width: 100%;
+      margin-bottom: 24px;
+
+      .wpcf7-form-control-wrap {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+      }
+
+      .wpcf7-form-control {
+         padding: 15px 24px;
+         border: none;
+         border-radius: 40px;
+         outline: 0;
+         width: 100%;
+         color: #0a142f99;
+         outline: 0;
+         box-sizing: border-box;
+         font-size: 16px;
+         line-height: 26px;
+         background: #fffaef;
+
+         @include breakpoint('sm') {
+            padding: 11px 24px;
+            font-size: 14px;
+            line-height: 22px;
+         }
+
+         &::placeholder,
+         &:-moz-placeholder {
+            color: #0a142f99;
+         }
+      }
+
+      textarea.wpcf7-form-control {
+         border-radius: 16px;
+         padding: 12px 20px;
+         height: 114px;
+      }
+
+      p,
+      span {
+         padding: 0;
+         margin: 0;
+         display: inline-block;
+         width: 100%;
+      }
+   }
+
+   .wpcf7 form .wpcf7-response-output {
+      border: 2px solid #fff;
+      color: #fff;
+   }
+
+   .submit-btn-wrapper {
+      display: flex;
+
+      @include breakpoint('sm') {
+         width: 100%;
+         position: relative;
+         margin-left: 0;
+      }
+
+      .wpcf7-spinner {
+         @include breakpoint('sm') {
+            position: absolute;
+         }
+      }
+
+      .wpcf7-form-control {
+         position: relative;
+         padding: 11px 28px 11px;
+         overflow: hidden;
+         transition: 1s all ease;
+         border-radius: 60px;
+         color: $primary_color;
+         background: #e6af2e;
+         font-size: 16px;
+         line-height: 24px;
+         backdrop-filter: blur(34px);
+         text-transform: uppercase;
+         display: inline-block;
+         font-family: $goldman;
+         border: none;
+         cursor: pointer;
+
+         @include breakpoint('sm') {
+            width: 100%;
+         }
+
+         @include breakpoint('large') {
+            font-size: 18px;
             line-height: 26px;
-            background: #FFFAEF;
+            padding: 16px 28px 14px 28px;
+         }
 
-            @include breakpoint('sm'){
-                padding: 11px 24px;
-                font-size: 14px;
-                line-height: 22px;
-            }
-
-            &::placeholder,&:-moz-placeholder{
-                color: #0A142F99;
-            }
-        }
-
-        textarea.wpcf7-form-control{
-            border-radius: 16px;
-            padding: 12px 20px;
-            height: 114px;
-        }
-
-        p,span{
-            padding: 0;
-            margin: 0;
-            display: inline-block;
+         &::before {
+            background: #fff;
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: all 0.3s ease;
             width: 100%;
-        }
-    }
+            height: 0%;
+            border-radius: 40px;
+         }
 
-    .wpcf7 form .wpcf7-response-output {
-        border: 2px solid #fff;
-        color: #fff;
-    }
-
-    .submit-btn-wrapper {
-        display: flex;
-
-        @include breakpoint('sm'){
-            width: 100%;
-            position: relative;
-            margin-left: 0;
-        }
-
-        .wpcf7-spinner{
-            @include breakpoint('sm'){
-                position: absolute;
-            }
-        }
-
-
-        .wpcf7-form-control  {
-            position: relative;
-            padding: 11px 28px 11px;
-            overflow: hidden;
-            transition: 1s all ease;
-            border-radius: 60px;
-            color: $primary_color;
-            background: #E6AF2E;
-            font-size: 16px;
-            line-height: 24px;
-            backdrop-filter: blur(34px);
-            text-transform: uppercase;
-            display: inline-block;
-            font-family: $goldman;
-            border: none;
-            cursor: pointer;
-
-            @include breakpoint('sm'){
-                width: 100%;
-            }
-            
-            @include breakpoint('large'){
-                font-size: 18px;
-                line-height: 26px;
-                padding: 16px 28px 14px 28px;
-            }
+         &:hover {
+            color: #fff;
+            background: $primary_color;
 
             &::before {
-                background: #fff;
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: -1;
-                transition: all 0.3s ease;
-                width: 100%;
-                height: 0%;
-                border-radius: 40px;
+               height: 100%;
             }
-
-            &:hover {
-                color: #fff;
-                background: $primary_color;
-
-                &::before {
-                    height: 100%;
-                }
-            }
-        }
-    }
+         }
+      }
+   }
 }
-
 
 // contact-promo-list
-.contact-promo-list{
-    padding: calc(176px * ( 1440/1920 ) ) 0 calc(114px * ( 1440/1920 ) ) 0;
+.contact-promo-list {
+   padding: calc(176px * (1440 / 1920)) 0 calc(114px * (1440 / 1920)) 0;
 
-    @include breakpoint('large'){
-        padding: 176px 0 114px 0;
-    }
+   @include breakpoint('large') {
+      padding: 176px 0 114px 0;
+   }
 
-    @include breakpoint('sm'){
-        padding: 60px 0;
-    }
+   @include breakpoint('sm') {
+      padding: 60px 0;
+   }
 
-    .contact-promo-title {
-        margin: auto;
-        display: table;
-        max-width: 910px;
-        text-align: center;
-        margin-bottom: 40px;
-    }
+   .contact-promo-title {
+      margin: auto;
+      display: table;
+      max-width: 910px;
+      text-align: center;
+      margin-bottom: 40px;
+   }
 
-    .contact-promo-cards {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        width: 1290px;
-        margin: auto;
+   .contact-promo-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 1290px;
+      margin: auto;
 
-        @media( max-width:1400px ){
+      @media (max-width: 1400px) {
+         width: 100%;
+      }
+
+      .contact-promo-card {
+         backdrop-filter: blur(194px);
+         border: 1px solid rgba(31, 81, 38, 0.102);
+         box-sizing: border-box;
+         display: flex;
+         height: calc(336px * (1440 / 1920));
+         padding: 30px;
+         text-align: center;
+         width: calc(33.33% - 10px);
+         align-items: center;
+         justify-content: center;
+         position: relative;
+         transition: all 0.3s ease-in;
+
+         &:hover {
+            border: 1px solid $primary_color;
+         }
+
+         @include breakpoint('large') {
+            height: 336px;
+         }
+
+         @include breakpoint('mlg') {
+            width: calc(50% - 10px);
+         }
+
+         @include breakpoint('sm') {
+            height: auto;
             width: 100%;
-        }
+            padding: 50px 30px;
+         }
 
-        .contact-promo-card{
-            backdrop-filter: blur(194px);
-            border: 1px solid rgba(31, 81, 38, .102);
-            box-sizing: border-box;
-            display: flex;
-            height: calc( 336px * ( 1440/1920 ) );
-            padding: 30px;
-            text-align: center;
-            width: calc(33.33% - 10px);
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            transition: all .3s ease-in;
+         .cards-url-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+         }
 
-            &:hover{
-                border: 1px solid $primary_color;
+         .feature-bg-image {
+            margin-bottom: calc(40px * (1440 / 1920));
+            width: calc(80px * (1440 / 1920));
+
+            @include breakpoint('large') {
+               width: 80px;
+               margin-bottom: 40px;
             }
 
-            @include breakpoint('large'){
-                height: 336px;
+            @include breakpoint('sm') {
+               margin-bottom: 10px;
+               width: 50px;
             }
+         }
 
-            @include breakpoint('mlg'){
-                width: calc( 50% - 10px );
-            }
+         .top-title {
+            line-height: 26px;
+            color: #162340cc;
+            margin-bottom: 10px;
+         }
 
-            @include breakpoint('sm'){
-                height: auto;
-                width: 100%;
-                padding: 50px 30px;
-            }
-
-            .cards-url-item{
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
-
-            .feature-bg-image{
-                margin-bottom: calc( 40px * ( 1440/1920 ) );
-                width: calc( 80px * ( 1440/1920 ) );
-
-                @include breakpoint('large'){
-                    width: 80px;
-                    margin-bottom: 40px;
-                }
-
-                @include breakpoint('sm'){
-                    margin-bottom: 10px;
-                    width: 50px;
-                }
-            }
-
-            .top-title{
-                line-height: 26px;
-                color: #162340CC;
-                margin-bottom: 10px;
-            }
-
-            .title{
-                color: #162340;
-            }
-        }
-    }
-
+         .title {
+            color: #162340;
+         }
+      }
+   }
 }
 
-.talk-section{
-    @include breakpoint('mlg'){
-        height: auto;
-        padding-top: 60px;
+.talk-section {
+   @include breakpoint('mlg') {
+      height: auto;
+      padding-top: 60px;
 
-        .banner-bottom-section-wrapper{
-            position: relative;
-        }
-    }
+      .banner-bottom-section-wrapper {
+         position: relative;
+      }
+   }
 }
