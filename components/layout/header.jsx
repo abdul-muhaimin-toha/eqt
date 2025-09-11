@@ -140,7 +140,7 @@ function HeaderLarge({ setSearchOpen, setMobileOpen }) {
                >
                   <Search />
                </button>
-               <Link href="/" className="btn-primary">
+               <Link href="/contact-us" className="btn-primary">
                   <span>Get in Touch</span>
                </Link>
             </div>
@@ -307,7 +307,7 @@ function MobileMenu({
             </div>
 
             <div className="mobile-right-btn">
-               <Link href="/" className="btn-primary">
+               <Link href="/contact-us" className="btn-primary">
                   <span>Get in Touch</span>
                </Link>
             </div>

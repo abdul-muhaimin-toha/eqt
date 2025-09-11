@@ -9,28 +9,28 @@ const jobs = [
       location: 'Dhaka',
       deadline: '20 Aug 2023',
       vacancies: 1,
-      link: '/',
+      link: '/career/1',
    },
    {
       title: 'Healthcare Promotion Officer',
       location: 'Dhaka',
       deadline: '20 Aug 2023',
       vacancies: 1,
-      link: '/',
+      link: '/career/1',
    },
    {
       title: 'Customer Marketing Manager',
       location: 'Dhaka',
       deadline: '20 Aug 2023',
       vacancies: 1,
-      link: '/',
+      link: '/career/1',
    },
    {
       title: 'Executive – Corporate Sales (Male)',
       location: 'Dhaka',
       deadline: '20 Aug 2023',
       vacancies: 1,
-      link: '/',
+      link: '/career/1',
    },
 ];
 

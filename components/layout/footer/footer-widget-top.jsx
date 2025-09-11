@@ -19,7 +19,7 @@ const FOOTER_MENUS = [
       title: 'Quick Links',
       links: [
          { label: 'Career', href: '/career' },
-         { label: 'Contact Us', href: '/' },
+         { label: 'Contact Us', href: '/contact-us' },
          { label: 'Insight', href: '/insight' },
       ],
    },
