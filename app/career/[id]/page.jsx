@@ -64,7 +64,7 @@ const dummyRichtext = `
   <h4>Compensation &amp; Other Benefits</h4>
   <p>As per company policy.</p>
 
-  <a class="btn-transparent text-uppercase" href="/apply">
+  <a class="btn-transparent text-uppercase" href="/career/apply/1">
     <span>Apply Now</span>
   </a>
 `;
@@ -79,7 +79,7 @@ export default function CareerDetailsPage() {
                   location: 'Dhaka',
                   deadline: '20 Aug 2023',
                   vacancies: 1,
-                  applyLink: '/',
+                  applyLink: '/career/apply/1',
                }}
             />
          </div>
