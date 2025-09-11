@@ -145,7 +145,7 @@ const insights = [
    },
 ];
 
-const InsightCard = ({ insight }) => {
+export const InsightCard = ({ insight }) => {
    return (
       <article className="blog-post">
          <div className="blog-thumbnail">
