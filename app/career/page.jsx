@@ -2,7 +2,7 @@ import JobLists from '@/components/career/job-lists';
 import StoryShowcase from '@/components/career/story-showcase';
 import WhyWorkWithUs from '@/components/career/why-work-with-us';
 import Testimonial from '@/components/commons/testimonial';
-import Hero from '@/components/who-we-are/hero';
+import Hero from '@/components/commons/hero';
 
 export default function CareerPage() {
    return (

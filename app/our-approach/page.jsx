@@ -1,6 +1,6 @@
 import Promo from '@/components/commons/promo';
 import AboutDescription from '@/components/commons/about-description';
-import Hero from '@/components/who-we-are/hero';
+import Hero from '@/components/commons/hero';
 import OurApproach from '@/components/our-approach/our-approach';
 import WhyChooseUs from '@/components/our-approach/why-choose-us';
 import Cta from '@/components/our-approach/cta';

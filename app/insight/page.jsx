@@ -1,6 +1,6 @@
 import InsightShowcase from '@/components/insight/insight-showcase';
 import LatestInsight from '@/components/insight/latest-insight';
-import Hero from '@/components/who-we-are/hero';
+import Hero from '@/components/commons/hero';
 
 export default function InsightPage() {
    return (
