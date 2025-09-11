@@ -115,15 +115,15 @@
 
    &.career-banner-bottom-section {
       @include breakpoint('mlg') {
-         height: 380px;
+         height: 650px;
       }
 
       @include breakpoint('tablet') {
-         height: 880px;
+         height: 1050px;
       }
 
-      @include breakpoint('tablet') {
-         height: 740px;
+      @include breakpoint('sm') {
+         height: 900px;
       }
 
       .talk-section-wrapper {

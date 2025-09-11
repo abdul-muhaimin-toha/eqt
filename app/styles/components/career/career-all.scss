@@ -1,26 +1,6 @@
 .career-promo-list {
    padding: calc(120px * (1440 / 1920)) 0;
 
-   @include breakpoint('large') {
-      padding-top: 120px;
-   }
-
-   @include breakpoint('mlg') {
-      padding-top: 400px;
-   }
-
-   @include breakpoint('tablet') {
-      padding-top: 400px;
-   }
-
-   @include breakpoint('sm') {
-      padding-top: 240px;
-   }
-
-   @include breakpoint('sm-s') {
-      padding-top: 200px;
-   }
-
    h4.heading-h4.career-promo-title {
       max-width: 60%;
       margin-bottom: calc(60px * (1440 / 1920));
