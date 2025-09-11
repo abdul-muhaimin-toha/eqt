@@ -20,6 +20,7 @@ const FOOTER_MENUS = [
       links: [
          { label: 'Career', href: '/career' },
          { label: 'Contact Us', href: '/' },
+         { label: 'Insight', href: '/insight' },
       ],
    },
    {
