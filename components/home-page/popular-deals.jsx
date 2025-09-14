@@ -55,7 +55,7 @@ const placeholderProjects = [
    },
 ];
 
-const ProjectCard = ({ project }) => {
+export const ProjectCard = ({ project }) => {
    const { image, title, status, statusColor, category, location, link } =
       project;
 
@@ -103,7 +103,7 @@ const ProjectCard = ({ project }) => {
    );
 };
 
-const PopularDeals = () => {
+const PopularDeals = ({ variant = '' }) => {
    const prevRef = useRef(null);
    const nextRef = useRef(null);
    const paginationRef = useRef(null);
@@ -126,7 +126,7 @@ const PopularDeals = () => {
    }, [swiperInstance]);
 
    return (
-      <section className="nh-projects-slider">
+      <section className="nh-projects-slider sm:!pb-0">
          {/* Header */}
          <div className="container">
             <div className="nh-project-top">
