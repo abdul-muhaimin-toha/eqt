@@ -92,27 +92,27 @@ function HeaderLarge({ setSearchOpen, setMobileOpen }) {
 
                         {/* Projects */}
                         <li className="menu-item menu-item-has-children">
-                           <Link href="#">Projects</Link>
+                           <Link href="/projects">Projects</Link>
                            <span className="dropdown-icon dropdown-depth-0">
                               <PointerDown />
                            </span>
                            <ul className="sub-menu">
                               <li className="menu-item menu-item-has-children">
-                                 <Link href="#">Real Estate</Link>
+                                 <Link href="/projects">Real Estate</Link>
                                  <span className="dropdown-icon dropdown-depth-1">
                                     <ArrowRight />
                                  </span>
                                  <ul className="sub-menu">
                                     <li className="menu-item">
-                                       <Link href="/">Apartment</Link>
+                                       <Link href="/projects">Apartment</Link>
                                     </li>
                                     <li className="menu-item">
-                                       <Link href="/">Land</Link>
+                                       <Link href="/projects">Land</Link>
                                     </li>
                                  </ul>
                               </li>
                               <li className="menu-item">
-                                 <Link href="/">Consultation</Link>
+                                 <Link href="/projects">Consultation</Link>
                               </li>
                            </ul>
                         </li>
@@ -273,17 +273,32 @@ function MobileMenu({
                                  activeSubMenu === 'real-estate',
                                  <>
                                     <li className="menu-item eqt-menu__item menu-item-159">
-                                       <Link href="/">Apartment</Link>
+                                       <Link
+                                          href="/projects"
+                                          onClick={() => setMobileOpen(false)}
+                                       >
+                                          Apartment
+                                       </Link>
                                     </li>
                                     <li className="menu-item eqt-menu__item menu-item-160">
-                                       <Link href="/">Land</Link>
+                                       <Link
+                                          href="/projects"
+                                          onClick={() => setMobileOpen(false)}
+                                       >
+                                          Land
+                                       </Link>
                                     </li>
                                  </>
                               )}
                            </li>
 
                            <li className="menu-item eqt-menu__item menu-item-157">
-                              <Link href="/">Consultation</Link>
+                              <Link
+                                 href="/projects"
+                                 onClick={() => setMobileOpen(false)}
+                              >
+                                 Consultation
+                              </Link>
                            </li>
                         </>
                      )}

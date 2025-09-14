@@ -16,7 +16,7 @@ const projects = [
       location: 'Keraniganj, Dhaka',
       status: 'Ongoing',
       image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/',
+      link: '/projects/1',
    },
    {
       id: 2,
@@ -25,7 +25,7 @@ const projects = [
       location: 'Bashundhara, Dhaka',
       status: 'Ongoing',
       image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/',
+      link: '/projects/1',
    },
    {
       id: 3,
@@ -34,7 +34,7 @@ const projects = [
       location: 'Keraniganj, Dhaka',
       status: 'Ongoing',
       image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/',
+      link: '/projects/1',
    },
    {
       id: 4,
@@ -43,7 +43,7 @@ const projects = [
       location: 'Bashundhara, Dhaka',
       status: 'Ongoing',
       image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/',
+      link: '/projects/1',
    },
    {
       id: 5,
@@ -52,7 +52,7 @@ const projects = [
       location: 'Bashundhara, Dhaka',
       status: 'Ongoing',
       image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/',
+      link: '/projects/1',
    },
    {
       id: 6,
@@ -61,7 +61,7 @@ const projects = [
       location: 'Bashundhara, Dhaka',
       status: 'Ongoing',
       image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/',
+      link: '/projects/1',
    },
 ];
 

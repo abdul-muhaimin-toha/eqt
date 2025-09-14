@@ -18,7 +18,7 @@ const projectData = {
             { icon: '/Layer_1-2.svg', label: '2 Bath' },
          ],
          image: '/Rectangle-2.webp',
-         link: '/project/commercial-tech-park/',
+         link: '/projects/commercial-tech-park/',
       },
       {
          title: 'Edu-Tech Campus Bashundhara',
@@ -31,7 +31,7 @@ const projectData = {
             { icon: '/Layer_1-2.svg', label: '2 Bath' },
          ],
          image: '/Rectangle-1.webp',
-         link: '/project/edu-tech-campus-bashundhara/',
+         link: '/projects/edu-tech-campus-bashundhara/',
       },
       {
          title: 'Keraniganj Green Towers',
@@ -44,7 +44,7 @@ const projectData = {
             { icon: '/Layer_1-2.svg', label: '2 Bath' },
          ],
          image: '/Rectangle.webp',
-         link: '/project/keraniganj-green-towers/',
+         link: '/projects/keraniganj-green-towers/',
       },
    ],
    Consultation: [
@@ -59,7 +59,7 @@ const projectData = {
             { icon: '/Layer_1-2.svg', label: '2 Bath' },
          ],
          image: '/Rectangle-2.webp',
-         link: '/project/commercial-tech-park/',
+         link: '/projects/commercial-tech-park/',
       },
       {
          title: 'Digital Marketing Consultation',
@@ -72,7 +72,7 @@ const projectData = {
             { icon: '/Layer_1-2.svg', label: '2 Bath' },
          ],
          image: '/Rectangle-1.webp',
-         link: '/project/edu-tech-campus-bashundhara/',
+         link: '/projects/edu-tech-campus-bashundhara/',
       },
       {
          title: 'Financial Planning Session',
@@ -85,7 +85,7 @@ const projectData = {
             { icon: '/Layer_1-2.svg', label: '2 Bath' },
          ],
          image: '/Rectangle.webp',
-         link: '/project/keraniganj-green-towers/',
+         link: '/projects/keraniganj-green-towers/',
       },
    ],
 };
@@ -125,7 +125,7 @@ function Project() {
             </div>
 
             <div className="project-button-wrapper">
-               <Link href="/" className="btn-primary">
+               <Link href="/projects" className="btn-primary">
                   View All Projects
                </Link>
             </div>
@@ -182,7 +182,10 @@ function ProjectCard({ project }) {
                   </div>
                ))}
             </div>
-            <Link className="btn-transparent text-uppercase" href="/">
+            <Link
+               className="btn-transparent text-uppercase"
+               href={project.link}
+            >
                <span>View Details</span>
             </Link>
          </div>

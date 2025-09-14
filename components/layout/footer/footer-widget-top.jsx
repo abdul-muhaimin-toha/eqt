@@ -27,8 +27,8 @@ const FOOTER_MENUS = [
       key: 'projects',
       title: 'Projects',
       links: [
-         { label: 'Real Estate', href: '/' },
-         { label: 'Consultation', href: '/' },
+         { label: 'Real Estate', href: '/projects' },
+         { label: 'Consultation', href: '/projects' },
       ],
    },
 ];

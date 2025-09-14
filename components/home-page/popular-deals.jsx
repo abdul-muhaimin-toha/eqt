@@ -21,7 +21,7 @@ const placeholderProjects = [
       status: 'Ongoing',
       statusColor: '#007BFF',
       image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/',
+      link: '/projects/1',
    },
    {
       id: 2,
@@ -31,7 +31,7 @@ const placeholderProjects = [
       status: 'Completed',
       statusColor: '#28A745',
       image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/',
+      link: '/projects/1',
    },
    {
       id: 3,
@@ -41,7 +41,7 @@ const placeholderProjects = [
       status: 'Ongoing',
       statusColor: '#007BFF',
       image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/',
+      link: '/projects/1',
    },
    {
       id: 4,
@@ -51,7 +51,7 @@ const placeholderProjects = [
       status: 'Upcoming',
       statusColor: '#FFC107',
       image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/',
+      link: '/projects/1',
    },
 ];
 
@@ -126,14 +126,21 @@ const PopularDeals = ({ variant = '' }) => {
    }, [swiperInstance]);
 
    return (
-      <section className="nh-projects-slider sm:!pb-0">
+      <section
+         className={`nh-projects-slider ${
+            variant === 'project-page' && 'sm:!pb-0'
+         }`}
+      >
          {/* Header */}
          <div className="container">
             <div className="nh-project-top">
                <h2 className="nh-project-title heading-h2">
                   Popular Deals in Town
                </h2>
-               <Link href="/" className="btn-transparent text-uppercase">
+               <Link
+                  href="/projects"
+                  className="btn-transparent text-uppercase"
+               >
                   <span>View All</span>
                </Link>
             </div>
