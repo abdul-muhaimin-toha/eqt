@@ -6,6 +6,7 @@ import Project from '@/components/home-page/project';
 import Promo from '@/components/commons/promo';
 import Testimonial from '@/components/commons/testimonial';
 import Video from '@/components/commons/video';
+import LatestInsights from '@/components/home-page/latest-insights';
 
 export default function HomePage() {
    return (
@@ -17,6 +18,7 @@ export default function HomePage() {
          <PopularDeals />
          <Testimonial />
          <Video />
+         <LatestInsights />
          <GetInTouch />
       </>
    );
