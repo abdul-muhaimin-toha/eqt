@@ -1,6 +1,8 @@
 import Image from 'next/image';
 
-function WhyChooseUs() {
+function WhyChooseUs({ data }) {
+   const { description, description_title, image_one, image_two } = data.data;
+
    return (
       <section className="home-about who-we-are bg-white approach-description">
          <div className="container">

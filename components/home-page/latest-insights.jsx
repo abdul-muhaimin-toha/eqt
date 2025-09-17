@@ -9,6 +9,7 @@ import 'swiper/css/pagination';
 import Link from 'next/link';
 import { NextIcon, PrevIcon } from '../icons/prev-next-icon';
 import Image from 'next/image';
+import { getLinkTarget } from '@/utils/utility';
 
 const InsightCard = () => {
    return (
@@ -33,12 +34,13 @@ const InsightCard = () => {
    );
 };
 
-function LatestInsights() {
+function LatestInsights({ data }) {
+   const { btn_text, btn_url, open_in_new_tab, top_title } = data.data;
+
    const prevRef = useRef(null);
    const nextRef = useRef(null);
    const paginationRef = useRef(null);
    const [swiperInstance, setSwiperInstance] = useState(null);
-   const [activeIndex, setActiveIndex] = useState(0);
 
    useEffect(() => {
       if (!swiperInstance) return;
@@ -61,9 +63,13 @@ function LatestInsights() {
          {/* Header */}
          <div className="container">
             <div className="nh-project-top">
-               <h2 className="nh-project-title heading-h2">Latest Insights</h2>
-               <Link href="/insight" className="btn-transparent text-uppercase">
-                  <span>View All</span>
+               <h2 className="nh-project-title heading-h2">{top_title}</h2>
+               <Link
+                  target={getLinkTarget(open_in_new_tab)}
+                  href={btn_url}
+                  className="btn-transparent text-uppercase"
+               >
+                  <span>{btn_text}</span>
                </Link>
             </div>
          </div>

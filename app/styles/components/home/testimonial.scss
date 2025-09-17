@@ -41,6 +41,7 @@
 
       @include breakpoint('tablet') {
          flex-direction: column-reverse;
+         padding: 20px;
       }
 
       @include breakpoint('sm') {

@@ -3,7 +3,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-function Cta() {
+function Cta({ data }) {
+   const { btn_custom_url, btn_page_url, btn_title, feature_image, title } =
+      data.data;
+
    return (
       <section className="banner-section get-in-touch">
          <Image

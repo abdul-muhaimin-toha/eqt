@@ -1,11 +1,14 @@
 import Image from 'next/image';
 
-function Hero({ title, bgImage }) {
+function HeroBanner({ data }) {
+   const feature_image = data?.data?.feature_image;
+   const title = data?.data?.title;
+
    return (
       <section className="banner-section relative w-full h-[60vh] flex items-center justify-center">
          <Image
-            src={bgImage}
-            alt="Who We Are Banner"
+            src={feature_image}
+            alt={title}
             fill
             priority
             className="feature-bg-image object-cover"
@@ -20,4 +23,4 @@ function Hero({ title, bgImage }) {
    );
 }
 
-export default Hero;
+export default HeroBanner;

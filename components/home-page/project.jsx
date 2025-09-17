@@ -90,7 +90,7 @@ const projectData = {
    ],
 };
 
-function Project() {
+function Project({ data }) {
    const tabs = Object.keys(projectData);
    const [activeTab, setActiveTab] = useState(tabs[0]);
 

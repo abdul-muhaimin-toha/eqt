@@ -1,36 +1,59 @@
+import { getLinkTarget, splitBreakLine } from '@/utils/utility';
 import Link from 'next/link';
 
-function Hero() {
+function Hero({ data }) {
+   const {
+      background_banner = '',
+      background_video = '',
+      btn_text = '',
+      btn_url = '#',
+      description = '',
+      open_in_new_tab = false,
+      title = '',
+   } = data?.data || {};
+
+   const titleParts = splitBreakLine(title || []);
+
    return (
       <section className="hero-section">
-         <video
-            poster="https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/hero-banner.webp"
-            className="hero-section-background"
-            autoPlay
-            loop
-            muted
-         >
-            <source
-               src="https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/2173665_Aerial_City_1920x1080.mp4"
-               type="video/mp4"
-            />
-         </video>
+         {background_video && (
+            <video
+               poster={background_banner}
+               className="hero-section-background"
+               autoPlay
+               loop
+               muted
+            >
+               <source src={background_video} type="video/mp4" />
+            </video>
+         )}
          <div className="hero-section-background-overlay" />
          <div className="hero-section-content">
             <div className="hero-title-wrapper">
-               <h1 className="large-h1 text-white">
-                  <div>Discover Your Dream</div>
-                  <div>Home with EQT</div>
-               </h1>
+               {titleParts.length > 0 && (
+                  <h1 className="large-h1 text-white">
+                     {titleParts.map((part, index) => (
+                        <div key={index}>{part}</div>
+                     ))}
+                  </h1>
+               )}
             </div>
-            <div className="hero-section-description text-white">
-               Luxury living, prime locations, exceptional value.
-            </div>
-            <div className="hero-section-btn">
-               <Link href="/" className="btn-primary btn-white">
-                  <span>Explore Projects</span>
-               </Link>
-            </div>
+            {description && (
+               <div className="hero-section-description text-white">
+                  {description}
+               </div>
+            )}
+            {btn_url && btn_text && (
+               <div className="hero-section-btn">
+                  <Link
+                     target={getLinkTarget(open_in_new_tab)}
+                     href={btn_url}
+                     className="btn-primary btn-white"
+                  >
+                     <span>{btn_text}</span>
+                  </Link>
+               </div>
+            )}
          </div>
       </section>
    );

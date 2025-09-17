@@ -1,4 +1,4 @@
-import Hero from '@/components/commons/hero';
+import Hero from '@/components/commons/hero-banner';
 import ContactCards from '@/components/contact-us/contact-cards';
 import ContactForm from '@/components/contact-us/contact-form';
 

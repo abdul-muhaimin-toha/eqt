@@ -156,7 +156,9 @@ const ApproachCard = ({ approach }) => {
    );
 };
 
-function OurApproach() {
+function OurApproach({ data }) {
+   const { approachs, short_des, title } = data.data;
+
    const [activeTab, setActiveTab] = useState(0);
 
    const prevRef = useRef(null);

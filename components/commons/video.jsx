@@ -1,4 +1,6 @@
-function Video() {
+function Video({ data }) {
+   const background_video = data?.data?.background_video;
+
    return (
       <section className="hero-section video-hero">
          <video
@@ -8,10 +10,7 @@ function Video() {
             muted
             playsInline
          >
-            <source
-               src="https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/6026291_House_Interior-Design_1920x1080.mp4"
-               type="video/mp4"
-            />
+            <source src={background_video} type="video/mp4" />
          </video>
       </section>
    );
