@@ -1,33 +1,8 @@
 'use client';
 
+import { getLinkTarget } from '@/utils/utility';
 import Image from 'next/image';
-
-const storyData = [
-   {
-      img: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/feature-01.webp',
-      topTitle: 'Team Hangout',
-      title: 'EQT team members fun activities',
-      url: '/',
-   },
-   {
-      img: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/feature-02.webp',
-      topTitle: 'Team Hangout',
-      title: 'EQT team members fun activities',
-      url: '/',
-   },
-   {
-      img: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/feature-03.webp',
-      topTitle: 'Team Hangout',
-      title: 'EQT team members fun activities',
-      url: '/',
-   },
-   {
-      img: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/feature-04.webp',
-      topTitle: 'Team Hangout',
-      title: 'EQT team members fun activities',
-      url: '/',
-   },
-];
+import Link from 'next/link';
 
 const StoryCard = ({ story }) => (
    <div className="career-promo-card">
@@ -36,28 +11,33 @@ const StoryCard = ({ story }) => (
             width={500}
             height={400}
             className="feature-bg-image"
-            src={story.img}
-            alt=""
+            src={story.feature_image || ''}
+            alt={story.title || 'Story image'}
          />
-         <p className="top-title">{story.topTitle}</p>
-         <p className="title lead-text-one text-white">{story.title}</p>
-         <a target="_blank" className="cards-url-item" href={story.url} />
+         {story.top_title && <p className="top-title">{story.top_title}</p>}
+         {story.title && (
+            <p className="title lead-text-one text-white">{story.title}</p>
+         )}
+         <Link
+            target={getLinkTarget(story.open_in_new_tab)}
+            className="cards-url-item"
+            href={story.url || '#'}
+            aria-label={`Read story: ${story.title || 'Story'}`}
+         />
       </div>
    </div>
 );
 
-function StoryShowcase() {
+function StoryShowcase({ data }) {
+   const { title = '', lifes = [] } = data?.data || {};
+
    return (
       <section className="career-promo-list bg-white">
          <div className="container">
-            <h4 className="heading-h4 career-promo-title">
-               We don’t just work side by side; we collaborate. Our diverse
-               expertise, skills, and experiences allow us to learn from each
-               other and produce exceptional, effective results.
-            </h4>
+            <h4 className="heading-h4 career-promo-title">{title}</h4>
             <div className="career-promo-cards">
-               {storyData.map((story, idx) => (
-                  <StoryCard key={idx} story={story} />
+               {lifes.map((story) => (
+                  <StoryCard key={story._id || story.title} story={story} />
                ))}
             </div>
          </div>

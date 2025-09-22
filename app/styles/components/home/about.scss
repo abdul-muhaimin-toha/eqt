@@ -1,343 +1,338 @@
-.home-about{
-    position: relative;
-    padding: calc( 120px * ( 1440/1920 ) ) 0;
+.home-about {
+   position: relative;
+   padding: calc(120px * (1440 / 1920)) 0;
 
-    @include breakpoint('large'){
-        padding: 120px 0;
-    }
+   @include breakpoint('large') {
+      padding: 120px 0;
+   }
 
-    @include breakpoint('sm'){
-        padding: 60px 0;
-    }
-    
+   @include breakpoint('sm') {
+      padding: 60px 0;
+   }
 
-    .home-about-bg-overlay {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        top: 0;
-        height: 100%;
-        background-color: #1E5226;
-        opacity: .95;
-    }
+   .home-about-bg-overlay {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 0;
+      height: 100%;
+      background-color: #1e5226;
+      opacity: 0.95;
+   }
 
-    .home-about-top {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 70px;
+   .home-about-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 70px;
 
-        @include breakpoint('sm'){
-            gap: 40px;
-        }
+      @include breakpoint('sm') {
+         gap: 40px;
+      }
 
-        @include breakpoint('large'){
-            gap: 30px;
-            justify-content: space-between;
-        }
+      @include breakpoint('large') {
+         gap: 30px;
+         justify-content: space-between;
+      }
 
-        .home-about-top-left {
-            width: 40.6%;
-            padding-top: 50px;
+      .home-about-top-left {
+         width: 40.6%;
+         padding-top: 50px;
 
-            @include breakpoint('mlg'){
-                width: 100%;
-                padding-top: 0;
+         @include breakpoint('mlg') {
+            width: 100%;
+            padding-top: 0;
+         }
+
+         .top-title {
+            margin-bottom: 20px;
+         }
+         .title {
+            padding-bottom: calc(60px * (1440 / 1920));
+            border-bottom: 1px solid #ffffff1a;
+
+            @include breakpoint('large') {
+               padding-bottom: 60px;
             }
 
-            .top-title{
-                margin-bottom: 20px;
+            @include breakpoint('mlg') {
+               padding-bottom: 30px;
             }
-            .title{
-                padding-bottom: calc( 60px * ( 1440/1920 ) );
-                border-bottom: 1px solid #FFFFFF1A;
+         }
+         .short-description {
+            padding-top: calc(50px * (1440 / 1920));
+            font-size: 18px;
+            line-height: 28px;
+            margin-bottom: 40px;
 
-                @include breakpoint('large'){
-                    padding-bottom: 60px;
-                }
-
-                @include breakpoint('mlg'){
-                    padding-bottom: 30px;
-                }
-            }
-            .short-description{
-                padding-top: calc(50px * (1440 / 1920)); 
-                font-size: 18px;
-                line-height: 28px;
-                margin-bottom: 40px;
-
-                @include breakpoint('mlg'){
-                    max-width: 705px;
-                }
-
-                @include breakpoint('sm'){
-                    padding-top: 30px;
-                    font-size: 16px;
-                    line-height: 24px;
-                }
-
-                @include breakpoint('large'){
-                    padding-top: 50px;
-                }
+            @include breakpoint('mlg') {
+               max-width: 705px;
             }
 
-            .btn-transparent{
-                @include breakpoint('sm') {
-                    line-height: 26px;
-                }
-            }
-        }
-        .home-about-top-right {
-            width: 51%;
-            display: flex;
-            align-items: flex-end;
-            gap: 50px;
-
-            @include breakpoint('mlg'){
-                width: 100%;
+            @include breakpoint('sm') {
+               padding-top: 30px;
+               font-size: 16px;
+               line-height: 24px;
             }
 
-            @include breakpoint('sm'){
-                gap: 12px;
+            @include breakpoint('large') {
+               padding-top: 50px;
+            }
+         }
+
+         .btn-transparent {
+            @include breakpoint('sm') {
+               line-height: 26px;
+            }
+         }
+      }
+      .home-about-top-right {
+         width: 51%;
+         display: flex;
+         align-items: flex-end;
+         gap: 50px;
+
+         @include breakpoint('mlg') {
+            width: 100%;
+         }
+
+         @include breakpoint('sm') {
+            gap: 12px;
+         }
+
+         img.image-01 {
+            display: block;
+            object-fit: cover;
+            width: 54%;
+            height: auto;
+
+            @include breakpoint('sm') {
+               width: calc(56.6% - 6px);
+               height: 280px;
+               object-fit: cover;
+            }
+         }
+         img.image-02 {
+            display: block;
+            height: auto;
+            object-fit: cover;
+            width: 41%;
+
+            @include breakpoint('sm') {
+               width: calc(43.2% - 6px);
+               height: 141px;
+            }
+         }
+      }
+   }
+
+   div#counter-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: calc(60px * (1440 / 1920));
+      margin-top: calc(100px * (1440 / 1920));
+
+      @include breakpoint('sm') {
+         gap: 10px;
+         margin-top: 40px;
+         margin-right: -10px;
+      }
+
+      @include breakpoint('large') {
+         gap: 100px;
+         margin-top: 100px;
+      }
+
+      .counter-item {
+         width: calc(25% - calc(60px * (1440 / 1920)));
+         border-bottom: 1px solid #ffffff1a;
+         padding-bottom: 10px;
+
+         @include breakpoint('mlg') {
+            width: calc(50% - calc(60px * (1440 / 1920)));
+         }
+
+         @include breakpoint('sm') {
+            width: calc(50% - 5px);
+         }
+
+         @include breakpoint('large') {
+            width: calc(25% - 100px);
+         }
+
+         .counter-number {
+            margin-bottom: 10px;
+         }
+
+         .counter-title {
+            letter-spacing: 1.6px;
+
+            @include breakpoint('sm') {
+               font-size: 14px;
+               line-height: 22px;
+               letter-spacing: 0;
+            }
+         }
+      }
+   }
+
+   .home-about-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+
+   .container {
+      position: relative;
+   }
+
+   &.who-we-are {
+      padding-top: calc(100px * (1440 / 1920));
+
+      @include breakpoint('large') {
+         padding-top: 100px;
+      }
+
+      @include breakpoint('sm') {
+         padding-top: 30px;
+      }
+
+      .home-about-top-left {
+         width: 37.7%;
+
+         @include breakpoint('mlg') {
+            width: 100%;
+         }
+
+         h4 {
+            margin-bottom: calc(40px * (1440 / 1920));
+
+            @include breakpoint('large') {
+               margin-bottom: 40px;
             }
 
-            img.image-01 {
-                display: block;
-                object-fit: cover;
-                width: 54%;
-                height: auto;
-
-                @include breakpoint('sm'){
-                    width: calc(56.6% - 6px);
-                    height: 280px;
-                    object-fit: cover;
-                }
+            @include breakpoint('sm') {
+               margin-bottom: 20px;
+               font-size: 24px;
+               line-height: 36px;
             }
-            img.image-02 {
-                display: block;
-                height: auto;
-                object-fit: cover;
-                width: 41%;
+         }
 
-                @include breakpoint('sm'){
-                    width: calc(43.2% - 6px);
-                    height: 141px;
-                }
+         .mission-content {
+            p {
+               font-weight: 400;
+               font-size: 18px;
+               line-height: 28px;
+               color: #173a1ccc;
+               letter-spacing: 0;
+
+               @include breakpoint('sm') {
+                  font-size: 16px;
+                  line-height: 24px;
+               }
             }
-        }
-    }
 
-    div#counter-section {
-        display: flex;
-        flex-wrap: wrap;
-        gap: calc( 60px * ( 1440/1920 ) );
-        margin-top: calc( 100px * ( 1440/1920 ) );
+            &:first-child {
+               padding-bottom: calc(60px * (1440 / 1920));
+               margin-bottom: calc(60px * (1440 / 1920));
 
-        @include breakpoint('sm'){
-            gap: 10px;
+               @include breakpoint('large') {
+                  padding-bottom: 60px;
+                  margin-bottom: 60px;
+               }
+
+               @include breakpoint('sm') {
+                  padding-bottom: 20px;
+                  margin-bottom: 20px;
+               }
+
+               border-bottom: 1px solid #1f51261a;
+            }
+         }
+      }
+
+      div#counter-section {
+         margin-top: calc(140px * (1440 / 1920));
+
+         @include breakpoint('large') {
+            margin-top: 140px;
+         }
+
+         @include breakpoint('sm') {
             margin-top: 40px;
-            margin-right: -10px;
-        }
+            gap: 40px 10px;
+         }
 
-        @include breakpoint('large'){
-            gap: 100px;
-            margin-top: 100px;
-        }
+         .counter-title {
+            font-weight: 500;
 
-        .counter-item {
-            width: calc(25% - calc( 60px * ( 1440/1920 ) ));
-            border-bottom: 1px solid #FFFFFF1A;
-            padding-bottom: 10px;
-
-            @include breakpoint('mlg'){
-                width: calc(50% - calc( 60px * ( 1440/1920 ) ));
+            @include breakpoint('sm') {
+               font-weight: 400;
             }
+         }
 
-            @include breakpoint('sm'){
-                width: calc(50% - 5px );
+         .counter-item {
+            border-bottom: 1px solid #1f51261a;
+         }
+      }
+
+      .home-about-top {
+         @include breakpoint('sm') {
+            gap: 30px;
+         }
+      }
+   }
+
+   &.approach-description {
+      padding-top: calc(120px * (1440 / 1920));
+
+      @include breakpoint('large') {
+         padding-top: 120px;
+      }
+
+      @include breakpoint('sm') {
+         padding: 60px 0;
+      }
+
+      .home-about-top {
+         align-items: center;
+
+         .home-about-top-left {
+            .mission-content {
+               margin-bottom: 0;
+               padding-bottom: 0;
+               border-bottom: 0;
+
+               h2 {
+                  margin-bottom: 40px;
+
+                  @include breakpoint('sm') {
+                     margin-bottom: 30px;
+                  }
+               }
+
+               p {
+                  margin-bottom: 20px;
+                  font-size: 18px;
+                  line-height: 28px;
+                  color: #173a1ccc;
+               }
+               ol,
+               ul {
+                  padding-left: 15px;
+                  list-style: disc;
+
+                  li {
+                     font-size: 18px;
+                     line-height: 28px;
+                     color: #173a1ccc;
+                  }
+               }
             }
-
-            @include breakpoint('large'){
-                 width: calc(25% - 100px);
-            }
-
-            .counter-number {
-                margin-bottom: 10px;
-            }
-
-            .counter-title {
-                letter-spacing: 1.6px;
-                
-                @include breakpoint('sm') {
-                    font-size: 14px;
-                    line-height: 22px;
-                    letter-spacing: 0;
-                }
-            }
-        }
-    }
-
-    .home-about-bg{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .container{
-        position: relative;
-    }
-
-
-    &.who-we-are{
-        padding-top: calc( 100px * ( 1440/1920 ) );
-
-        @include breakpoint('large'){
-            padding-top: 100px;
-        }
-
-        @include breakpoint('sm'){
-            padding-top: 30px;
-        }
-
-        .home-about-top-left{
-            width: 37.7%;
-
-            @include breakpoint('mlg'){
-                width: 100%;
-            }
-
-            h4{
-                margin-bottom: calc( 40px * ( 1440/1920 ) );
-                
-                @include breakpoint('large'){
-                    margin-bottom: 40px;
-                }
-
-                @include breakpoint('sm'){
-                    margin-bottom: 20px;
-                    font-size: 24px;
-                    line-height: 36px;
-                }
-            }
-
-            .mission-content{
-
-                p{
-                    font-weight: 400;
-                    font-size: 18px;
-                    line-height: 28px;
-                    color: #173A1CCC;
-                    letter-spacing: 0;
-
-                    @include breakpoint('sm'){
-                        font-size: 16px;
-                        line-height: 24px;
-                    }
-                }
-
-                &:first-child{
-                    padding-bottom: calc( 60px * ( 1440/1920 ) );
-                    margin-bottom: calc( 60px * ( 1440/1920 ) );
-
-                    @include breakpoint('large'){
-                        padding-bottom: 60px;
-                        margin-bottom: 60px;
-                    }
-
-                    @include breakpoint('sm'){
-                        padding-bottom: 20px;
-                        margin-bottom: 20px;
-                    }
-
-                    border-bottom: 1px solid #1F51261A;
-                }
-            }
-        }
-
-        div#counter-section{
-            margin-top: calc( 140px * ( 1440/1920 ) );
-
-            @include breakpoint('large'){
-                margin-top: 140px;
-            }
-
-            @include breakpoint('sm'){
-                margin-top: 40px;
-                gap: 40px 10px;
-            }
-
-            .counter-title{
-                font-weight: 500;
-
-                @include breakpoint('sm'){
-                    font-weight: 400;
-                }
-            }
-
-            .counter-item{
-                border-bottom: 1px solid #1F51261A;
-            }
-
-        }
-
-        .home-about-top{
-            @include breakpoint('sm'){
-                gap: 30px;
-            }
-        }
-
-
-    }
-
-    &.approach-description{
-        padding-top: calc( 120px * ( 1440/1920 ) );
-
-        @include breakpoint('large'){
-            padding-top: 120px;
-        }
-
-        @include breakpoint('sm'){
-            padding: 60px 0;
-        }
-
-        .home-about-top{
-            align-items: center;
-
-            .home-about-top-left{
-                .mission-content{
-                    margin-bottom: 0;
-                    padding-bottom: 0;
-                    border-bottom: 0;
-
-                    h2{
-                        margin-bottom: 40px;
-
-                        @include breakpoint('sm'){
-                            margin-bottom: 30px;
-                        }
-                    }
-
-                    p{
-                        margin-bottom: 20px;
-                        font-size: 18px;
-                        line-height: 28px;
-                        color: #173A1CCC;
-                    }
-                    ol,ul{
-                        padding-left: 15px;
-
-                        li{
-                            font-size: 18px;
-                            line-height: 28px;
-                            color: #173A1CCC;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
+         }
+      }
+   }
 }

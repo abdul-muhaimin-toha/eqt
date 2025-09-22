@@ -1,44 +1,104 @@
+'use client';
+
+import { useRef, useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 import { InsightCard } from './insight-showcase';
+import Link from 'next/link';
+import { NextIcon, PrevIcon } from '../icons/prev-next-icon';
 
-const insights = [
-   {
-      title: 'How EQT Leverages Technology for Smarter Decisions',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-2.webp',
-      width: 879,
-      height: 680,
-      date: '3 August 2025',
-   },
-   {
-      title: 'How EQT Transforms Underperforming Properties into High-Value Assets',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/Rectangle.webp',
-      width: 740,
-      height: 500,
-      date: '3 August 2025',
-   },
-   {
-      title: 'How this founder created ‘the first hanger worthy of Vogue’',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-      width: 1395,
-      height: 700,
-      date: '5 August 2025',
-   },
-];
+function MoreInsights({ insights }) {
+   const prevRef = useRef(null);
+   const nextRef = useRef(null);
+   const paginationRef = useRef(null);
+   const [swiperInstance, setSwiperInstance] = useState(null);
 
-function MoreInsights() {
+   useEffect(() => {
+      if (!swiperInstance) return;
+
+      const swiper = swiperInstance;
+      if (prevRef.current && nextRef.current && paginationRef.current) {
+         swiper.params.navigation.prevEl = prevRef.current;
+         swiper.params.navigation.nextEl = nextRef.current;
+         swiper.params.pagination.el = paginationRef.current;
+
+         swiper.navigation.init();
+         swiper.navigation.update();
+         swiper.pagination.init();
+         swiper.pagination.update();
+      }
+   }, [swiperInstance]);
+
+   if (!insights?.length) return null;
+
    return (
-      <div className="related-posts bg-white">
+      <section className="nh-projects-slider !bg-white">
+         {/* Header */}
          <div className="container">
-            <h2 className="heading-h2">More Relevant Blogs</h2>
-            <div className="related-posts-list">
-               {insights.map((insight, index) => (
-                  <InsightCard key={index} insight={insight} />
-               ))}
+            <div className="nh-project-top">
+               <h2 className="nh-project-title heading-h2">
+                  More Relevant Insights
+               </h2>
+               <Link href="/insight" className="btn-transparent text-uppercase">
+                  <span>View All</span>
+               </Link>
             </div>
          </div>
-      </div>
+
+         {/* Swiper */}
+         <div className="container container--slider">
+            <div className="project-swiper-container">
+               <Swiper
+                  modules={[Navigation, Pagination]}
+                  spaceBetween={20}
+                  slidesPerView={1}
+                  loop
+                  pagination={{ el: paginationRef.current, clickable: true }}
+                  breakpoints={{
+                     320: { slidesPerView: 1.2 },
+                     768: { slidesPerView: 2 },
+                     1024: { slidesPerView: 3 },
+                  }}
+                  onSwiper={setSwiperInstance}
+               >
+                  {insights.map((insight) => (
+                     <SwiperSlide key={insight.node.id || insight.node.slug}>
+                        <InsightCard insight={insight} />
+                     </SwiperSlide>
+                  ))}
+               </Swiper>
+            </div>
+         </div>
+
+         {/* Custom Pagination & Navigation */}
+         <div className="container">
+            <div className="slider-bottom-area">
+               <div className="swiper-pagination" ref={paginationRef}></div>
+               <div className="swiper-nav-icon">
+                  <div
+                     className="swiper-button-prev"
+                     ref={prevRef}
+                     role="button"
+                     aria-label="Previous Slide"
+                  >
+                     <PrevIcon />
+                  </div>
+                  <div
+                     className="swiper-button-next"
+                     ref={nextRef}
+                     role="button"
+                     aria-label="Next Slide"
+                  >
+                     <NextIcon />
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
    );
 }
 

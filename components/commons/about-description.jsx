@@ -1,5 +1,6 @@
 import { getLinkTarget } from '@/utils/utility';
 import Link from 'next/link';
+import parse from 'html-react-parser';
 
 function AboutDescription({ data }) {
    const { btn_custom_url, btn_title, description, open_in_new_tab, title } =
@@ -11,7 +12,15 @@ function AboutDescription({ data }) {
             <div className="eqt-description-inner">
                <h2 className="heading-h2">{title}</h2>
                <div className="description-wrapper">
-                  <div dangerouslySetInnerHTML={{ __html: description }} />
+                  <div>
+                     {description
+                        ? parse(dummyRichtext, {
+                             replace: (domNode) => {
+                                if (domNode.name === 'script') return null;
+                             },
+                          })
+                        : null}
+                  </div>
                   {btn_custom_url && btn_title && (
                      <Link
                         className="btn-transparent text-uppercase !mt-10"

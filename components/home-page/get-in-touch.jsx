@@ -17,7 +17,6 @@ function GetInTouch({ data }) {
                />
                <div className="background-overlay" />
             </div>
-
             <div className="content-container">
                <div className="titles-wrapper">
                   <div className="section-title text-white text-center font-primary heading-h2">

@@ -1,15 +1,55 @@
 'use client';
-
-import Link from 'next/link';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
-const ContactFormLeft = () => {
-   const { register, handleSubmit, reset } = useForm();
+export const ContactForm = () => {
+   const {
+      register,
+      handleSubmit,
+      reset,
+      formState: { errors },
+   } = useForm();
 
-   const onSubmit = (data) => {
-      console.log('Form Data:', data);
-      reset();
+   const [loading, setLoading] = useState(false);
+
+   const onSubmit = async (formData) => {
+      setLoading(true);
+
+      try {
+         const res = await fetch(
+            'https://staging.hellonotionhive.com/wordpress/eqt/wp-json/nh/v1/cform',
+            {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json',
+               },
+               body: JSON.stringify(formData),
+            }
+         );
+
+         if (!res.ok) throw new Error('Failed to submit form');
+
+         const data = await res.json();
+         console.log('API Response:', data);
+
+         toast.success('Message sent successfully!');
+
+         reset();
+      } catch (err) {
+         console.error(err);
+         toast.error('Something went wrong. Please try again.');
+      } finally {
+         setLoading(false);
+      }
    };
+
+   const ErrorMessage = ({ message }) =>
+      message ? (
+         <span className="text-red-500 !mt-2 flex !pl-2 md:!pl-3 lg:!pl-4 !text-sm">
+            {message}
+         </span>
+      ) : null;
 
    return (
       <div className="talk-section-left">
@@ -21,8 +61,11 @@ const ContactFormLeft = () => {
                   className="wpcf7-form-control"
                   placeholder="Enter your full name"
                   type="text"
-                  {...register('fullName', { required: true })}
+                  {...register('fullName', {
+                     required: 'Full name is required',
+                  })}
                />
+               <ErrorMessage message={errors.fullName?.message} />
             </div>
             <div className="form-group">
                <input
@@ -30,9 +73,16 @@ const ContactFormLeft = () => {
                   maxLength={400}
                   className="wpcf7-form-control"
                   placeholder="Enter your email"
-                  type="email"
-                  {...register('email', { required: true })}
+                  type="text"
+                  {...register('email', {
+                     required: 'Email is required',
+                     pattern: {
+                        value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+                        message: 'Invalid email address',
+                     },
+                  })}
                />
+               <ErrorMessage message={errors.email?.message} />
             </div>
             <div className="form-group">
                <input
@@ -41,7 +91,7 @@ const ContactFormLeft = () => {
                   className="wpcf7-form-control"
                   placeholder="Your contact"
                   type="text"
-                  {...register('contact')}
+                  {...register('phone')}
                />
             </div>
             <div className="form-group">
@@ -51,64 +101,16 @@ const ContactFormLeft = () => {
                   maxLength={2000}
                   className="wpcf7-form-control"
                   placeholder="Write your message here..."
-                  {...register('message', { required: true })}
+                  {...register('message', { required: 'Message is required' })}
                />
+               <ErrorMessage message={errors.message?.message} />
             </div>
             <div className="submit-btn-wrapper">
-               <input
-                  className="wpcf7-form-control"
-                  type="submit"
-                  value="Send Message"
-               />
+               <button type="submit" className="btn-primary" disabled={loading}>
+                  {loading ? 'Sending...' : 'Send Message'}
+               </button>
             </div>
          </form>
       </div>
    );
 };
-
-const ContactFormRight = () => {
-   return (
-      <div className="talk-section-right">
-         <h2 className="heading-h2">Let’s Talk</h2>
-         <p className="short-description inter-body-one">
-            We would love to hear from you!
-         </p>
-         <p className="lead-text-one address">
-            Unit-A2, House-73, Rd. No. 4, Banani, Dhaka-1212
-         </p>
-         <div className="contact-phone">
-            <span>Contact</span>
-            <h3 className="heading-h3">
-               <Link href="tel:+8802 44806598">+8802 44806598</Link>
-            </h3>
-         </div>
-         <Link className="email lead-text-one" href="mailto:info@eqtbd.com">
-            info@eqtbd.com
-         </Link>
-         <Link
-            href="/"
-            target="_blank"
-            className="btn-transparent text-uppercase"
-         >
-            <span>Get Direction on google map</span>
-         </Link>
-      </div>
-   );
-};
-
-function ContactForm() {
-   return (
-      <section className="talk-section banner-bottom-section bg-white">
-         <div className="banner-bottom-section-wrapper">
-            <div className="container">
-               <div className="talk-section-wrapper">
-                  <ContactFormLeft />
-                  <ContactFormRight />
-               </div>
-            </div>
-         </div>
-      </section>
-   );
-}
-
-export default ContactForm;

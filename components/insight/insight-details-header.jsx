@@ -1,35 +1,32 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import SocialShare from './social-share';
 
 function InsightDetailsHeader({ headingDetails }) {
-   const { date, title, postLink, image, socials } = headingDetails;
+   const { date, title, image } = headingDetails;
+
    return (
-      <div className="insights-description-header">
-         <p className="color-two date">{date}</p>
-         <h2 className="heading-h2 post-title">{title}</h2>
+      <header className="insights-description-header">
+         {date && <p className="color-two date">{date}</p>}
+         {title && <h2 className="heading-h2 post-title">{title}</h2>}
+
          <div className="sassy-social-share-wraper">
             <div className="heateor_sss_sharing_container heateor_sss_horizontal_sharing">
-               <div className="flex flex-row items-center justify-center gap-2.5">
-                  {socials?.map((social, index) => (
-                     <Link key={index} href={social.href}>
-                        {social.icon}
-                     </Link>
-                  ))}
-               </div>
+               <SocialShare />
             </div>
          </div>
-         <div className="blog-thumbnail">
-            <Link href={postLink}>
+
+         {image && (
+            <div className="blog-thumbnail">
                <Image
+                  src={image}
+                  alt={title || 'Insight featured image'}
                   width={1395}
                   height={700}
-                  src={image}
-                  className="blog-featured-image wp-post-image"
-                  alt=""
+                  className="blog-featured-image object-cover wp-post-image aspect-square md:aspect-video"
                />
-            </Link>
-         </div>
-      </div>
+            </div>
+         )}
+      </header>
    );
 }
 

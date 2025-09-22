@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Counters from '../commons/counters';
+import parse from 'html-react-parser';
 
 function WhoWeAre({ data }) {
    const {
@@ -19,22 +20,28 @@ function WhoWeAre({ data }) {
                <div className="home-about-top-left">
                   <div className="mission-content">
                      <h4 className="heading-h4">{mission_title}</h4>
-                     <div
-                        className="mission-description"
-                        dangerouslySetInnerHTML={{
-                           __html: mission_description,
-                        }}
-                     />
+                     <div className="mission-description">
+                        {mission_description
+                           ? parse(dummyRichtext, {
+                                replace: (domNode) => {
+                                   if (domNode.name === 'script') return null;
+                                },
+                             })
+                           : null}
+                     </div>
                   </div>
 
                   <div className="mission-content">
                      <h4 className="heading-h4">{vision_title}</h4>
-                     <div
-                        className="mission-description"
-                        dangerouslySetInnerHTML={{
-                           __html: vision_description,
-                        }}
-                     />
+                     <div className="mission-description">
+                        {vision_description
+                           ? parse(dummyRichtext, {
+                                replace: (domNode) => {
+                                   if (domNode.name === 'script') return null;
+                                },
+                             })
+                           : null}
+                     </div>
                   </div>
                </div>
                <div className="home-about-top-right">

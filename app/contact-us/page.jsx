@@ -1,16 +1,8 @@
-import Hero from '@/components/commons/hero-banner';
-import ContactCards from '@/components/contact-us/contact-cards';
-import ContactForm from '@/components/contact-us/contact-form';
+import { getPageData } from '@/graphql/components/get-page-data';
+import RenderBlocksHelper from '@/utils/render-blocks-helper';
 
-export default function ContactUsPage() {
-   return (
-      <>
-         <Hero
-            title="Contact Us"
-            bgImage="https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-4-1.webp"
-         />
-         <ContactForm />
-         <ContactCards />
-      </>
-   );
+export default async function ContactUsPage() {
+   const contactUsPageData = await getPageData('contact-us');
+
+   return <RenderBlocksHelper blocks={contactUsPageData} />;
 }

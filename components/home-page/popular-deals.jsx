@@ -10,100 +10,73 @@ import Location from '../icons/location';
 import Link from 'next/link';
 import Image from 'next/image';
 import { NextIcon, PrevIcon } from '../icons/prev-next-icon';
-
-// Placeholder data
-const placeholderProjects = [
-   {
-      id: 1,
-      title: 'Keraniganj Green Towers',
-      category: 'Apartment',
-      location: 'Keraniganj, Dhaka',
-      status: 'Ongoing',
-      statusColor: '#007BFF',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/projects/1',
-   },
-   {
-      id: 2,
-      title: 'Downtown Residence',
-      category: 'Residential',
-      location: 'Gulshan, Dhaka',
-      status: 'Completed',
-      statusColor: '#28A745',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/projects/1',
-   },
-   {
-      id: 3,
-      title: 'Lake View Apartments',
-      category: 'Apartment',
-      location: 'Banani, Dhaka',
-      status: 'Ongoing',
-      statusColor: '#007BFF',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/projects/1',
-   },
-   {
-      id: 4,
-      title: 'City Center Towers',
-      category: 'Commercial',
-      location: 'Motijheel, Dhaka',
-      status: 'Upcoming',
-      statusColor: '#FFC107',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-      link: '/projects/1',
-   },
-];
+import { getLinkTarget } from '@/utils/utility';
 
 export const ProjectCard = ({ project }) => {
-   const { image, title, status, statusColor, category, location, link } =
-      project;
+   const featuredImage = project?.featuredImage?.node?.mediaItemUrl || '';
+   const projectLocation = project?.projectLocation || 'Unknown location';
+   const projectTitle = project?.title || 'Untitled Project';
+   const projectSlug = project?.slug || '';
+   const projectStatus = project.projectStatus || '';
+   const projectType = project.projectType || '';
+   const projectStatusColor = project.projectStatusColor || '';
 
    return (
       <article className="project-card-item">
          <div className="project-thumbnail">
             <Image
-               src={image}
-               alt={title}
+               src={featuredImage}
+               alt={projectTitle}
                width={1040}
                height={650}
                className="project-image"
             />
-            {status && (
+            {projectStatus && (
                <div
                   className="project-status text-white"
-                  style={{ backgroundColor: statusColor }}
+                  style={{ backgroundColor: projectStatusColor }}
                >
-                  {status}
+                  {projectStatus}
                </div>
             )}
          </div>
 
          <div className="project-content">
-            {category && (
+            {projectType && (
                <div className="project-category">
-                  <span>{category}</span>
+                  <span>{projectType}</span>
                </div>
             )}
 
-            <h3 className="project-title heading-h4">{title}</h3>
+            <h3 className="project-title heading-h4">{projectTitle}</h3>
 
-            {location && (
+            {projectLocation && (
                <div className="project-location">
                   <Location />
                   <span className="text-uppercase body-two-caps">
-                     {location}
+                     {projectLocation}
                   </span>
                </div>
             )}
          </div>
 
-         <Link href={link} className="project-link" />
+         <Link
+            href={`/projects/${projectSlug}`}
+            className="project-link"
+            aria-label={`View details of ${projectTitle}`}
+         />
       </article>
    );
 };
 
-const PopularDeals = ({ variant = '' }) => {
+const PopularDeals = ({ data, projects, variant = '' }) => {
+   const {
+      btn_text = '',
+      btn_url = '#',
+      open_in_new_tab = false,
+      title = '',
+   } = data?.data || {};
+
    const prevRef = useRef(null);
    const nextRef = useRef(null);
    const paginationRef = useRef(null);
@@ -134,15 +107,16 @@ const PopularDeals = ({ variant = '' }) => {
          {/* Header */}
          <div className="container">
             <div className="nh-project-top">
-               <h2 className="nh-project-title heading-h2">
-                  Popular Deals in Town
-               </h2>
-               <Link
-                  href="/projects"
-                  className="btn-transparent text-uppercase"
-               >
-                  <span>View All</span>
-               </Link>
+               <h2 className="nh-project-title heading-h2">{title}</h2>
+               {btn_text && btn_url && (
+                  <Link
+                     target={getLinkTarget(open_in_new_tab)}
+                     href={btn_url}
+                     className="btn-transparent text-uppercase"
+                  >
+                     <span>{btn_text}</span>
+                  </Link>
+               )}
             </div>
          </div>
 
@@ -162,7 +136,7 @@ const PopularDeals = ({ variant = '' }) => {
                   }}
                   onSwiper={setSwiperInstance}
                >
-                  {placeholderProjects.map((project) => (
+                  {projects.map((project) => (
                      <SwiperSlide key={project.id}>
                         <ProjectCard project={project} />
                      </SwiperSlide>

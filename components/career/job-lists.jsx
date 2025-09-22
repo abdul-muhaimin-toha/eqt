@@ -1,85 +1,77 @@
+'use client';
+
 import Link from 'next/link';
 import Location from '../icons/location';
 import Calender from '../icons/calender';
 import Brifcase from '../icons/brifcase';
-
-const jobs = [
-   {
-      title: 'Customer Marketing Manager',
-      location: 'Dhaka',
-      deadline: '20 Aug 2023',
-      vacancies: 1,
-      link: '/career/1',
-   },
-   {
-      title: 'Healthcare Promotion Officer',
-      location: 'Dhaka',
-      deadline: '20 Aug 2023',
-      vacancies: 1,
-      link: '/career/1',
-   },
-   {
-      title: 'Customer Marketing Manager',
-      location: 'Dhaka',
-      deadline: '20 Aug 2023',
-      vacancies: 1,
-      link: '/career/1',
-   },
-   {
-      title: 'Executive – Corporate Sales (Male)',
-      location: 'Dhaka',
-      deadline: '20 Aug 2023',
-      vacancies: 1,
-      link: '/career/1',
-   },
-];
+import { useState } from 'react';
 
 function JobCard({ job }) {
    return (
       <div className="career-card">
          <div className="card-body">
             <h3 className="card-title heading-h4">
-               <Link href={job.link}>{job.title}</Link>
+               <Link href={`career/${job.slug}`}>{job.title}</Link>
             </h3>
+
             <ul>
                <li>
                   <Location />
-                  <span>{job.location}</span>
+                  <span>{job.careerJobLocation}</span>
                </li>
                <li>
                   <Calender />
-                  <span>Deadline: {job.deadline}</span>
+                  <span>{job.careerJobDeadline}</span>
                </li>
                <li>
                   <Brifcase />
-                  <span>Vacancies: {job.vacancies}</span>
+                  <span>{job.careerVacancies}</span>
                </li>
             </ul>
+
             <Link
-               href={job.link}
+               href={`career/${job.slug}`}
                className="btn-transparent view-all-btn text-uppercase"
             >
-               <span>View All</span>
+               <span>View Details</span>
             </Link>
          </div>
       </div>
    );
 }
 
-function JobLists() {
+function JobLists({ data, careers = [] }) {
+   const [visibleCount, setVisibleCount] = useState(4);
+   const { title = '', opening_title = '' } = data?.data || {};
+
+   const visibleCareers = careers.slice(0, visibleCount);
+
+   const handleLoadMore = () => setVisibleCount((prev) => prev + 4);
+
    return (
       <section className="career-job-list bg-white">
          <div className="container">
             <div className="career-title">
-               <h2 className="heading-h2 text-center">Current openings</h2>
+               <h2 className="heading-h2 text-center">{title}</h2>
                <p className="text-center inter-body-one color-two">
-                  {jobs.length} Open Positions
+                  {careers.length} {opening_title}
                </p>
             </div>
 
-            {jobs.map((job, idx) => (
-               <JobCard key={idx} job={job} />
+            {visibleCareers.map((job) => (
+               <JobCard key={job.id} job={job} />
             ))}
+
+            {visibleCount < careers.length && (
+               <div className="load-more-wrapper text-center">
+                  <button
+                     className="load-more-btn btn-transparent"
+                     onClick={handleLoadMore}
+                  >
+                     <span>Load More</span>
+                  </button>
+               </div>
+            )}
          </div>
       </section>
    );

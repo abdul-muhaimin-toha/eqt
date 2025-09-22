@@ -3,6 +3,8 @@ import './global.css';
 import './styles/style.scss';
 import Footer from '@/components/layout/footer/footer';
 import Header from '@/components/layout/header';
+import { getHeaderData } from '@/graphql/components/get-menu-data';
+import { Bounce, ToastContainer } from 'react-toastify';
 
 const goldMan = Goldman({
    variable: '--font-goldman-serif',
@@ -20,13 +22,30 @@ export const metadata = {
    description: 'Discover Your Dream Home with EQT',
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+   const { menuItems, crbThemeOptions } = await getHeaderData('dGVybToy');
+
    return (
       <html lang="en">
          <body className={`${goldMan.variable} ${montserrat.variable}`}>
-            <Header />
+            <Header crbThemeOptions={crbThemeOptions} menuItems={menuItems} />
             {children}
             <Footer />
+            <ToastContainer
+               position="bottom-right"
+               autoClose={5000}
+               hideProgressBar
+               newestOnTop={false}
+               closeOnClick
+               rtl={false}
+               pauseOnFocusLoss
+               draggable
+               pauseOnHover
+               theme="dark"
+               transition={Bounce}
+               toastClassName={`!bg-[#1f5126] !text-white !rounded-none !p-4 !shadow-lg !border  !border-gray-700`}
+               bodyClassName="!flex !items-center !gap-2 !font-medium"
+            />
          </body>
       </html>
    );

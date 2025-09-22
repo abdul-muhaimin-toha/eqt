@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import PointerDown from '../icons/pointer-down';
 import ArrowRight from '../icons/arrow-right';
@@ -10,18 +10,26 @@ import Search from '../icons/search';
 import Hamburger from '../icons/hamburger';
 import HamburgerClose from '../icons/hamburger-close';
 import SearchResultArrow from '../icons/search-result-arrow';
+import { makeMenuTree } from '@/utils/utility';
 
-function Header() {
+function Header({ menuItems, crbThemeOptions }) {
    const [mobileOpen, setMobileOpen] = useState(false);
    const [activeMenu, setActiveMenu] = useState(null);
    const [activeSubMenu, setActiveSubMenu] = useState(null);
    const [searchOpen, setSearchOpen] = useState(false);
+
+   const { companyLogo, joinNow } = crbThemeOptions || {};
+
+   const formatedMenu = useMemo(() => makeMenuTree(menuItems), [menuItems]);
 
    return (
       <>
          <HeaderLarge
             setSearchOpen={setSearchOpen}
             setMobileOpen={setMobileOpen}
+            menu={formatedMenu}
+            companyLogo={companyLogo}
+            joinNow={joinNow}
          />
          <MobileMenu
             mobileOpen={mobileOpen}
@@ -30,6 +38,9 @@ function Header() {
             activeSubMenu={activeSubMenu}
             setActiveSubMenu={setActiveSubMenu}
             setMobileOpen={setMobileOpen}
+            menu={formatedMenu}
+            companyLogo={companyLogo}
+            joinNow={joinNow}
          />
          <SearchModal searchOpen={searchOpen} setSearchOpen={setSearchOpen} />
       </>
@@ -38,14 +49,50 @@ function Header() {
 
 export default Header;
 
-function HeaderLarge({ setSearchOpen, setMobileOpen }) {
+function HeaderLarge({
+   setSearchOpen,
+   setMobileOpen,
+   menu,
+   companyLogo,
+   joinNow,
+}) {
+   // Recursive function to render menu items
+   const renderMenu = (items, depth = 0) => {
+      return items.map((item, idx) => {
+         const hasChildren = item.childItems?.nodes?.length > 0;
+
+         return (
+            <li
+               key={idx}
+               className={`menu-item ${
+                  hasChildren ? 'menu-item-has-children' : ''
+               }`}
+            >
+               <Link href={item.url}>{item.label}</Link>
+
+               {hasChildren && (
+                  <span className={`dropdown-icon dropdown-depth-${depth}`}>
+                     {depth === 0 ? <PointerDown /> : <ArrowRight />}
+                  </span>
+               )}
+
+               {hasChildren && (
+                  <ul className="sub-menu">
+                     {renderMenu(item.childItems.nodes, depth + 1)}
+                  </ul>
+               )}
+            </li>
+         );
+      });
+   };
+
    return (
       <header className="header-top">
          <div className="header-top-wrapper">
             {/* Logo */}
             <Link href="/" className="header-logo">
                <Image
-                  src="https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/logo.svg"
+                  src={companyLogo}
                   alt="EQT Logo"
                   width={120}
                   height={40}
@@ -56,14 +103,14 @@ function HeaderLarge({ setSearchOpen, setMobileOpen }) {
             {/* Mobile Buttons */}
             <div className="mobile-hamburger">
                <button
-                  className="search-btn-mobile"
+                  className="search-btn-mobile cursor-pointer"
                   onClick={() => setSearchOpen((prev) => !prev)}
                >
                   <Search />
                </button>
                <button
                   onClick={() => setMobileOpen(true)}
-                  className="hamburger-menu"
+                  className="hamburger-menu cursor-pointer"
                >
                   <Hamburger />
                </button>
@@ -73,60 +120,7 @@ function HeaderLarge({ setSearchOpen, setMobileOpen }) {
             <div className="header-right-area">
                <div className="header-menu">
                   <div className="menu-primary-menu-container">
-                     <ul className="menu">
-                        {/* About Us */}
-                        <li className="menu-item menu-item-has-children">
-                           <Link href="#">About Us</Link>
-                           <span className="dropdown-icon dropdown-depth-0">
-                              <PointerDown />
-                           </span>
-                           <ul className="sub-menu">
-                              <li className="menu-item">
-                                 <Link href="/who-we-are">Who We Are</Link>
-                              </li>
-                              <li className="menu-item">
-                                 <Link href="/our-approach">Our Approach</Link>
-                              </li>
-                           </ul>
-                        </li>
-
-                        {/* Projects */}
-                        <li className="menu-item menu-item-has-children">
-                           <Link href="/projects">Projects</Link>
-                           <span className="dropdown-icon dropdown-depth-0">
-                              <PointerDown />
-                           </span>
-                           <ul className="sub-menu">
-                              <li className="menu-item menu-item-has-children">
-                                 <Link href="/projects">Real Estate</Link>
-                                 <span className="dropdown-icon dropdown-depth-1">
-                                    <ArrowRight />
-                                 </span>
-                                 <ul className="sub-menu">
-                                    <li className="menu-item">
-                                       <Link href="/projects">Apartment</Link>
-                                    </li>
-                                    <li className="menu-item">
-                                       <Link href="/projects">Land</Link>
-                                    </li>
-                                 </ul>
-                              </li>
-                              <li className="menu-item">
-                                 <Link href="/projects">Consultation</Link>
-                              </li>
-                           </ul>
-                        </li>
-
-                        <li className="menu-item">
-                           <Link href="/">Hospital Projects</Link>
-                        </li>
-                        <li className="menu-item">
-                           <Link href="/career">Career</Link>
-                        </li>
-                        <li className="menu-item">
-                           <Link href="/insight">Insight</Link>
-                        </li>
-                     </ul>
+                     <ul className="menu">{renderMenu(menu)}</ul>
                   </div>
                </div>
             </div>
@@ -140,7 +134,7 @@ function HeaderLarge({ setSearchOpen, setMobileOpen }) {
                >
                   <Search />
                </button>
-               <Link href="/contact-us" className="btn-primary">
+               <Link href={joinNow} className="btn-primary">
                   <span>Get in Touch</span>
                </Link>
             </div>
@@ -156,15 +150,18 @@ function MobileMenu({
    activeSubMenu,
    setActiveSubMenu,
    setMobileOpen,
+   menu,
+   companyLogo,
+   joinNow,
 }) {
-   const toggleMenu = (menu) => {
-      setActiveMenu((prev) => (prev === menu ? null : menu));
+   const toggleMenu = (menuKey) => {
+      setActiveMenu((prev) => (prev === menuKey ? null : menuKey));
       setActiveSubMenu(null);
    };
 
-   const toggleSubMenu = (submenu, e) => {
+   const toggleSubMenu = (submenuKey, e) => {
       e.stopPropagation();
-      setActiveSubMenu((prev) => (prev === submenu ? null : submenu));
+      setActiveSubMenu((prev) => (prev === submenuKey ? null : submenuKey));
    };
 
    const renderSubMenu = (isActive, children) => (
@@ -176,10 +173,15 @@ function MobileMenu({
    return (
       <div className={`mobile-search-item ${mobileOpen ? 'activated' : ''}`}>
          <div className="mobile-search-item-inner">
+            {/* Logo & Close */}
             <div className="mobile-fixed-item">
-               <Link className="header-logo" href="/">
+               <Link
+                  onClick={() => setMobileOpen(false)}
+                  className="header-logo"
+                  href="/"
+               >
                   <Image
-                     src="https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/logo.svg"
+                     src={companyLogo}
                      alt="EQT Logo"
                      width={120}
                      height={40}
@@ -188,141 +190,156 @@ function MobileMenu({
                <div className="mobile-hamburger">
                   <button
                      onClick={() => setMobileOpen(false)}
-                     className="hamburger-menu"
+                     className="hamburger-menu cursor-pointer"
                   >
                      <HamburgerClose />
                   </button>
                </div>
             </div>
 
+            {/* Menu */}
             <div className="header-menu-mobile">
                <ul className="eqt-menu">
-                  {/* About Us */}
-                  <li
-                     onClick={() => toggleMenu('about')}
-                     className={`menu-item eqt-menu__item menu-item-has-children ${
-                        activeMenu === 'about' ? 'eqt-menu__item--active' : ''
-                     }`}
-                  >
-                     <a role="button">About Us</a>
-                     <span className="eqt-menu__dropdown-icon">
-                        <PointerDown />
-                     </span>
-                     <span className="dropdown-icon dropdown-depth-0">
-                        <PointerDown />
-                     </span>
-                     {renderSubMenu(
-                        activeMenu === 'about',
-                        <>
-                           <li className="menu-item eqt-menu__item menu-item-192">
-                              <Link
-                                 href="/who-we-are"
-                                 onClick={() => setMobileOpen(false)}
-                              >
-                                 Who We Are
-                              </Link>
-                           </li>
-                           <li className="menu-item eqt-menu__item menu-item-234">
-                              <Link
-                                 href="/our-approach"
-                                 onClick={() => setMobileOpen(false)}
-                              >
-                                 Our Approach
-                              </Link>
-                           </li>
-                        </>
-                     )}
-                  </li>
+                  {menu.map((item, idx) => {
+                     const topKey = item.id || `top-${idx}`;
+                     const hasChildren = item.childItems?.nodes?.length > 0;
 
-                  {/* Projects */}
-                  <li
-                     onClick={() => toggleMenu('project')}
-                     className={`menu-item eqt-menu__item menu-item-has-children ${
-                        activeMenu === 'project' ? 'eqt-menu__item--active' : ''
-                     }`}
-                  >
-                     <a role="button">Projects</a>
-                     <span className="eqt-menu__dropdown-icon eqt-menu__dropdown-icon--rotated">
-                        <PointerDown />
-                     </span>
-                     <span className="dropdown-icon dropdown-depth-0">
-                        <PointerDown />
-                     </span>
-
-                     {renderSubMenu(
-                        activeMenu === 'project',
-                        <>
-                           {/* Real Estate */}
-                           <li
-                              onClick={(e) => toggleSubMenu('real-estate', e)}
-                              className={`menu-item eqt-menu__item menu-item-has-children ${
-                                 activeSubMenu === 'real-estate'
+                     return (
+                        <li
+                           key={topKey}
+                           onClick={
+                              hasChildren ? () => toggleMenu(topKey) : undefined
+                           }
+                           className={`menu-item cursor-pointer eqt-menu__item
+                              ${hasChildren ? 'menu-item-has-children' : ''}
+                              ${
+                                 activeMenu === topKey
                                     ? 'eqt-menu__item--active'
                                     : ''
                               }`}
-                           >
-                              <a role="button">Real Estate</a>
-                              <span className="eqt-menu__dropdown-icon eqt-menu__dropdown-icon--rotated">
-                                 <ArrowRight />
-                              </span>
-                              <span className="dropdown-icon dropdown-depth-1">
-                                 <ArrowRight />
-                              </span>
-
-                              {renderSubMenu(
-                                 activeSubMenu === 'real-estate',
-                                 <>
-                                    <li className="menu-item eqt-menu__item menu-item-159">
-                                       <Link
-                                          href="/projects"
-                                          onClick={() => setMobileOpen(false)}
-                                       >
-                                          Apartment
-                                       </Link>
-                                    </li>
-                                    <li className="menu-item eqt-menu__item menu-item-160">
-                                       <Link
-                                          href="/projects"
-                                          onClick={() => setMobileOpen(false)}
-                                       >
-                                          Land
-                                       </Link>
-                                    </li>
-                                 </>
-                              )}
-                           </li>
-
-                           <li className="menu-item eqt-menu__item menu-item-157">
+                        >
+                           {hasChildren ? (
+                              <>
+                                 <a role="button">{item.label}</a>
+                                 <span className="eqt-menu__dropdown-icon">
+                                    <PointerDown />
+                                 </span>
+                                 <span className="dropdown-icon dropdown-depth-0">
+                                    <PointerDown />
+                                 </span>
+                              </>
+                           ) : (
                               <Link
-                                 href="/projects"
+                                 href={item.url}
                                  onClick={() => setMobileOpen(false)}
                               >
-                                 Consultation
+                                 {item.label}
                               </Link>
-                           </li>
-                        </>
-                     )}
-                  </li>
+                           )}
 
-                  {/* Other top-level */}
-                  <li className="menu-item eqt-menu__item menu-item-8">
-                     <Link href="/">Hospital Projects</Link>
-                  </li>
-                  <li className="menu-item eqt-menu__item menu-item-329">
-                     <Link href="/career" onClick={() => setMobileOpen(false)}>
-                        Career
-                     </Link>
-                  </li>
-                  <li className="menu-item eqt-menu__item menu-item-292">
-                     <Link href="/insight" onClick={() => setMobileOpen(false)}>
-                        Insight
-                     </Link>
-                  </li>
+                           {hasChildren &&
+                              renderSubMenu(
+                                 activeMenu === topKey,
+                                 item.childItems.nodes.map((child, cidx) => {
+                                    const subKey =
+                                       child.id || `sub-${idx}-${cidx}`;
+                                    const hasSubChildren =
+                                       child.childItems?.nodes?.length > 0;
+
+                                    return (
+                                       <li
+                                          key={subKey}
+                                          onClick={
+                                             hasSubChildren
+                                                ? (e) =>
+                                                     toggleSubMenu(subKey, e)
+                                                : undefined
+                                          }
+                                          className={`menu-item eqt-menu__item
+                                             ${
+                                                hasSubChildren
+                                                   ? 'menu-item-has-children'
+                                                   : ''
+                                             }
+                                             ${
+                                                activeSubMenu === subKey
+                                                   ? 'eqt-menu__item--active'
+                                                   : ''
+                                             }`}
+                                       >
+                                          {hasSubChildren ? (
+                                             <>
+                                                <a role="button">
+                                                   {child.label}
+                                                </a>
+                                                <span
+                                                   className={`eqt-menu__dropdown-icon ${
+                                                      activeSubMenu === subKey
+                                                         ? 'eqt-menu__dropdown-icon--rotated'
+                                                         : ''
+                                                   }`}
+                                                >
+                                                   <ArrowRight />
+                                                </span>
+                                                <span className="dropdown-icon dropdown-depth-1">
+                                                   <ArrowRight />
+                                                </span>
+                                             </>
+                                          ) : (
+                                             <Link
+                                                href={child.url}
+                                                onClick={() =>
+                                                   setMobileOpen(false)
+                                                }
+                                             >
+                                                {child.label}
+                                             </Link>
+                                          )}
+
+                                          {/* Subchildren */}
+                                          {hasSubChildren &&
+                                             renderSubMenu(
+                                                activeSubMenu === subKey,
+                                                child.childItems.nodes.map(
+                                                   (subChild, sidx) => (
+                                                      <li
+                                                         key={
+                                                            subChild.id ||
+                                                            `subchild-${idx}-${cidx}-${sidx}`
+                                                         }
+                                                         className="menu-item eqt-menu__item"
+                                                      >
+                                                         <Link
+                                                            href={subChild.url}
+                                                            onClick={() =>
+                                                               setMobileOpen(
+                                                                  false
+                                                               )
+                                                            }
+                                                         >
+                                                            {subChild.label}
+                                                         </Link>
+                                                      </li>
+                                                   )
+                                                )
+                                             )}
+                                       </li>
+                                    );
+                                 })
+                              )}
+                        </li>
+                     );
+                  })}
                </ul>
             </div>
 
+            {/* CTA */}
             <div className="mobile-right-btn">
-               <Link href="/contact-us" className="btn-primary">
+               <Link
+                  onClick={() => setMobileOpen(false)}
+                  href={joinNow}
+                  className="btn-primary"
+               >
                   <span>Get in Touch</span>
                </Link>
             </div>

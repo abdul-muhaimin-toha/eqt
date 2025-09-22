@@ -12,6 +12,7 @@
     "@apollo/client": "^4.0.5",
     "@tailwindcss/postcss": "^4.1.13",
     "graphql": "^16.11.0",
+    "html-react-parser": "^5.2.6",
     "next": "15.5.2",
     "postcss": "^8.5.6",
     "react": "19.1.0",
@@ -19,6 +20,8 @@
     "react-dom": "19.1.0",
     "react-hook-form": "^7.62.0",
     "react-responsive-modal": "^7.0.0",
+    "react-share": "^5.2.2",
+    "react-toastify": "^11.0.5",
     "sass": "^1.92.1",
     "swiper": "^11.2.10",
     "tailwindcss": "^4.1.13"

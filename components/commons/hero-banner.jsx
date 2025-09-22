@@ -6,13 +6,15 @@ function HeroBanner({ data }) {
 
    return (
       <section className="banner-section relative w-full h-[60vh] flex items-center justify-center">
-         <Image
-            src={feature_image}
-            alt={title}
-            fill
-            priority
-            className="feature-bg-image object-cover"
-         />
+         {feature_image && (
+            <Image
+               src={feature_image}
+               alt={title}
+               fill
+               priority
+               className="feature-bg-image object-cover"
+            />
+         )}
 
          {/* Overlay (optional, if you want to darken image for better text visibility) */}
          <div className="absolute inset-0 bg-black/40"></div>

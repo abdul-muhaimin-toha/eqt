@@ -4,7 +4,8 @@ import Calender from '../icons/calender';
 import Location from '../icons/location';
 
 function CareerDetailsHeader({ headingDetails }) {
-   const { title, location, deadline, vacancies, applyLink } = headingDetails;
+   const { title, location, deadline, vacancies, applyLink } =
+      headingDetails || {};
 
    return (
       <div className="career-details-header-wraper">
@@ -17,11 +18,11 @@ function CareerDetailsHeader({ headingDetails }) {
                </li>
                <li>
                   <Calender />
-                  <span>Deadline: {deadline}</span>
+                  <span>{deadline}</span>
                </li>
                <li>
                   <Brifcase />
-                  <span>Vacancies: {vacancies}</span>
+                  <span>{vacancies}</span>
                </li>
             </ul>
             <Link className="btn-transparent text-uppercase" href={applyLink}>

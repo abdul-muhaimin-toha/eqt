@@ -1,16 +1,8 @@
-import InsightShowcase from '@/components/insight/insight-showcase';
-import LatestInsight from '@/components/insight/latest-insight';
-import Hero from '@/components/commons/hero-banner';
+import { getPageData } from '@/graphql/components/get-page-data';
+import RenderBlocksHelper from '@/utils/render-blocks-helper';
 
-export default function InsightPage() {
-   return (
-      <>
-         <Hero
-            title="Latest Insights"
-            bgImage="https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-4-2-scaled.webp"
-         />
-         <LatestInsight />
-         <InsightShowcase />
-      </>
-   );
+export default async function InsightPage() {
+   const insightPageData = await getPageData('insight');
+
+   return <RenderBlocksHelper blocks={insightPageData} />;
 }

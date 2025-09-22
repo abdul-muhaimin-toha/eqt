@@ -1,5 +1,6 @@
 'use client';
 
+import { formatDateShort } from '@/utils/utility';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -146,31 +147,32 @@ const insights = [
 ];
 
 export const InsightCard = ({ insight }) => {
+   const { date, featuredImage, slug, title } = insight.node;
    return (
       <article className="blog-post">
          <div className="blog-thumbnail">
-            <Link href={insight.link}>
+            <Link href={`/insight/${slug}`}>
                <Image
                   width={540}
                   height={340}
-                  src={insight.image}
+                  src={featuredImage.node.link}
                   className="blog-featured-image wp-post-image"
-                  alt=""
+                  alt={title}
                />
             </Link>
          </div>
          <div className="blog-meta">
-            <span className="post-date">{insight.date}</span>
+            <span className="post-date">{formatDateShort(date)}</span>
          </div>
          <h3 className="lead-text-one">
-            <Link href={insight.link}>{insight.title}</Link>
+            <Link href={`/insight/${slug}`}>{title}</Link>
          </h3>
       </article>
    );
 };
 
 function InsightShowcase() {
-   const [visibleCount, setVisibleCount] = useState(6); // show 6 initially
+   const [visibleCount, setVisibleCount] = useState(6);
 
    const handleLoadMore = () => {
       setVisibleCount((prev) => prev + 6);

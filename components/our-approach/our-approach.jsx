@@ -7,143 +7,29 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { NextIcon, PrevIcon } from '../icons/prev-next-icon';
-
-const approachData = [
-   {
-      type: 'Land',
-      items: [
-         {
-            number: '01',
-            title: 'Land Scouting & Feasibility',
-            description:
-               'Identify suitable plots, assess legal and environmental feasibility, zoning regulations, and accessibility.',
-         },
-         {
-            number: '02',
-            title: 'Due Diligence',
-            description:
-               'Verify land ownership, survey boundaries, check titles, documents, and potential disputes.',
-         },
-         {
-            number: '',
-            title: '',
-            description: '',
-         },
-         {
-            number: '',
-            title: '',
-            description: '',
-         },
-         {
-            number: '03',
-            title: 'Negotiation & Acquisition',
-            description:
-               'Facilitate price negotiations, documentation, and coordinate with relevant authorities for smooth acquisition.',
-         },
-         {
-            number: '04',
-            title: 'Handover & Legal Support',
-            description:
-               'Complete ownership transfer, mutation, registration, and provide post-acquisition support.',
-         },
-      ],
-   },
-   {
-      type: 'Constructions',
-      items: [
-         {
-            number: '',
-            title: '',
-            description: '',
-         },
-         {
-            number: '01',
-            title: 'Land Scouting & Feasibility',
-            description:
-               'Identify suitable plots, assess legal and environmental feasibility, zoning regulations, and accessibility.',
-         },
-         {
-            number: '02',
-            title: 'Due Diligence',
-            description:
-               'Verify land ownership, survey boundaries, check titles, documents, and potential disputes.',
-         },
-         {
-            number: '03',
-            title: 'Negotiation & Acquisition',
-            description:
-               'Facilitate price negotiations, documentation, and coordinate with relevant authorities for smooth acquisition.',
-         },
-         {
-            number: '04',
-            title: 'Handover & Legal Support',
-            description:
-               'Complete ownership transfer, mutation, registration, and provide post-acquisition support.',
-         },
-         {
-            number: '',
-            title: '',
-            description: '',
-         },
-      ],
-   },
-   {
-      type: 'Consultancy',
-      items: [
-         {
-            number: '01',
-            title: 'Land Scouting & Feasibility',
-            description:
-               'Identify suitable plots, assess legal and environmental feasibility, zoning regulations, and accessibility.',
-         },
-         {
-            number: '02',
-            title: 'Due Diligence',
-            description:
-               'Verify land ownership, survey boundaries, check titles, documents, and potential disputes.',
-         },
-         {
-            number: '03',
-            title: 'Negotiation & Acquisition',
-            description:
-               'Facilitate price negotiations, documentation, and coordinate with relevant authorities for smooth acquisition.',
-         },
-         {
-            number: '04',
-            title: 'Handover & Legal Support',
-            description:
-               'Complete ownership transfer, mutation, registration, and provide post-acquisition support.',
-         },
-         {
-            number: '05',
-            title: 'Land Scouting & Feasibility',
-            description:
-               'Identify suitable plots, assess legal and environmental feasibility, zoning regulations, and accessibility.',
-         },
-         {
-            number: '06',
-            title: 'Due Diligence',
-            description:
-               'Verify land ownership, survey boundaries, check titles, documents, and potential disputes.',
-         },
-      ],
-   },
-];
+import parse from 'html-react-parser';
 
 const ApproachCard = ({ approach }) => {
-   const hasContent = approach.number && approach.title && approach.description;
+   const hasContent =
+      approach.top_title && approach.title && approach.description;
 
    return (
       <div className={`approach-item ${hasContent ? 'bg-title' : ''}`}>
          {hasContent && (
             <div className="approach-top-title">
-               <h3 className="heading-h3">{approach.number}</h3>
+               <h3 className="heading-h3">{approach.top_title}</h3>
             </div>
          )}
          <div className="approach-content">
             {approach.title && (
                <div className="approach-title lead-text-one font-primary">
-                  {approach.title}
+                  {approach.title
+                     ? parse(dummyRichtext, {
+                          replace: (domNode) => {
+                             if (domNode.name === 'script') return null;
+                          },
+                       })
+                     : null}
                </div>
             )}
             {approach.description && (
@@ -158,7 +44,6 @@ const ApproachCard = ({ approach }) => {
 
 function OurApproach({ data }) {
    const { approachs, short_des, title } = data.data;
-
    const [activeTab, setActiveTab] = useState(0);
 
    const prevRef = useRef(null);
@@ -168,53 +53,52 @@ function OurApproach({ data }) {
 
    useEffect(() => {
       if (!swiperInstance) return;
-
-      const swiper = swiperInstance;
       if (prevRef.current && nextRef.current && paginationRef.current) {
-         swiper.params.navigation.prevEl = prevRef.current;
-         swiper.params.navigation.nextEl = nextRef.current;
-         swiper.params.pagination.el = paginationRef.current;
+         swiperInstance.params.navigation.prevEl = prevRef.current;
+         swiperInstance.params.navigation.nextEl = nextRef.current;
+         swiperInstance.params.pagination.el = paginationRef.current;
 
-         swiper.navigation.init();
-         swiper.navigation.update();
-         swiper.pagination.init();
-         swiper.pagination.update();
+         swiperInstance.navigation.init();
+         swiperInstance.navigation.update();
+         swiperInstance.pagination.init();
+         swiperInstance.pagination.update();
       }
    }, [swiperInstance]);
+
+   console.log(approachs);
+
+   const currentItems =
+      approachs?.[activeTab]?.approachs_items?.filter(Boolean) || [];
 
    return (
       <section className="testimonial-section portfolios bg-white approachs">
          <div className="container">
-            <h2 className="text-center heading-h2">Our Approach</h2>
+            <h2 className="text-center heading-h2">{title}</h2>
             <div className="text-center short-description inter-body-one">
-               At EQT, our approach is rooted in precision, innovation, and
-               accountability. We focus on understanding your needs and
-               translating them into robust, cost-effective engineering
-               solutions. Every project we undertake reflects our commitment to
-               quality, safety, and sustainability.
+               {short_des}
             </div>
 
             <div className="testimonial-container">
                {/* Tabs */}
                <div className="testimonial-tab-header">
-                  {approachData.map((tab, idx) => (
+                  {approachs.map((tab, idx) => (
                      <button
-                        key={idx}
+                        key={tab._id}
                         className={`testimonial-tab-btn ${
                            activeTab === idx ? 'active' : ''
                         }`}
                         onClick={() => setActiveTab(idx)}
                      >
-                        {tab.type}
+                        {tab.title}
                      </button>
                   ))}
                </div>
 
-               {/* Tab Content */}
+               {/* Tab Content (Desktop) */}
                <div className="testimonial-tab-content">
                   <div className="approachs-items">
                      <div className="approachs-wrapper for-desktop">
-                        {approachData[activeTab].items.map((approach, idx) => (
+                        {currentItems.map((approach, idx) => (
                            <ApproachCard key={idx} approach={approach} />
                         ))}
                      </div>
@@ -222,6 +106,8 @@ function OurApproach({ data }) {
                </div>
             </div>
          </div>
+
+         {/* Mobile Swiper */}
          <div className="for-mobile approach-mobile-slider">
             <div className="container container--slider">
                <div className="portfolios-slider">
@@ -238,21 +124,15 @@ function OurApproach({ data }) {
                      }}
                      onSwiper={setSwiperInstance}
                   >
-                     {approachData[activeTab].items
-                        .filter(
-                           (approach) =>
-                              approach.number &&
-                              approach.title &&
-                              approach.description
-                        )
-                        .map((approach, idx) => (
-                           <SwiperSlide key={idx}>
-                              <ApproachCard approach={approach} />
-                           </SwiperSlide>
-                        ))}
+                     {currentItems.map((approach, idx) => (
+                        <SwiperSlide key={idx}>
+                           <ApproachCard approach={approach} />
+                        </SwiperSlide>
+                     ))}
                   </Swiper>
                </div>
             </div>
+
             {/* Custom Pagination & Navigation */}
             <div className="container">
                <div className="slider-bottom-area-testimonial">

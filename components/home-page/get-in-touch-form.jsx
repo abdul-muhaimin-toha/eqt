@@ -1,6 +1,8 @@
 'use client';
 
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 function GetInTouchForm() {
    const {
@@ -10,9 +12,37 @@ function GetInTouchForm() {
       formState: { errors },
    } = useForm();
 
-   const onSubmit = (formData) => {
-      console.log('Form Submitted:', formData);
-      reset();
+   const [loading, setLoading] = useState(false);
+
+   const onSubmit = async (formData) => {
+      setLoading(true);
+
+      try {
+         const res = await fetch(
+            'https://staging.hellonotionhive.com/wordpress/eqt/wp-json/nh/v1/cform',
+            {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json',
+               },
+               body: JSON.stringify(formData),
+            }
+         );
+
+         if (!res.ok) throw new Error('Failed to submit form');
+
+         const data = await res.json();
+         console.log('API Response:', data);
+
+         toast.success('Message sent successfully!');
+
+         reset();
+      } catch (err) {
+         console.error(err);
+         toast.error('Something went wrong. Please try again.');
+      } finally {
+         setLoading(false);
+      }
    };
 
    return (
@@ -50,7 +80,7 @@ function GetInTouchForm() {
             />
             {errors.email && (
                <span className="text-white !mt-2 flex !pl-2 md:!pl-3 lg:!pl-4">
-                  Valid email is required
+                  {errors.email.message}
                </span>
             )}
          </div>
@@ -62,7 +92,7 @@ function GetInTouchForm() {
                className="wpcf7-form-control wpcf7-text"
                placeholder="Your contact number"
                type="text"
-               {...register('contact')}
+               {...register('phone')}
             />
          </div>
 
@@ -84,8 +114,8 @@ function GetInTouchForm() {
 
          <div className="submit-btn-wrapper">
             <div className="project-button-wrapper">
-               <button type="submit" className="btn-primary">
-                  Send Message
+               <button type="submit" className="btn-primary" disabled={loading}>
+                  {loading ? 'Sending...' : 'Send Message'}
                </button>
             </div>
          </div>

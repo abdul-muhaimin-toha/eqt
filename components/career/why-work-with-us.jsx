@@ -1,7 +1,14 @@
 import Image from 'next/image';
 import Tick from '../icons/tick';
 
-function WhyWorkWithUs() {
+function WhyWorkWithUs({ data }) {
+   const {
+      feature_image = '',
+      features = [],
+      short_description = '',
+      title = '',
+   } = data?.data || {};
+
    return (
       <section className="talk-section banner-bottom-section career-banner-bottom-section bg-white">
          <div className="banner-bottom-section-wrapper">
@@ -12,33 +19,32 @@ function WhyWorkWithUs() {
                         width={785}
                         height={650}
                         className="feature-bg-image"
-                        src="https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/Rectangle-1.webp"
+                        src={feature_image}
+                        alt={title}
                      />
                   </div>
                   <div className="talk-section-right">
                      <div className="talk-section-right-inner">
-                        <h3 className="heading-h3">Why work with us</h3>
+                        <h3 className="heading-h3">{title}</h3>
                         <p className="short-description inter-body-one color-two">
-                           Lorem ipsum dolor sit amet consectetur. Donec egestas
-                           dolor vitae ipsum sapien eu. Eget et mattis mauris
-                           eu. Massa scelerisque facilisi imperdiet vulputate
-                           accumsan. Nulla donec nec orci placerat turpis.
+                           {short_description}
                         </p>
                         <div className="features-list">
                            <ul>
-                              {[
-                                 'Quality Construction',
-                                 'Prime Locations',
-                                 'Competitive Pricing',
-                                 'Timely Delivery',
-                              ].map((feature, idx) => (
-                                 <li key={idx}>
-                                    <Tick />
-                                    <span className="lead-text-one">
-                                       {feature}
-                                    </span>
-                                 </li>
-                              ))}
+                              {features.length > 0 && (
+                                 <div className="features-list">
+                                    <ul>
+                                       {features.map((feature) => (
+                                          <li key={feature._id}>
+                                             <Tick />
+                                             <span className="lead-text-one">
+                                                {feature.title}
+                                             </span>
+                                          </li>
+                                       ))}
+                                    </ul>
+                                 </div>
+                              )}
                            </ul>
                         </div>
                      </div>

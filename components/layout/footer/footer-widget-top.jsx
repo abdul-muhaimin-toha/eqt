@@ -5,42 +5,32 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-const FOOTER_MENUS = [
-   {
-      key: 'about-us',
-      title: 'About Us',
-      links: [
-         { label: 'Who We Are', href: '/who-we-are' },
-         { label: 'Our Approach', href: '/our-approach' },
-      ],
-   },
-   {
-      key: 'quick-links',
-      title: 'Quick Links',
-      links: [
-         { label: 'Career', href: '/career' },
-         { label: 'Contact Us', href: '/contact-us' },
-         { label: 'Insight', href: '/insight' },
-      ],
-   },
-   {
-      key: 'projects',
-      title: 'Projects',
-      links: [
-         { label: 'Real Estate', href: '/projects' },
-         { label: 'Consultation', href: '/projects' },
-      ],
-   },
-];
-
-const SOCIAL_LINKS = [
-   { label: 'Facebook', href: '/', icon: '/social-icons/facebook.svg' },
-   { label: 'LinkedIn', href: '/', icon: '/social-icons/linkedin.svg' },
-   { label: 'Twitter', href: '/', icon: '/social-icons/x.svg' },
-];
-
-const FooterWidgetTop = () => {
+const FooterWidgetTop = ({ footerMenu = [], crbThemeOptions = {} }) => {
    const [openMenu, setOpenMenu] = useState(null);
+   const {
+      facebookLink,
+      footerAddress,
+      footerCompanyLogo,
+      footerEmailAddress,
+      footerPhoneAddress,
+      linkedinLink,
+      xLink,
+   } = crbThemeOptions;
+
+   const socialLinks = [
+      {
+         label: 'Facebook',
+         href: facebookLink,
+         icon: '/social-icons/facebook.svg',
+      },
+      {
+         label: 'LinkedIn',
+         href: linkedinLink,
+         icon: '/social-icons/linkedin.svg',
+      },
+      { label: 'Twitter', href: xLink, icon: '/social-icons/x.svg' },
+   ].filter(({ href }) => href);
+
    const toggleMenu = (menuKey) =>
       setOpenMenu(openMenu === menuKey ? null : menuKey);
 
@@ -53,32 +43,30 @@ const FooterWidgetTop = () => {
                   <div className="footer-logo">
                      <Link className="footer-logo-image" href="/">
                         <Image
-                           src="https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/logo.svg"
+                           src={footerCompanyLogo}
                            alt="EQT Logo"
                            width={120}
                            height={40}
                         />
                      </Link>
                   </div>
-                  <p className="footer-address">
-                     Unit-A2, House-73, Rd. No. 4, Banani, Dhaka-1212
-                  </p>
+                  <p className="footer-address">{footerAddress}</p>
                   <div className="footer-contact-address">
                      <p className="text-uppercase">Contact</p>
                      <Link
                         className="font-primary heading-h5 font-weight-400 color-two"
                         href="tel:+88029882107"
                      >
-                        +88 02 9882107-8
+                        {footerPhoneAddress}
                      </Link>
                   </div>
-                  <Link href="mailto:info@eqtbd.com" className="email">
-                     info@eqtbd.com
+                  <Link href={`mailto:${footerEmailAddress}`} className="email">
+                     {footerEmailAddress}
                   </Link>
                </div>
 
                {/* Dynamic Footer Menus */}
-               {FOOTER_MENUS.map(({ key, title, links }) => (
+               {footerMenu.map(({ key, title, links }) => (
                   <div key={key} className="footer-widget-item">
                      <h3
                         onClick={() => toggleMenu(key)}
@@ -114,7 +102,7 @@ const FooterWidgetTop = () => {
                      <span>Follow Us</span>
                   </h3>
                   <div className="social-list">
-                     {SOCIAL_LINKS.map(({ label, href, icon }) => (
+                     {socialLinks.map(({ label, href, icon }) => (
                         <Link
                            key={label}
                            href={href}
