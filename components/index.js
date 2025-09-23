@@ -4,6 +4,7 @@ import WhyWorkWithUs from './career/why-work-with-us';
 import AboutDescription from './commons/about-description';
 import HeroBanner from './commons/hero-banner';
 import Promo from './commons/promo';
+import SecondaryHero from './commons/secondary-hero';
 import Testimonial from './commons/testimonial';
 import Video from './commons/video';
 import ContactCards from './contact-us/contact-cards';
@@ -61,9 +62,14 @@ const blockComponentsMapping = {
    'carbon-fields/contact-promo-section': ContactCards, // complete
 
    // insight page
-   'carbon-fields/all-blog-section': InsightShowcaseWrapper,
+   'carbon-fields/all-blog-section': InsightShowcaseWrapper, // complete
 
-   // insight details page // just need to pass the related insight
+   // insight details page // complete
+
+   // project page
+   'carbon-fields/projects-list-section': SecondaryHero,
+
+   // project details page // done
 };
 
 export default blockComponentsMapping;

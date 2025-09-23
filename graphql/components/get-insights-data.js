@@ -2,6 +2,7 @@ import getGqlData from '@/lib/get-gql-data';
 import {
    allInsightsQuery,
    multiInsightQuery,
+   relatedInsightsQuery,
    singleInsightQuery,
 } from '../queries/insights-data-query';
 
@@ -54,5 +55,29 @@ export const getInsightBySlug = async (slug) => {
    } catch (error) {
       console.error('Error fetching career by slug:', error);
       return null;
+   }
+};
+
+export const getRelatedInsights = async (
+   categoryId,
+   limit = 10,
+   excludePostId = null
+) => {
+   if (!categoryId) return [];
+
+   // Convert single post ID to array if provided
+   const excludeArray = excludePostId ? [excludePostId] : [];
+
+   try {
+      const data = await getGqlData(relatedInsightsQuery, {
+         categoryId,
+         limit,
+         exclude: excludeArray,
+      });
+
+      return data?.posts?.edges || [];
+   } catch (error) {
+      console.error('Error fetching related insights:', error);
+      return [];
    }
 };

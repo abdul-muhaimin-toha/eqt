@@ -52,6 +52,42 @@ export const singleInsightQuery = gql`
          slug
          date
          content
+         categories {
+            edges {
+               node {
+                  id
+                  categoryId
+               }
+            }
+         }
+      }
+   }
+`;
+
+export const relatedInsightsQuery = gql`
+   query relatedInsightsQuery(
+      $categoryId: Int!
+      $limit: Int = 10
+      $exclude: [ID] = []
+   ) {
+      posts(
+         first: $limit
+         where: { categoryId: $categoryId, notIn: $exclude }
+      ) {
+         edges {
+            node {
+               id
+               title
+               slug
+               date
+               excerpt
+               featuredImage {
+                  node {
+                     link
+                  }
+               }
+            }
+         }
       }
    }
 `;

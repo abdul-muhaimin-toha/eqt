@@ -2,31 +2,22 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Thumbs } from 'swiper/modules';
+import { Navigation, Thumbs } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import 'swiper/css/thumbs';
 import Link from 'next/link';
 import Download from '../icons/download';
 import Image from 'next/image';
 
-const slides = [
-   'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle.webp',
-   'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-2.webp',
-   'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-1.webp',
-   'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-8-scaled.webp',
-   'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/07/Rectangle-2.webp',
-];
-
-function ProjectDetailsLeft() {
+function ProjectDetailsLeft({ sliders = [], brochureFile = '' }) {
    const [thumbsSwiper, setThumbsSwiper] = useState(null);
    const [mainSwiper, setMainSwiper] = useState(null);
    const prevRef = useRef(null);
    const nextRef = useRef(null);
 
    useEffect(() => {
-      if (mainSwiper) {
+      if (mainSwiper && prevRef.current && nextRef.current) {
          mainSwiper.params.navigation.prevEl = prevRef.current;
          mainSwiper.params.navigation.nextEl = nextRef.current;
          mainSwiper.navigation.init();
@@ -40,27 +31,28 @@ function ProjectDetailsLeft() {
             <div className="single-gallery-thumbnail">
                {/* Main Slider */}
                <Swiper
-                  modules={[Navigation, Pagination, Thumbs]}
+                  modules={[Navigation, Thumbs]}
                   spaceBetween={10}
                   slidesPerView={1}
                   thumbs={{ swiper: thumbsSwiper }}
                   onSwiper={setMainSwiper}
                   className="product-gallery-slider"
                >
-                  {slides.map((src, idx) => (
-                     <SwiperSlide key={idx}>
+                  {sliders.map((slider) => (
+                     <SwiperSlide key={slider?.id || slider?.link}>
                         <Image
-                           src={src}
+                           src={slider?.link || '/placeholder.jpg'}
                            width={895}
                            height={880}
                            className="attachment-full size-full"
-                           alt=""
+                           alt={slider?.alt || 'Slider image'}
                         />
                      </SwiperSlide>
                   ))}
 
                   {/* Custom Navigation Buttons */}
                   <div ref={nextRef} className="swiper-button-next">
+                     {/* SVG Next */}
                      <svg
                         width={56}
                         height={56}
@@ -101,7 +93,9 @@ function ProjectDetailsLeft() {
                         </defs>
                      </svg>
                   </div>
+
                   <div ref={prevRef} className="swiper-button-prev">
+                     {/* SVG Prev */}
                      <svg
                         width={56}
                         height={56}
@@ -149,7 +143,7 @@ function ProjectDetailsLeft() {
                   onSwiper={setThumbsSwiper}
                   modules={[Thumbs]}
                   spaceBetween={10}
-                  slidesPerView="2.5"
+                  slidesPerView={2.5}
                   freeMode={true}
                   watchSlidesProgress
                   className="product-thumbnail-slider"
@@ -159,14 +153,14 @@ function ProjectDetailsLeft() {
                      1024: { slidesPerView: 4.2 },
                   }}
                >
-                  {slides.map((src, idx) => (
-                     <SwiperSlide key={idx}>
+                  {sliders.map((slider) => (
+                     <SwiperSlide key={slider?.id || slider?.link}>
                         <Image
-                           src={src}
+                           src={slider?.link || '/placeholder.jpg'}
                            height={177}
                            width={205}
                            className="attachment-full size-full"
-                           alt=""
+                           alt={slider?.alt || 'Slider thumbnail'}
                         />
                      </SwiperSlide>
                   ))}
@@ -174,16 +168,18 @@ function ProjectDetailsLeft() {
             </div>
 
             {/* Download Brochure */}
-            <div className="download-brochure-file">
-               <Link
-                  target="_blank"
-                  className="btn-transparent text-uppercase"
-                  href="/"
-               >
-                  <Download />
-                  <span>Download brochure</span>
-               </Link>
-            </div>
+            {brochureFile && (
+               <div className="download-brochure-file">
+                  <Link
+                     target="_blank"
+                     className="btn-transparent text-uppercase"
+                     href={brochureFile}
+                  >
+                     <Download />
+                     <span>Download brochure</span>
+                  </Link>
+               </div>
+            )}
          </div>
       </div>
    );

@@ -29,6 +29,16 @@ export const headerQuery = gql`
       crbThemeOptions {
          companyLogo
          joinNow
+         facebookLink
+         footerAddress
+         footerCompanyLogo
+         footerEmailAddress
+         footerPhoneAddress
+         linkedinLink
+         xLink
+         popularSearchSuggestion {
+            title
+         }
       }
    }
 `;
@@ -79,6 +89,9 @@ export const footerQuery = gql`
          footerPhoneAddress
          linkedinLink
          xLink
+         popularSearchSuggestion {
+            title
+         }
       }
    }
 `;

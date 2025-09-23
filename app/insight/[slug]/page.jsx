@@ -2,17 +2,19 @@ import PostDetails from '@/components/commons/post-details';
 import InsightDetailsHeader from '@/components/insight/insight-details-header';
 import MoreInsights from '@/components/insight/more-insights';
 import {
-   getAllInsights,
    getInsightBySlug,
+   getRelatedInsights,
 } from '@/graphql/components/get-insights-data';
 import { formatDateShort } from '@/utils/utility';
 
 export default async function InsightDetailsPage({ params }) {
    const { slug } = params;
-   const { date, title, featuredImage, content } = await getInsightBySlug(slug);
+   const { id, date, title, featuredImage, content, categories } =
+      await getInsightBySlug(slug);
 
-   // Fetch insights safely, default to empty array
-   const insights = (await getAllInsights(5)) || [];
+   const postCategories = categories.edges.map((edge) => edge.node.categoryId);
+
+   const insights = await getRelatedInsights(postCategories[0], 5, id);
 
    // Filter out invalid nodes or missing dates
    const validInsights = insights.filter(

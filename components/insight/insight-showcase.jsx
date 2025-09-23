@@ -5,149 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-const insights = [
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-   {
-      date: '5 August 2025',
-      title: 'How this founder created the first hanger worthy of Vogue',
-      link: '/insight/1',
-      image: 'https://staging.hellonotionhive.com/wordpress/eqt/wp-content/uploads/2025/08/image-7.webp',
-   },
-];
-
 export const InsightCard = ({ insight }) => {
    const { date, featuredImage, slug, title } = insight.node;
+
    return (
       <article className="blog-post">
          <div className="blog-thumbnail">
@@ -155,9 +15,9 @@ export const InsightCard = ({ insight }) => {
                <Image
                   width={540}
                   height={340}
-                  src={featuredImage.node.link}
+                  src={featuredImage?.node?.link || '/placeholder.jpg'}
                   className="blog-featured-image wp-post-image"
-                  alt={title}
+                  alt={title || 'Insight'}
                />
             </Link>
          </div>
@@ -171,21 +31,19 @@ export const InsightCard = ({ insight }) => {
    );
 };
 
-function InsightShowcase() {
+function InsightShowcase({ title = 'ddd', insights }) {
    const [visibleCount, setVisibleCount] = useState(6);
 
-   const handleLoadMore = () => {
-      setVisibleCount((prev) => prev + 6);
-   };
+   const handleLoadMore = () => setVisibleCount((prev) => prev + 6);
 
    return (
       <section className="more-posts-section bg-white">
          <div className="container">
             <div className="more-posts-wrapper">
-               <h2 className="section-title heading-h2">Insights</h2>
+               <h2 className="section-title heading-h2">{title}</h2>
                <div className="more-posts-grid" id="more-posts-container">
-                  {insights.slice(0, visibleCount).map((insight, idx) => (
-                     <InsightCard insight={insight} key={idx} />
+                  {insights.slice(0, visibleCount).map((insight) => (
+                     <InsightCard insight={insight} key={insight.node.id} />
                   ))}
                </div>
                {visibleCount < insights.length && (

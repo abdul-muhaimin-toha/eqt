@@ -1043,7 +1043,7 @@
 
          li {
             position: relative;
-            padding-left: 32px;
+            padding-left: 36px;
             margin-bottom: 4px;
 
             @include breakpoint('sm') {
@@ -1054,6 +1054,19 @@
             svg {
                position: absolute;
                left: 0;
+            }
+
+            &::before {
+               content: '';
+               position: absolute;
+               left: 0;
+               top: 50%;
+               transform: translateY(-50%);
+               width: 28px;
+               height: 28px;
+               background-image: url('/details-content/bullet.svg');
+               background-size: contain;
+               background-repeat: no-repeat;
             }
          }
       }

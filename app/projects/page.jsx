@@ -1,10 +1,13 @@
-import SecondaryHero from '@/components/commons/secondary-hero';
 import ProjectShowcase from '@/components/projects/project-showcase';
+import RenderBlocksHelper from '@/utils/render-blocks-helper';
+import { getPageData } from '@/graphql/components/get-page-data';
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+   const projectsPageData = await getPageData('projects');
+
    return (
       <div className="bg-white">
-         <SecondaryHero title="Projects" />
+         <RenderBlocksHelper blocks={projectsPageData} />
          <ProjectShowcase />
       </div>
    );

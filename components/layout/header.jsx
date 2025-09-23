@@ -11,6 +11,7 @@ import Hamburger from '../icons/hamburger';
 import HamburgerClose from '../icons/hamburger-close';
 import SearchResultArrow from '../icons/search-result-arrow';
 import { makeMenuTree } from '@/utils/utility';
+import { useRouter } from 'next/navigation';
 
 function Header({ menuItems, crbThemeOptions }) {
    const [mobileOpen, setMobileOpen] = useState(false);
@@ -42,7 +43,11 @@ function Header({ menuItems, crbThemeOptions }) {
             companyLogo={companyLogo}
             joinNow={joinNow}
          />
-         <SearchModal searchOpen={searchOpen} setSearchOpen={setSearchOpen} />
+         <SearchModal
+            searchOpen={searchOpen}
+            setSearchOpen={setSearchOpen}
+            crbThemeOptions={crbThemeOptions}
+         />
       </>
    );
 }
@@ -348,7 +353,29 @@ function MobileMenu({
    );
 }
 
-function SearchModal({ searchOpen, setSearchOpen }) {
+function SearchModal({ searchOpen, setSearchOpen, crbThemeOptions }) {
+   const router = useRouter();
+   const [searchTerm, setSearchTerm] = useState('');
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      if (searchTerm.trim()) {
+         router.push(
+            `/search?searchTerm=${encodeURIComponent(
+               searchTerm.trim().toLowerCase()
+            )}`
+         );
+         setSearchOpen(false);
+      }
+   };
+
+   const handleSuggestionClick = (term) => {
+      router.push(
+         `/search?searchTerm=${encodeURIComponent(term.toLowerCase())}`
+      );
+      setSearchOpen(false);
+   };
+
    return (
       <div
          className="footer-search-option"
@@ -372,12 +399,13 @@ function SearchModal({ searchOpen, setSearchOpen }) {
             <div className="container">
                <div className="search-container">
                   <h3 className="heading-h3">Search</h3>
-                  <form className="search-heading">
+                  <form className="search-heading" onSubmit={handleSubmit}>
                      <input
                         type="search"
                         className="search-input"
                         id="search-input"
-                        defaultValue=""
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
                      />
                      <button type="submit" className="search-button">
                         <Search />
@@ -392,11 +420,21 @@ function SearchModal({ searchOpen, setSearchOpen }) {
                         Popular Searches
                      </p>
                      <div className="suggestion-tags">
-                        {['Apartment', 'Land', 'Consultancy'].map((item) => (
-                           <Link key={item} href="/" className="suggestion-tag">
+                        {crbThemeOptions.popularSearchSuggestion.map((item) => (
+                           <a
+                              key={item.title}
+                              href={`/search?q=${encodeURIComponent(
+                                 item.title
+                              )}`}
+                              className="suggestion-tag"
+                              onClick={(e) => {
+                                 e.preventDefault();
+                                 handleSuggestionClick(item.title);
+                              }}
+                           >
                               <SearchResultArrow />
-                              <span>{item}</span>
-                           </Link>
+                              <span>{item.title}</span>
+                           </a>
                         ))}
                      </div>
                   </div>

@@ -24,7 +24,7 @@ async function InsightShowcaseWrapper({ data }) {
    return (
       <>
          <LatestInsight insights={latestInsights} />
-         {/* <InsightShowcase insights={sortedInsights} /> */}
+         <InsightShowcase title={data?.data?.title} insights={sortedInsights} />
       </>
    );
 }

@@ -13,20 +13,24 @@ import { NextIcon, PrevIcon } from '../icons/prev-next-icon';
 import { getLinkTarget } from '@/utils/utility';
 
 export const ProjectCard = ({ project }) => {
-   const featuredImage = project?.featuredImage?.node?.mediaItemUrl || '';
-   const projectLocation = project?.projectLocation || 'Unknown location';
-   const projectTitle = project?.title || 'Untitled Project';
-   const projectSlug = project?.slug || '';
-   const projectStatus = project.projectStatus || '';
-   const projectType = project.projectType || '';
-   const projectStatusColor = project.projectStatusColor || '';
+   const {
+      featuredImage,
+      projectLocation = 'Unknown location',
+      title = 'Untitled Project',
+      slug = '',
+      projectStatus = '',
+      projectType = '',
+      projectStatusColor = '',
+   } = project || {};
+
+   const featuredImageUrl = featuredImage?.node?.mediaItemUrl || '';
 
    return (
       <article className="project-card-item">
          <div className="project-thumbnail">
             <Image
-               src={featuredImage}
-               alt={projectTitle}
+               src={featuredImageUrl}
+               alt={title}
                width={1040}
                height={650}
                className="project-image"
@@ -34,7 +38,10 @@ export const ProjectCard = ({ project }) => {
             {projectStatus && (
                <div
                   className="project-status text-white"
-                  style={{ backgroundColor: projectStatusColor }}
+                  style={{
+                     background: projectStatusColor || '#000',
+                     borderColor: projectStatusColor || '#000',
+                  }}
                >
                   {projectStatus}
                </div>
@@ -48,7 +55,7 @@ export const ProjectCard = ({ project }) => {
                </div>
             )}
 
-            <h3 className="project-title heading-h4">{projectTitle}</h3>
+            <h3 className="project-title heading-h4">{title}</h3>
 
             {projectLocation && (
                <div className="project-location">
@@ -61,15 +68,15 @@ export const ProjectCard = ({ project }) => {
          </div>
 
          <Link
-            href={`/projects/${projectSlug}`}
+            href={`/projects/${slug}`}
             className="project-link"
-            aria-label={`View details of ${projectTitle}`}
+            aria-label={`View details of ${title}`}
          />
       </article>
    );
 };
 
-const PopularDeals = ({ data, projects, variant = '' }) => {
+const PopularDeals = ({ data, projects = [], variant = '' }) => {
    const {
       btn_text = '',
       btn_url = '#',
@@ -85,23 +92,22 @@ const PopularDeals = ({ data, projects, variant = '' }) => {
    useEffect(() => {
       if (!swiperInstance) return;
 
-      const swiper = swiperInstance;
       if (prevRef.current && nextRef.current && paginationRef.current) {
-         swiper.params.navigation.prevEl = prevRef.current;
-         swiper.params.navigation.nextEl = nextRef.current;
-         swiper.params.pagination.el = paginationRef.current;
+         swiperInstance.params.navigation.prevEl = prevRef.current;
+         swiperInstance.params.navigation.nextEl = nextRef.current;
+         swiperInstance.params.pagination.el = paginationRef.current;
 
-         swiper.navigation.init();
-         swiper.navigation.update();
-         swiper.pagination.init();
-         swiper.pagination.update();
+         swiperInstance.navigation.init();
+         swiperInstance.navigation.update();
+         swiperInstance.pagination.init();
+         swiperInstance.pagination.update();
       }
    }, [swiperInstance]);
 
    return (
       <section
          className={`nh-projects-slider ${
-            variant === 'project-page' && 'sm:!pb-0'
+            variant === 'project-page' ? 'sm:!pb-0' : ''
          }`}
       >
          {/* Header */}
