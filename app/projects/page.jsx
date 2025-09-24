@@ -4,6 +4,7 @@ import { getPageData } from '@/graphql/components/get-page-data';
 import { getProjectsWithLimit } from '@/graphql/components/get-projects-data';
 import { getProjectCategories } from '@/graphql/components/get-project-category-data';
 import { transformCategories } from '@/utils/utility';
+import { Suspense } from 'react';
 
 export default async function ProjectsPage() {
    const projectsPageData = await getPageData('projects');
@@ -16,7 +17,9 @@ export default async function ProjectsPage() {
    return (
       <div className="bg-white">
          <RenderBlocksHelper blocks={projectsPageData} />
-         <ProjectShowcase projects={projects} categories={categories} />
+         <Suspense>
+            <ProjectShowcase projects={projects} categories={categories} />
+         </Suspense>
       </div>
    );
 }
