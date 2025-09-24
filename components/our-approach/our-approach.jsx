@@ -24,7 +24,7 @@ const ApproachCard = ({ approach }) => {
             {approach.title && (
                <div className="approach-title lead-text-one font-primary">
                   {approach.title
-                     ? parse(dummyRichtext, {
+                     ? parse(approach.title, {
                           replace: (domNode) => {
                              if (domNode.name === 'script') return null;
                           },
