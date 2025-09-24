@@ -5,7 +5,6 @@ import Footer from '@/components/layout/footer/footer';
 import Header from '@/components/layout/header';
 import { getHeaderData } from '@/graphql/components/get-menu-data';
 import { Bounce, ToastContainer } from 'react-toastify';
-import ReactLenis from 'lenis/react';
 import AOSWrapper from '@/utils/aos-wrapper';
 
 const goldMan = Goldman({
