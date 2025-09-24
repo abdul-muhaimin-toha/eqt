@@ -21,7 +21,7 @@ function WhyChooseUs({ data }) {
                      {description && (
                         <div className="mission-description">
                            {description
-                              ? parse(dummyRichtext, {
+                              ? parse(description, {
                                    replace: (domNode) => {
                                       if (domNode.name === 'script')
                                          return null;

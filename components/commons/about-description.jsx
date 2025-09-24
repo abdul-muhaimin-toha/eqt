@@ -14,7 +14,7 @@ function AboutDescription({ data }) {
                <div className="description-wrapper">
                   <div>
                      {description
-                        ? parse(dummyRichtext, {
+                        ? parse(description, {
                              replace: (domNode) => {
                                 if (domNode.name === 'script') return null;
                              },

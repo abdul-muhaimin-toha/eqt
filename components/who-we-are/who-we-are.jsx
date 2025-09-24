@@ -22,7 +22,7 @@ function WhoWeAre({ data }) {
                      <h4 className="heading-h4">{mission_title}</h4>
                      <div className="mission-description">
                         {mission_description
-                           ? parse(dummyRichtext, {
+                           ? parse(mission_description, {
                                 replace: (domNode) => {
                                    if (domNode.name === 'script') return null;
                                 },
@@ -35,7 +35,7 @@ function WhoWeAre({ data }) {
                      <h4 className="heading-h4">{vision_title}</h4>
                      <div className="mission-description">
                         {vision_description
-                           ? parse(dummyRichtext, {
+                           ? parse(vision_description, {
                                 replace: (domNode) => {
                                    if (domNode.name === 'script') return null;
                                 },
