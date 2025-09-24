@@ -25,11 +25,17 @@ function Cta({ data }) {
          )}
 
          <div className="get-in-touch-content">
-            {title && <h2 className="heading-h2 text-white">{title}</h2>}
+            {title && (
+               <h2 className="heading-h2 text-white" data-aos="fade-up">
+                  {title}
+               </h2>
+            )}
 
             {btn_title && (
                <Link
                   className="btn-primary text-uppercase"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
                   href={btn_custom_url}
                >
                   <span>{btn_title}</span>

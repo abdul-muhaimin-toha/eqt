@@ -9,7 +9,7 @@ export const InsightCard = ({ insight }) => {
    const { date, featuredImage, slug, title } = insight.node;
 
    return (
-      <article className="blog-post">
+      <article className="blog-post" data-aos="fade-up">
          <div className="blog-thumbnail">
             <Link href={`/insight/${slug}`}>
                <Image
@@ -40,7 +40,9 @@ function InsightShowcase({ title = 'ddd', insights }) {
       <section className="more-posts-section bg-white">
          <div className="container">
             <div className="more-posts-wrapper">
-               <h2 className="section-title heading-h2">{title}</h2>
+               <h2 className="section-title heading-h2" data-aos="fade-up">
+                  {title}
+               </h2>
                <div className="more-posts-grid" id="more-posts-container">
                   {insights.slice(0, visibleCount).map((insight) => (
                      <InsightCard insight={insight} key={insight.node.id} />
@@ -49,6 +51,8 @@ function InsightShowcase({ title = 'ddd', insights }) {
                {visibleCount < insights.length && (
                   <div className="load-more-wrapper">
                      <button
+                        data-aos="fade-up"
+                        data-aos-delay="300"
                         className="load-more-btn btn-transparent"
                         onClick={handleLoadMore}
                      >

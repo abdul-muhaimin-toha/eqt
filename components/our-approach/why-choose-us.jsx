@@ -41,6 +41,7 @@ function WhyChooseUs({ data }) {
                         src={image_one}
                         alt={description_title || 'Why choose us image one'}
                         className="image-01"
+                        data-aos="fade-down"
                      />
                   )}
                   {image_two && (
@@ -50,6 +51,7 @@ function WhyChooseUs({ data }) {
                         src={image_two}
                         alt={description_title || 'Why choose us image two'}
                         className="image-02"
+                        data-aos="fade-up"
                      />
                   )}
                </div>

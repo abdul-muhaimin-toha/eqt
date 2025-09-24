@@ -44,7 +44,13 @@ function ContactCards({ data }) {
       <section className="contact-promo-list bg-white">
          <div className="container">
             {title && (
-               <h3 className="heading-h3 contact-promo-title">{title}</h3>
+               <h3
+                  className="heading-h3 contact-promo-title"
+                  data-aos="fade-down"
+                  data-aos-delay="100"
+               >
+                  {title}
+               </h3>
             )}
             <div className="contact-promo-cards">
                {approachs.map((approach) => (

@@ -55,7 +55,7 @@ function ContactFormSection({ data }) {
       <section className="talk-section banner-bottom-section bg-white">
          <div className="banner-bottom-section-wrapper">
             <div className="container">
-               <div className="talk-section-wrapper">
+               <div className="talk-section-wrapper" data-aos="fade-up">
                   <ContactForm />
                   <ContactFormRight data={data} />
                </div>

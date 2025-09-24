@@ -10,9 +10,11 @@ function AboutDescription({ data }) {
       <section className="eqt-description">
          <div className="container">
             <div className="eqt-description-inner">
-               <h2 className="heading-h2">{title}</h2>
+               <h2 className="heading-h2" data-aos="fade-up">
+                  {title}
+               </h2>
                <div className="description-wrapper">
-                  <div>
+                  <div data-aos="fade-up" data-aos-delay="100">
                      {description
                         ? parse(description, {
                              replace: (domNode) => {
@@ -23,6 +25,8 @@ function AboutDescription({ data }) {
                   </div>
                   {btn_custom_url && btn_title && (
                      <Link
+                        data-aos="fade-up"
+                        data-aos-delay="200"
                         className="btn-transparent text-uppercase !mt-10"
                         href={btn_custom_url}
                         target={getLinkTarget(open_in_new_tab)}

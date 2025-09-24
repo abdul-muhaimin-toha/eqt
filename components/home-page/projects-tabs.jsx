@@ -26,8 +26,14 @@ export default function ProjectsTabs({ data, projects }) {
       <section className="nh-projects">
          <div className="container">
             <div className="nh-project-top">
-               <h2 className="nh-project-title heading-h2">{title}</h2>
-               <div className="nh-project-tab-header">
+               <h2 className="nh-project-title heading-h2" data-aos="fade-up">
+                  {title}
+               </h2>
+               <div
+                  className="nh-project-tab-header"
+                  data-aos="fade-up"
+                  data-aos-delay="300"
+               >
                   {tabs.map((tab) => (
                      <button
                         key={tab}
@@ -51,7 +57,11 @@ export default function ProjectsTabs({ data, projects }) {
             </div>
 
             {btn_title && btn_url && (
-               <div className="project-button-wrapper">
+               <div
+                  className="project-button-wrapper"
+                  data-aos="fade-up"
+                  data-aos-delay="600"
+               >
                   <Link href={btn_url} className="btn-primary">
                      {btn_title}
                   </Link>
@@ -71,7 +81,7 @@ function ProjectCard({ project }) {
    const projectSlug = project?.slug || '';
 
    return (
-      <div className="project-card">
+      <div className="project-card" data-aos="fade-up" data-aos-delay="300">
          <div className="project-thumbnail">
             {featuredImage && (
                <Image

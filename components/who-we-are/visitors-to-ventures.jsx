@@ -9,7 +9,9 @@ function VisitorsToVentures({ data }) {
          {/* Header */}
          <div className="container">
             <div className="nh-project-top">
-               <h2 className="nh-project-title heading-h2">{title}</h2>
+               <h2 className="nh-project-title heading-h2" data-aos="fade-up">
+                  {title}
+               </h2>
             </div>
          </div>
 

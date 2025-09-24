@@ -10,7 +10,10 @@ function WhyWorkWithUs({ data }) {
    } = data?.data || {};
 
    return (
-      <section className="talk-section banner-bottom-section career-banner-bottom-section bg-white">
+      <section
+         className="talk-section banner-bottom-section career-banner-bottom-section bg-white"
+         data-aos="fade-down"
+      >
          <div className="banner-bottom-section-wrapper">
             <div className="container">
                <div className="talk-section-wrapper">

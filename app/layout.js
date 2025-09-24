@@ -5,6 +5,8 @@ import Footer from '@/components/layout/footer/footer';
 import Header from '@/components/layout/header';
 import { getHeaderData } from '@/graphql/components/get-menu-data';
 import { Bounce, ToastContainer } from 'react-toastify';
+import ReactLenis from 'lenis/react';
+import AOSWrapper from '@/utils/aos-wrapper';
 
 const goldMan = Goldman({
    variable: '--font-goldman-serif',
@@ -27,26 +29,33 @@ export default async function RootLayout({ children }) {
 
    return (
       <html lang="en">
-         <body className={`${goldMan.variable} ${montserrat.variable}`}>
-            <Header crbThemeOptions={crbThemeOptions} menuItems={menuItems} />
-            {children}
-            <Footer />
-            <ToastContainer
-               position="bottom-right"
-               autoClose={5000}
-               hideProgressBar
-               newestOnTop={false}
-               closeOnClick
-               rtl={false}
-               pauseOnFocusLoss
-               draggable
-               pauseOnHover
-               theme="dark"
-               transition={Bounce}
-               toastClassName={`!bg-[#1f5126] !text-white !rounded-none !p-4 !shadow-lg !border  !border-gray-700`}
-               bodyClassName="!flex !items-center !gap-2 !font-medium"
-            />
-         </body>
+         <ReactLenis root>
+            <body className={`${goldMan.variable} ${montserrat.variable}`}>
+               <AOSWrapper>
+                  <Header
+                     crbThemeOptions={crbThemeOptions}
+                     menuItems={menuItems}
+                  />
+                  {children}
+                  <Footer />
+                  <ToastContainer
+                     position="bottom-right"
+                     autoClose={5000}
+                     hideProgressBar
+                     newestOnTop={false}
+                     closeOnClick
+                     rtl={false}
+                     pauseOnFocusLoss
+                     draggable
+                     pauseOnHover
+                     theme="dark"
+                     transition={Bounce}
+                     toastClassName={`!bg-[#1f5126] !text-white !rounded-none !p-4 !shadow-lg !border  !border-gray-700`}
+                     bodyClassName="!flex !items-center !gap-2 !font-medium"
+                  />
+               </AOSWrapper>
+            </body>
+         </ReactLenis>
       </html>
    );
 }

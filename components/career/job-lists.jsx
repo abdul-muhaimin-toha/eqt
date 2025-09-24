@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 function JobCard({ job }) {
    return (
-      <div className="career-card">
+      <div className="career-card" data-aos="fade-up">
          <div className="card-body">
             <h3 className="card-title heading-h4">
                <Link href={`career/${job.slug}`}>{job.title}</Link>
@@ -52,8 +52,14 @@ function JobLists({ data, careers = [] }) {
       <section className="career-job-list bg-white">
          <div className="container">
             <div className="career-title">
-               <h2 className="heading-h2 text-center">{title}</h2>
-               <p className="text-center inter-body-one color-two">
+               <h2 className="heading-h2 text-center" data-aos="fade-up">
+                  {title}
+               </h2>
+               <p
+                  className="text-center inter-body-one color-two"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+               >
                   {careers.length} {opening_title}
                </p>
             </div>
@@ -63,7 +69,11 @@ function JobLists({ data, careers = [] }) {
             ))}
 
             {visibleCount < careers.length && (
-               <div className="load-more-wrapper text-center">
+               <div
+                  className="load-more-wrapper text-center"
+                  data-aos="fade-down"
+                  data-aos-delay="100"
+               >
                   <button
                      className="load-more-btn btn-transparent"
                      onClick={handleLoadMore}

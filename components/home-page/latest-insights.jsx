@@ -69,10 +69,16 @@ function LatestInsights({ data, insights }) {
          <div className="container">
             <div className="nh-project-top">
                {top_title && (
-                  <h2 className="nh-project-title heading-h2">{top_title}</h2>
+                  <h2
+                     className="nh-project-title heading-h2"
+                     data-aos="fade-up"
+                  >
+                     {top_title}
+                  </h2>
                )}
                {btn_url && (
                   <Link
+                     data-aos="fade-up"
                      target={getLinkTarget(open_in_new_tab) || '_self'}
                      href={btn_url}
                      className="btn-transparent text-uppercase"
@@ -84,7 +90,11 @@ function LatestInsights({ data, insights }) {
          </div>
 
          {/* Swiper */}
-         <div className="container container--slider">
+         <div
+            className="container container--slider"
+            data-aos="fade-up"
+            data-aos-delay="100"
+         >
             {/* Desktop Swiper */}
             <div className="blog-swiper-container blog-list-container blog-desktop">
                <Swiper

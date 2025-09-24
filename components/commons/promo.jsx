@@ -50,7 +50,7 @@ export default Promo;
 
 function FeatureCard({ feature }) {
    return (
-      <div className="promo-card">
+      <div className="promo-card" data-aos="fade-up" data-aos-delay="600">
          <div className="card-image">
             <Image
                src={feature.card_image}

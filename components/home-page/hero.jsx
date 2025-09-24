@@ -33,18 +33,28 @@ function Hero({ data }) {
                {titleParts.length > 0 && (
                   <h1 className="large-h1 text-white">
                      {titleParts.map((part, index) => (
-                        <div key={index}>{part}</div>
+                        <div key={index} data-aos="fade-up">
+                           {part}
+                        </div>
                      ))}
                   </h1>
                )}
             </div>
             {description && (
-               <div className="hero-section-description text-white">
+               <div
+                  className="hero-section-description text-white"
+                  data-aos="fade-up"
+                  data-aos-delay="300"
+               >
                   {description}
                </div>
             )}
             {btn_url && btn_text && (
-               <div className="hero-section-btn">
+               <div
+                  className="hero-section-btn"
+                  data-aos="fade-up"
+                  data-aos-delay="600"
+               >
                   <Link
                      target={getLinkTarget(open_in_new_tab)}
                      href={btn_url}

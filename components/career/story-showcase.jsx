@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const StoryCard = ({ story }) => (
-   <div className="career-promo-card">
+   <div className="career-promo-card" data-aos="fade-up">
       <div className="career-promo-card-inner">
          <Image
             width={500}

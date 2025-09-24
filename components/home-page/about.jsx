@@ -38,10 +38,19 @@ function About({ data }) {
                      </div>
                   )}
                   {title && (
-                     <h2 className="title text-white heading-h2">{title}</h2>
+                     <h2
+                        className="title text-white heading-h2"
+                        data-aos="fade-up"
+                     >
+                        {title}
+                     </h2>
                   )}
                   {short_description && (
-                     <p className="text-white short-description">
+                     <p
+                        className="text-white short-description"
+                        data-aos="fade-up"
+                        data-aos-delay="300"
+                     >
                         {short_description}
                      </p>
                   )}
@@ -49,6 +58,8 @@ function About({ data }) {
                      <Link
                         href={btn_url}
                         className="btn-transparent text-uppercase btn-white"
+                        data-aos="fade-up"
+                        data-aos-delay="600"
                      >
                         <span>{btn_title}</span>
                      </Link>

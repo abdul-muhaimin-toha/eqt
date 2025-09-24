@@ -92,8 +92,14 @@ function BuildingSmarter({ data }) {
       <section className="testimonial-section portfolios bg-white">
          <div className="container">
             <div className="testimonial-container">
-               <h2 className="text-center heading-h2">{title}</h2>
-               <div className="testimonial-tab-header">
+               <h2 className="text-center heading-h2" data-aos="fade-up">
+                  {title}
+               </h2>
+               <div
+                  className="testimonial-tab-header"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+               >
                   {projectTypes.map((type, idx) => (
                      <button
                         key={`${type}-${idx}`}
@@ -109,7 +115,11 @@ function BuildingSmarter({ data }) {
             </div>
          </div>
 
-         <div className="container container--slider">
+         <div
+            className="container container--slider"
+            data-aos="fade-up"
+            data-aos-delay="100"
+         >
             <div className="testimonial-swiper-container">
                <Swiper
                   modules={[Navigation, Pagination]}
@@ -133,7 +143,7 @@ function BuildingSmarter({ data }) {
             </div>
          </div>
 
-         <div className="container">
+         <div className="container" data-aos="fade-up">
             <div className="slider-bottom-area-testimonial">
                <div className="swiper-pagination" ref={paginationRef}></div>
                <div className="swiper-nav-icon">

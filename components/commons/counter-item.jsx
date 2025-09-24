@@ -28,7 +28,7 @@ function CounterItem({
    }, []);
 
    return (
-      <div className="counter-item">
+      <div className="counter-item" data-aos="fade-up">
          <div className="counter-number">
             <span
                ref={countUpRef}

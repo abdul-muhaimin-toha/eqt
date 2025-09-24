@@ -47,7 +47,7 @@ function VisitorsToVenturesSlider({ testimonial }) {
    return (
       <>
          {/* Swiper */}
-         <div className="container container--slider">
+         <div className="container container--slider" data-aos="fade-up">
             <div className="testimonial-swiper-container">
                <Swiper
                   modules={[Navigation, Pagination]}
@@ -71,7 +71,7 @@ function VisitorsToVenturesSlider({ testimonial }) {
          </div>
 
          {/* Custom Pagination & Navigation */}
-         <div className="container">
+         <div className="container" data-aos="fade-up" data-aos-delay="100">
             <div className="slider-bottom-area">
                <div className="swiper-pagination" ref={paginationRef}></div>
                <div className="swiper-nav-icon">

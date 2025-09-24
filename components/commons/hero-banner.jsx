@@ -5,7 +5,11 @@ function HeroBanner({ data }) {
    const title = data?.data?.title;
 
    return (
-      <section className="banner-section relative w-full h-[60vh] flex items-center justify-center">
+      <section
+         data-aos="fade-up"
+         data-aos-delay="100"
+         className="banner-section relative w-full h-[60vh] flex items-center justify-center"
+      >
          {feature_image && (
             <Image
                src={feature_image}
@@ -20,6 +24,7 @@ function HeroBanner({ data }) {
          <div className="absolute inset-0 bg-black/40"></div>
 
          {/* Content */}
+
          <h1 className="relative z-10 large-h1 text-white">{title}</h1>
       </section>
    );

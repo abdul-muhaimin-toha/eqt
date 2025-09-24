@@ -18,7 +18,11 @@ function WhoWeAre({ data }) {
          <div className="container">
             <div className="home-about-top">
                <div className="home-about-top-left">
-                  <div className="mission-content">
+                  <div
+                     className="mission-content"
+                     data-aos="fade-up"
+                     data-aos-delay="100"
+                  >
                      <h4 className="heading-h4">{mission_title}</h4>
                      <div className="mission-description">
                         {mission_description
@@ -31,7 +35,11 @@ function WhoWeAre({ data }) {
                      </div>
                   </div>
 
-                  <div className="mission-content">
+                  <div
+                     className="mission-content"
+                     data-aos="fade-up"
+                     data-aos-delay="100"
+                  >
                      <h4 className="heading-h4">{vision_title}</h4>
                      <div className="mission-description">
                         {vision_description

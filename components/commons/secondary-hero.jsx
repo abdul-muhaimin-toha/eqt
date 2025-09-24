@@ -3,7 +3,9 @@ function SecondaryHero({ data }) {
 
    return (
       <section className="project-filter-top-title">
-         <h2 className="large-h1 text-center">{title}</h2>
+         <h2 className="large-h1 text-center" data-aos="fade-up">
+            {title}
+         </h2>
       </section>
    );
 }

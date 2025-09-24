@@ -81,7 +81,11 @@ function LatestInsight({ insights }) {
    }
 
    return (
-      <section className="blog-top-section bg-white">
+      <section
+         className="blog-top-section bg-white"
+         data-aos="fade-down"
+         data-aos-delay="100"
+      >
          <div className="blog-top-list-section">
             <div className="container">
                <div className="blog-swiper-container">

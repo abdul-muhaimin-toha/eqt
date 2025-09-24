@@ -14,7 +14,10 @@ const ApproachCard = ({ approach }) => {
       approach.top_title && approach.title && approach.description;
 
    return (
-      <div className={`approach-item ${hasContent ? 'bg-title' : ''}`}>
+      <div
+         data-aos="fade-up"
+         className={`approach-item ${hasContent ? 'bg-title' : ''}`}
+      >
          {hasContent && (
             <div className="approach-top-title">
                <h3 className="heading-h3">{approach.top_title}</h3>
@@ -73,14 +76,20 @@ function OurApproach({ data }) {
    return (
       <section className="testimonial-section portfolios bg-white approachs">
          <div className="container">
-            <h2 className="text-center heading-h2">{title}</h2>
-            <div className="text-center short-description inter-body-one">
+            <h2 className="text-center heading-h2" data-aos="fade-up">
+               {title}
+            </h2>
+            <div
+               className="text-center short-description inter-body-one"
+               data-aos="fade-up"
+               data-aos-delay="100"
+            >
                {short_des}
             </div>
 
             <div className="testimonial-container">
                {/* Tabs */}
-               <div className="testimonial-tab-header">
+               <div className="testimonial-tab-header" data-aos="fade-up">
                   {approachs.map((tab, idx) => (
                      <button
                         key={tab._id}

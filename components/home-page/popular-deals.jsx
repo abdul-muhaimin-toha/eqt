@@ -26,7 +26,11 @@ export const ProjectCard = ({ project }) => {
    const featuredImageUrl = featuredImage?.node?.mediaItemUrl || '';
 
    return (
-      <article className="project-card-item">
+      <article
+         className="project-card-item"
+         data-aos="fade-up"
+         data-aos-delay="100"
+      >
          <div className="project-thumbnail">
             <Image
                src={featuredImageUrl}
@@ -113,12 +117,15 @@ const PopularDeals = ({ data, projects = [], variant = '' }) => {
          {/* Header */}
          <div className="container">
             <div className="nh-project-top">
-               <h2 className="nh-project-title heading-h2">{title}</h2>
+               <h2 className="nh-project-title heading-h2" data-aos="fade-up">
+                  {title}
+               </h2>
                {btn_text && btn_url && (
                   <Link
                      target={getLinkTarget(open_in_new_tab)}
                      href={btn_url}
                      className="btn-transparent text-uppercase"
+                     data-aos="fade-up"
                   >
                      <span>{btn_text}</span>
                   </Link>
@@ -127,7 +134,7 @@ const PopularDeals = ({ data, projects = [], variant = '' }) => {
          </div>
 
          {/* Swiper */}
-         <div className="container container--slider">
+         <div className="container container--slider" data-aos="fade-up">
             <div className="project-swiper-container">
                <Swiper
                   modules={[Navigation, Pagination]}
