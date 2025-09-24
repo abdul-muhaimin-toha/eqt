@@ -57,3 +57,24 @@ export function transformFooterMenu(menu) {
 
 export const capitalizeFirstLetter = (str) =>
    str ? str.charAt(0).toUpperCase() + str.slice(1).replace(/-/g, ' ') : '';
+
+export const transformCategories = (flatCategories) => {
+   const map = {};
+   const result = [];
+
+   flatCategories.forEach((cat) => {
+      map[cat.id] = { id: cat.id, name: cat.name, children: [] };
+   });
+
+   flatCategories.forEach((cat) => {
+      if (cat.parentId) {
+         if (map[cat.parentId]) {
+            map[cat.parentId].children.push({ id: cat.id, name: cat.name });
+         }
+      } else {
+         result.push(map[cat.id]);
+      }
+   });
+
+   return result;
+};

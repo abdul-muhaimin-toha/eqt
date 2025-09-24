@@ -1253,6 +1253,43 @@
          transform: translateY(-50%);
       }
    }
+
+   .project-setting {
+      width: 496px;
+      position: relative;
+      border: 1px solid #1f51261a;
+      height: 52px;
+
+      @include breakpoint('mlg') {
+         display: block;
+         width: calc(50% - 6px);
+      }
+
+      input#project-search {
+         border: none;
+         height: 100%;
+         width: 100%;
+         padding-left: 45px;
+         font-size: 16px;
+         line-height: 26px;
+         color: #6b6c75;
+         box-sizing: border-box;
+         outline: 0;
+         font-family: 'Montserrat', sans-serif;
+
+         &::placeholder,
+         &:-moz-placeholder {
+            color: #6b6c75;
+         }
+      }
+
+      svg {
+         position: absolute;
+         right: 12px;
+         top: 50%;
+         transform: translateY(-50%);
+      }
+   }
 }
 
 .projects-filter-wrapper {

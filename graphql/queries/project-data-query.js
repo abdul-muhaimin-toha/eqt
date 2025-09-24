@@ -81,6 +81,36 @@ export const projectsWithLimitQuery = gql`
             }
             projectLocation
             title
+            slug
+            projectStatus
+            projectType
+            projectStatusColor
+         }
+      }
+   }
+`;
+
+export const projectsWithPaginationQuery = gql`
+   query ProjectsQuery(
+      $limit: Int!
+      $after: String
+      $location: String
+      $search: String
+   ) {
+      projects(
+         first: $limit
+         after: $after
+         where: { projectLocation: $location, search: $search }
+      ) {
+         nodes {
+            id
+            featuredImage {
+               node {
+                  mediaItemUrl
+               }
+            }
+            projectLocation
+            title
             projectShortDes
             featureProjects {
                image
@@ -97,6 +127,12 @@ export const projectsWithLimitQuery = gql`
             projectStatus
             projectType
             projectStatusColor
+         }
+         pageInfo {
+            hasNextPage
+            hasPreviousPage
+            endCursor
+            startCursor
          }
       }
    }

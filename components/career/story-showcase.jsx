@@ -18,12 +18,14 @@ const StoryCard = ({ story }) => (
          {story.title && (
             <p className="title lead-text-one text-white">{story.title}</p>
          )}
-         <Link
-            target={getLinkTarget(story.open_in_new_tab)}
-            className="cards-url-item"
-            href={story.url || '#'}
-            aria-label={`Read story: ${story.title || 'Story'}`}
-         />
+         {story.url && (
+            <Link
+               target={getLinkTarget(story.open_in_new_tab)}
+               className="cards-url-item"
+               href={story.url || '#'}
+               aria-label={`Read story: ${story.title || 'Story'}`}
+            />
+         )}
       </div>
    </div>
 );

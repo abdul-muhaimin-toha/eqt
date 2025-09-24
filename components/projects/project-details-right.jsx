@@ -112,12 +112,14 @@ function ProjectDetailsRight({ project }) {
                                  {card.top_title}
                               </p>
                               <div className="item">
-                                 <Image
-                                    width={24}
-                                    height={24}
-                                    src={card.image}
-                                    alt={card.title || 'Card image'}
-                                 />
+                                 {card.image && (
+                                    <Image
+                                       width={24}
+                                       height={24}
+                                       src={card.image}
+                                       alt={card.title || 'Card image'}
+                                    />
+                                 )}
                                  <p className="title inter-body-one">
                                     {card.title}
                                  </p>

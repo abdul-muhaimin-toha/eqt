@@ -3,6 +3,7 @@ import {
    multiProjectQuery,
    projectBySlugQuery,
    projectsWithLimitQuery,
+   projectsWithPaginationQuery,
 } from '../queries/project-data-query';
 
 export const getProjectData = async (ids) => {
@@ -60,5 +61,37 @@ export const getProjectsWithLimit = async (limit = 5) => {
    } catch (error) {
       console.error('Error fetching projects:', error);
       return [];
+   }
+};
+
+export const getProjectsWithPagination = async ({
+   limit = 5,
+   after = null,
+   location = null,
+   search = null,
+} = {}) => {
+   try {
+      const variables = {
+         limit,
+         after,
+
+         location,
+         search,
+      };
+
+      const data = await getGqlData(projectsWithPaginationQuery, variables);
+
+      if (!data?.projects?.nodes?.length) {
+         console.warn('No projects found with variables:', variables);
+         return { projects: [], pageInfo: null };
+      }
+
+      return {
+         projects: data.projects.nodes, // nodes is already array
+         pageInfo: data.projects.pageInfo,
+      };
+   } catch (error) {
+      console.error('Error fetching projects with pagination:', error);
+      return { projects: [], pageInfo: null };
    }
 };
