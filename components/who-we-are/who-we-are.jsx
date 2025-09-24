@@ -58,7 +58,6 @@ function WhoWeAre({ data }) {
                      alt={mission_title}
                      width={500}
                      height={550}
-                     loading="lazy"
                      className="image-01"
                   />
                   <Image
@@ -66,7 +65,6 @@ function WhoWeAre({ data }) {
                      alt={vision_title}
                      width={500}
                      height={550}
-                     loading="lazy"
                      className="image-02"
                   />
                </div>
