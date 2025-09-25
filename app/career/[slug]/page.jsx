@@ -1,6 +1,15 @@
 import CareerDetailsHeader from '@/components/career/career-details-header';
 import PostDetails from '@/components/commons/post-details';
 import { getCareerBySlug } from '@/graphql/components/get-jobs-data';
+import { formatCareerSeoMeta } from '@/utils/seo/format-seo-meta';
+
+export async function generateMetadata({ params }) {
+   const seo = await formatCareerSeoMeta(params.slug);
+
+   console.log(seo);
+
+   return seo;
+}
 
 export default async function CareerDetailsPage({ params }) {
    const { slug } = params;

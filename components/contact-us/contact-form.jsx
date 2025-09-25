@@ -18,7 +18,7 @@ export const ContactForm = () => {
 
       try {
          const res = await fetch(
-            'https://staging.hellonotionhive.com/wordpress/eqt/wp-json/nh/v1/cform',
+            `${process.env.NEXT_PUBLIC_BACKEND_API}/wp-json/nh/v1/cform`,
             {
                method: 'POST',
                headers: {

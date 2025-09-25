@@ -5,7 +5,16 @@ import {
    getInsightBySlug,
    getRelatedInsights,
 } from '@/graphql/components/get-insights-data';
+import { formatInsightSeoMeta } from '@/utils/seo/format-seo-meta';
 import { formatDateShort } from '@/utils/utility';
+
+export async function generateMetadata({ params }) {
+   const seo = await formatInsightSeoMeta(params.slug);
+
+   console.log(seo);
+
+   return seo;
+}
 
 export default async function InsightDetailsPage({ params }) {
    const { slug } = params;

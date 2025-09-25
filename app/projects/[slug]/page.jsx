@@ -5,6 +5,14 @@ import {
    getProjectBySlug,
    getProjectsWithLimit,
 } from '@/graphql/components/get-projects-data';
+import { formatProjectSeoMeta } from '@/utils/seo/format-seo-meta';
+
+export async function generateMetadata({ params }) {
+   const seo = await formatProjectSeoMeta(params.slug);
+
+   console.log(seo);
+   return seo;
+}
 
 export default async function ProjectDetailsPage({ params }) {
    const { slug } = await params;

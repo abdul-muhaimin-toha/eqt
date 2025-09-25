@@ -68,8 +68,6 @@ function OurApproach({ data }) {
       }
    }, [swiperInstance]);
 
-   console.log(approachs);
-
    const currentItems =
       approachs?.[activeTab]?.approachs_items?.filter(Boolean) || [];
 

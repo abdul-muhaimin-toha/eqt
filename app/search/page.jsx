@@ -5,9 +5,9 @@ export default async function SearchPage({ searchParams }) {
 
    // Only await fetch, not searchParams
    const res = await fetch(
-      `https://staging.hellonotionhive.com/wordpress/eqt/wp-json/nh/v1/search?q=${encodeURIComponent(
-         searchTerm
-      )}`,
+      `${
+         process.env.NEXT_PUBLIC_BACKEND_API
+      }/wp-json/nh/v1/search?q=${encodeURIComponent(searchTerm)}`,
       {
          method: 'GET',
          headers: {
