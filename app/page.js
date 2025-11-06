@@ -12,6 +12,5 @@ export async function generateMetadata() {
 
 export default async function HomePage() {
    const homePageData = await getPageData('home');
-
    return <RenderBlocksHelper blocks={homePageData} />;
 }
