@@ -10,11 +10,11 @@ function Hero({ data }) {
     description = '',
     open_in_new_tab = false,
     title = '',
+    video_url = '',
   } = data?.data || {};
 
   const titleParts = splitBreakLine(title || []);
-  const background_video =
-    'https://pub-0d4fb0c791fc4e29a7b981d1115e2b4e.r2.dev/eqt/Aerial_City_1920x1080.mp4';
+  const background_video = video_url;
 
   return (
     <section className="hero-section">

@@ -4,38 +4,35 @@ import { getCareerBySlug } from '@/graphql/components/get-jobs-data';
 import { formatCareerSeoMeta } from '@/utils/seo/format-seo-meta';
 
 export async function generateMetadata({ params }) {
-   const seo = await formatCareerSeoMeta(params.slug);
-
-   console.log(seo);
-
-   return seo;
+  const seo = await formatCareerSeoMeta(params.slug);
+  return seo;
 }
 
 export default async function CareerDetailsPage({ params }) {
-   const { slug } = params;
-   const career = await getCareerBySlug(slug);
+  const { slug } = params;
+  const career = await getCareerBySlug(slug);
 
-   if (!career) {
-      redirect('/career');
-   }
+  if (!career) {
+    redirect('/career');
+  }
 
-   return (
-      <section className="insights-description-wrapper careeer-details-wrapper bg-white">
-         <div className="container">
-            <CareerDetailsHeader
-               headingDetails={{
-                  title: career.title,
-                  location: career.careerJobLocation,
-                  deadline: career.careerJobDeadline,
-                  vacancies: career.careerVacancies,
-                  applyLink: `/career/${career.slug}/apply`,
-               }}
-            />
-         </div>
-         <PostDetails
-            dummyRichtext={career.content}
-            applyLink={`/career/${career.slug}/apply`}
-         />
-      </section>
-   );
+  return (
+    <section className="insights-description-wrapper careeer-details-wrapper bg-white">
+      <div className="container">
+        <CareerDetailsHeader
+          headingDetails={{
+            title: career.title,
+            location: career.careerJobLocation,
+            deadline: career.careerJobDeadline,
+            vacancies: career.careerVacancies,
+            applyLink: `/career/${career.slug}/apply`,
+          }}
+        />
+      </div>
+      <PostDetails
+        dummyRichtext={career.content}
+        applyLink={`/career/${career.slug}/apply`}
+      />
+    </section>
+  );
 }

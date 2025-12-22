@@ -3,15 +3,12 @@ import RenderBlocksHelper from '@/utils/render-blocks-helper';
 import { formatSeoMeta } from '@/utils/seo/format-seo-meta';
 
 export async function generateMetadata() {
-   const seo = await formatSeoMeta('our-approach');
-
-   console.log(seo);
-
-   return seo;
+  const seo = await formatSeoMeta('our-approach');
+  return seo;
 }
 
 export default async function OurApproachPage() {
-   const whoWeArePageData = await getPageData('our-approach');
+  const whoWeArePageData = await getPageData('our-approach');
 
-   return <RenderBlocksHelper blocks={whoWeArePageData} />;
+  return <RenderBlocksHelper blocks={whoWeArePageData} />;
 }

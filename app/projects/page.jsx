@@ -8,25 +8,22 @@ import { Suspense } from 'react';
 import { formatSeoMeta } from '@/utils/seo/format-seo-meta';
 
 export async function generateMetadata() {
-   const seo = await formatSeoMeta('projects');
-
-   console.log(seo);
-
-   return seo;
+  const seo = await formatSeoMeta('projects');
+  return seo;
 }
 
 export default async function ProjectsPage() {
-   const projectsPageData = await getPageData('projects');
-   const projects = await getProjectsWithLimit(200);
-   const flatCategories = await getProjectCategories();
-   const categories = transformCategories(flatCategories);
+  const projectsPageData = await getPageData('projects');
+  const projects = await getProjectsWithLimit(200);
+  const flatCategories = await getProjectCategories();
+  const categories = transformCategories(flatCategories);
 
-   return (
-      <div className="bg-white">
-         <RenderBlocksHelper blocks={projectsPageData} />
-         <Suspense>
-            <ProjectShowcase projects={projects} categories={categories} />
-         </Suspense>
-      </div>
-   );
+  return (
+    <div className="bg-white">
+      <RenderBlocksHelper blocks={projectsPageData} />
+      <Suspense>
+        <ProjectShowcase projects={projects} categories={categories} />
+      </Suspense>
+    </div>
+  );
 }
